@@ -26,9 +26,30 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+        url: process.env.WPGRAPHQL_URL || `https://subtedesarrollo.xyz/graphql`,
+        searchAndReplace: [
+          {
+            search: "wp-content/uploads/",
+            replace: "wp-content/uploads-webpc/uploads/",
+          },
+          {
+            search: ".jpg",
+            replace: ".jpg.webp",
+          },
+        ],
+        type: {
+          MediaItem: {
+            lazyNodes: true,
+            localFile: {
+              excludeByMimeTypes: [
+                `video/mp4`,
+                "audio/mpeg",
+                "audio/mpeg3",
+                "image/gif",
+              ],
+            },
+          },
+        },
       },
     },
 
