@@ -3,10 +3,7 @@ import CustomLayout from './wrap-page-elements';
 import 'typeface-montserrat';
 import 'typeface-merriweather';
 
-// normalize CSS across browsers
-import './src/css/normalize.css';
-
 // custom CSS styles
-import './src/css/style.css';
+import './src/global.scss';
 
 export const wrapPageElement = CustomLayout;

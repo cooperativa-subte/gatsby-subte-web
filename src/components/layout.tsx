@@ -1,40 +1,23 @@
-import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import parse from 'html-react-parser';
-import Menu from './Menu';
+import React, { ElementType } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
-const Layout = ({ isHomePage, children }) => {
-  const {
-    wp: {
-      generalSettings: { title },
-    },
-  } = useStaticQuery(graphql`
-    query LayoutQuery {
-      wp {
-        generalSettings {
-          title
-          description
-        }
-      }
-    }
-  `);
+import Header from './Header';
 
+const StyledOuterContainer = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+`;
+
+const Layout: React.FC = ({ children }) => {
   return (
-    <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
-        <Menu />
-      </header>
+    <StyledOuterContainer>
+      <Header />
 
       <main>{children}</main>
 
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
-      </footer>
-    </div>
+      <footer></footer>
+    </StyledOuterContainer>
   );
 };
 

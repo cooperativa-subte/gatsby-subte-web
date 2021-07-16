@@ -49,7 +49,7 @@ const Menu = () => {
     }
   `);
 
-  if (!nodes || nodes.length === 0) return undefined;
+  if (!nodes || nodes.length === 0) return null;
 
   return (
     <StyledMenuContainer>
