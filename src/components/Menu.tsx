@@ -11,6 +11,7 @@ const StyledMenuContainer = styled.nav`
       a {
         color: black;
         text-decoration: none;
+        font-family: 'HelveticaBold';
       }
     }
   }

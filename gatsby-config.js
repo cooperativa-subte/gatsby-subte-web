@@ -12,16 +12,6 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: process.env.WPGRAPHQL_URL || `https://subtedesarrollo.xyz/graphql`,
-        searchAndReplace: [
-          {
-            search: 'wp-content/uploads/',
-            replace: 'wp-content/uploads-webpc/uploads/',
-          },
-          {
-            search: '.jpg',
-            replace: '.jpg.webp',
-          },
-        ],
         type: {
           MediaItem: {
             lazyNodes: true,
@@ -44,6 +34,7 @@ module.exports = {
         path: `${__dirname}/content/assets`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

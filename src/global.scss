@@ -7,6 +7,21 @@
   src: url('./fonts/HelveticaNowDisplay-Regular.ttf');
   font-display: swap;
 }
+@font-face {
+  font-family: 'HelveticaMedium';
+  src: url('./fonts/HelveticaNowDisplay-Medium.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'HelveticaBold';
+  src: url('./fonts/HelveticaNowDisplay-Bold.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'HelveticaBlack';
+  src: url('./fonts/HelveticaNowDisplay-Black.ttf');
+  font-display: swap;
+}
 body {
   font-size: 18px;
   font-family: 'HelveticaRegular';
