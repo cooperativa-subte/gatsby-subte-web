@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
@@ -16,6 +16,7 @@ const StyledHomePageContainer = styled.div`
 
 type ProyectoType = {
   id: string;
+  slug: string;
   featuredImage: {
     node: {
       altText: string;
@@ -33,25 +34,31 @@ type IndexQueryProps = {
 type IndexPageProps = PageProps<IndexQueryProps>;
 
 const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
-  const [imgsPortada, setImgsPortada] = useState<IGatsbyImageData[] | []>([]);
+  const [imgsPortada, setImgsPortada] = useState<{
+    [slug: string]: IGatsbyImageData;
+  }>();
   useEffect(() => {
-    const tmpImages: IGatsbyImageData[] = [];
+    const tmpImages: { [slug: string]: IGatsbyImageData } = {};
     proyectosPortada.nodes.map((proyecto: ProyectoType) => {
       const img = getImage(proyecto.featuredImage.node.localFile);
-      if (img) tmpImages.push(img);
+      console.log(img);
+      if (img) tmpImages[proyecto.slug] = img;
     });
     setImgsPortada(tmpImages);
   }, []);
+  if (!imgsPortada) return null;
   return (
     <>
       <SEO />
       <StyledHomePageContainer>
-        {imgsPortada.length > 0 &&
-          imgsPortada.map((image: IGatsbyImageData) => (
-            <GatsbyImage
-              image={image}
-              alt={proyectosPortada.nodes[0].featuredImage.node.altText}
-            />
+        {Object.keys(imgsPortada).length > 0 &&
+          Object.keys(imgsPortada).map((imgPortadaKey: string) => (
+            <Link to={`/${imgPortadaKey}`}>
+              <GatsbyImage
+                image={imgsPortada[imgPortadaKey]}
+                alt={proyectosPortada.nodes[0].featuredImage.node.altText}
+              />
+            </Link>
           ))}
       </StyledHomePageContainer>
     </>
@@ -72,6 +79,7 @@ export const query = graphql`
     ) {
       nodes {
         id
+        slug
         featuredImage {
           node {
             altText
