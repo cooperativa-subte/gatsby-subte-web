@@ -7,6 +7,13 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: 'Cooperativa de trabajo SUBTE',
+    titleTemplate: '%s | Cooperativa de trabajo SUBTE',
+    description: 'Cooperativa de comunicación visual, programación y formación',
+    url: 'https://subte.uy',
+    image: '',
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
@@ -54,7 +61,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `src/images/favicon.ico`,
       },
     },
 

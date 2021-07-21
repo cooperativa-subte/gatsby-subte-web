@@ -3,6 +3,7 @@ import { graphql, PageProps } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import SEO from '../components/seo';
 
 const StyledHomePageContainer = styled.div`
   .gatsby-image-wrapper {
@@ -42,15 +43,18 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
     setImgsPortada(tmpImages);
   }, []);
   return (
-    <StyledHomePageContainer>
-      {imgsPortada.length > 0 &&
-        imgsPortada.map((image: IGatsbyImageData) => (
-          <GatsbyImage
-            image={image}
-            alt={proyectosPortada.nodes[0].featuredImage.node.altText}
-          />
-        ))}
-    </StyledHomePageContainer>
+    <>
+      <SEO />
+      <StyledHomePageContainer>
+        {imgsPortada.length > 0 &&
+          imgsPortada.map((image: IGatsbyImageData) => (
+            <GatsbyImage
+              image={image}
+              alt={proyectosPortada.nodes[0].featuredImage.node.altText}
+            />
+          ))}
+      </StyledHomePageContainer>
+    </>
   );
 };
 
