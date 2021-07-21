@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import styled from 'styled-components';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+
+const StyledHomePageContainer = styled.div`
+  .gatsby-image-wrapper {
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    object-fit: contain;
+  }
+`;
 
 type ProyectoType = {
   id: string;
@@ -32,7 +42,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
     setImgsPortada(tmpImages);
   }, []);
   return (
-    <div>
+    <StyledHomePageContainer>
       {imgsPortada.length > 0 &&
         imgsPortada.map((image: IGatsbyImageData) => (
           <GatsbyImage
@@ -40,7 +50,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
             alt={proyectosPortada.nodes[0].featuredImage.node.altText}
           />
         ))}
-    </div>
+    </StyledHomePageContainer>
   );
 };
 

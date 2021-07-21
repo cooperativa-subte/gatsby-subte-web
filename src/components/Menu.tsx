@@ -7,7 +7,7 @@ const StyledMenuContainer = styled.nav`
     display: flex;
     li {
       list-style: none;
-      margin-right: 0.5rem;
+      margin: 0 1rem;
       a {
         color: black;
         text-decoration: none;
