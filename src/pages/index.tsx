@@ -41,7 +41,6 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
     const tmpImages: { [slug: string]: IGatsbyImageData } = {};
     proyectosPortada.nodes.map((proyecto: ProyectoType) => {
       const img = getImage(proyecto.featuredImage.node.localFile);
-      console.log(img);
       if (img) tmpImages[proyecto.slug] = img;
     });
     setImgsPortada(tmpImages);
@@ -53,7 +52,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
       <StyledHomePageContainer>
         {Object.keys(imgsPortada).length > 0 &&
           Object.keys(imgsPortada).map((imgPortadaKey: string) => (
-            <Link to={`/${imgPortadaKey}`}>
+            <Link to={`/${imgPortadaKey}`} key={imgPortadaKey}>
               <GatsbyImage
                 image={imgsPortada[imgPortadaKey]}
                 alt={proyectosPortada.nodes[0].featuredImage.node.altText}

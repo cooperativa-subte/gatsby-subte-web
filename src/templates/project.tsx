@@ -20,6 +20,8 @@ const ProjectPage = ({ data: { project }, pageContext }: ProjectPageType) => {
   const image = getImage(
     project.featuredImage.node.localFile.childImageSharp.gatsbyImageData
   );
+  console.log('🌟🌟🌟');
+  console.log(pageContext);
   return (
     <StyledProjectPageContainer>
       <div className='project-header'>
@@ -62,7 +64,6 @@ export const pageQuery = graphql`
     project: wpPost(id: { eq: $id }) {
       id
       datos_proyecto {
-        cliente
         descripcionCorta
         fecha
         fieldGroupName

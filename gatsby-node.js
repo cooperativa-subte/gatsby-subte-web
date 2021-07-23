@@ -13,6 +13,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           node {
             id
             slug
+            datos_proyecto {
+              cliente
+            }
           }
         }
       }
@@ -27,6 +30,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       component: projectTemplate,
       context: {
         id: project.node.id,
+        cliente: project.node.datos_proyecto.cliente,
       },
     });
   });
