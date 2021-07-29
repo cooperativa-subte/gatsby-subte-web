@@ -67,7 +67,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
 export default IndexPage;
 
 export const query = graphql`
-  query MyQuery {
+  query MyIndexQuery {
     proyectosPortada: allWpPost(
       filter: {
         categories: {

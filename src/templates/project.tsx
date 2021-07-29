@@ -16,12 +16,10 @@ type ProjectPageType = {
   };
 };
 
-const ProjectPage = ({ data: { project }, pageContext }: ProjectPageType) => {
+const ProjectPage = ({ data: { project } }: ProjectPageType) => {
   const image = getImage(
     project.featuredImage.node.localFile.childImageSharp.gatsbyImageData
   );
-  console.log('🌟🌟🌟');
-  console.log(pageContext);
   return (
     <StyledProjectPageContainer>
       <div className='project-header'>
