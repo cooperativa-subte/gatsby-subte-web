@@ -12,6 +12,9 @@ const StyledBlogPageContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10rem;
+    a {
+      font-size: 1rem;
+    }
     .conversatorios-container {
       video {
         max-width: 100%;
@@ -21,12 +24,16 @@ const StyledBlogPageContainer = styled.div`
         font-size: 2.5rem;
       }
       .podcast-title {
+        display: flex;
         margin: 2rem 0;
       }
       .podcast-post-container {
         margin: 1rem 0;
         .author {
           font-family: 'HelveticaMedium';
+          margin: 0.5rem 0;
+        }
+        .excerpt {
           margin: 0.5rem 0;
         }
       }
@@ -73,6 +80,7 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             controls
             poster='https://subtedesarrollo.xyz/wp-content/uploads/2021/07/Conversatorios_imagen.webp'
             src='https://subtedesarrollo.xyz/wp-content/uploads/2021/07/spot_conversatorios.mp4'
+            loop
           ></video>
           <h2>Conversatorios subterráneos</h2>
           <p>
@@ -82,16 +90,24 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             culturales y políticas.
           </p>
           <div className='podcast-title'>
-            <img />
+            <StaticImage
+              src='../images/CoverEpisodios.webp'
+              alt='Imagen Episodio #0'
+            />
             <h3>
               Los problemas de comunicación de las organizaciones populares
             </h3>
           </div>
           {podcastsPosts.nodes.map((post: PodcastPostType) => (
             <div className='podcast-post-container' key={post.id}>
-              <h3>{post.title}</h3>
+              <Link to={`/${post.slug}`}>
+                <h3>{post.title}</h3>
+              </Link>
               <p className='author'>{post.podcasts_fields.autoraPodcast}</p>
-              <p dangerouslySetInnerHTML={{ __html: post.excerpt }}></p>
+              <div
+                className='excerpt'
+                dangerouslySetInnerHTML={{ __html: post.excerpt }}
+              ></div>
               <Link to={`/${post.slug}`}>Leer</Link>
             </div>
           ))}

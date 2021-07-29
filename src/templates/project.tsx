@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { ProjectType } from '../types';
 
@@ -17,17 +17,27 @@ type ProjectPageType = {
 };
 
 const ProjectPage = ({ data: { project } }: ProjectPageType) => {
-  const image = getImage(
-    project.featuredImage.node.localFile.childImageSharp.gatsbyImageData
-  );
+  const [featureImage, setFeatureImage] = useState<IGatsbyImageData>();
+  useEffect(() => {
+    if (project.featuredImage)
+      setFeatureImage(
+        getImage(
+          project.featuredImage.node.localFile.childImageSharp.gatsbyImageData
+        )
+      );
+  }, []);
+
   return (
     <StyledProjectPageContainer>
       <div className='project-header'>
         <h1>{project.datos_proyecto.nombre}</h1>
         <h2>{project.datos_proyecto.descripcionCorta}</h2>
       </div>
-      {image && (
-        <GatsbyImage image={image} alt={project.featuredImage.node.altText} />
+      {featureImage && (
+        <GatsbyImage
+          image={featureImage}
+          alt={project.featuredImage.node.altText}
+        />
       )}
       <div className='project-details-container'>
         <div
