@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { ReactDOM } from 'react';
 import styled from 'styled-components';
 
 import Header from './Header';
 import Footer from './Footer';
+import FooterHome from './FooterHome';
 
 const StyledOuterContainer = styled.div`
-  max-width: 1440px;
   margin: 0 auto;
 `;
 
-const Layout: React.FC = ({ children }) => {
+type LayoutTypes = {
+  path: string;
+  children: ReactDOM;
+};
+
+const Layout = ({ path, children }: LayoutTypes) => {
   return (
     <StyledOuterContainer>
       <Header />
 
       <main>{children}</main>
 
-      <Footer />
+      {path === '/' ? <FooterHome /> : <Footer />}
     </StyledOuterContainer>
   );
 };
