@@ -15,12 +15,12 @@ const StyledBlogPageContainer = styled.div`
     a {
       font-size: 1rem;
     }
-    .conversatorios-container {
+    .left-panel {
       video {
         max-width: 100%;
       }
       h2 {
-        margin: 1rem 0 1.5rem;
+        margin: 1.5rem 0 1.5rem;
         font-size: 2.5rem;
       }
       .podcast-title {
@@ -36,6 +36,16 @@ const StyledBlogPageContainer = styled.div`
         .excerpt {
           margin: 0.5rem 0;
         }
+      }
+    }
+    .right-panel {
+      h2 {
+        font-size: 35px;
+        margin-bottom: 1.5rem;
+      }
+      h3,
+      p {
+        margin: 0.5rem 0;
       }
     }
   }
@@ -73,13 +83,13 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
         description='En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa.'
       />
       <div className='desktop-container'>
-        <div className='conversatorios-container'>
+        <div className='left-panel'>
           <video
             autoPlay
             muted
             controls
             poster='https://subtedesarrollo.xyz/wp-content/uploads/2021/07/Conversatorios_imagen.webp'
-            src='https://subtedesarrollo.xyz/wp-content/uploads/2021/07/spot_conversatorios.mp4'
+            src='https://res.cloudinary.com/subteuy/video/upload/v1610826241/subte.uy/Conversatorios/SPOTCS_C4_baja_u82811.mp4'
             loop
           ></video>
           <h2>Conversatorios subterráneos</h2>
@@ -112,7 +122,7 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             </div>
           ))}
         </div>
-        <div>
+        <div className='right-panel'>
           <h2>Subsuelo. Apuntes cooperativos</h2>
           <p>
             Abrimos este espacio para registrar y compartir algunas reflexiones
@@ -125,7 +135,7 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             <div className='blog-post-container' key={post.id}>
               <h3>{post.title}</h3>
               <p dangerouslySetInnerHTML={{ __html: post.excerpt }}></p>
-              <Link to={post.slug}>Leer</Link>
+              <Link to={`/${post.slug}`}>Leer</Link>
             </div>
           ))}
         </div>
