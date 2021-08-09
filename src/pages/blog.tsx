@@ -26,6 +26,19 @@ const StyledBlogPageContainer = styled.div`
       .podcast-title {
         display: flex;
         margin: 2rem 0;
+        align-items: center;
+        .gatsby-image-wrapper {
+          width: 100px;
+          height: 100px;
+          img {
+            width: 100px;
+            height: 100px;
+          }
+        }
+        h3 {
+          flex: 1;
+          padding-left: 0.5rem;
+        }
       }
       .podcast-post-container {
         margin: 1rem 0;
