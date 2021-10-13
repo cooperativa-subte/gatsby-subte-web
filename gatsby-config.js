@@ -23,12 +23,7 @@ module.exports = {
           MediaItem: {
             lazyNodes: true,
             localFile: {
-              excludeByMimeTypes: [
-                `video/mp4`,
-                'audio/mpeg',
-                'audio/mpeg3',
-                'image/gif',
-              ],
+              excludeByMimeTypes: [`video/mp4`, 'audio/mpeg', 'audio/mpeg3', 'image/gif'],
             },
           },
         },
@@ -67,5 +62,6 @@ module.exports = {
 
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `@chakra-ui/gatsby-plugin`,
   ],
 };

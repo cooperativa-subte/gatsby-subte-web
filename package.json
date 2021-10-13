@@ -8,7 +8,12 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^2.0.1",
+    "@chakra-ui/react": "^1.6.9",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "babel-plugin-styled-components": "^1.13.2",
+    "framer-motion": "^4.1.17",
     "gatsby": "^3.11.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^1.11.0",

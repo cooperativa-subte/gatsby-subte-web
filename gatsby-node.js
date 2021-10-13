@@ -6,9 +6,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     query {
       proyectosPosts: allWpPost(
-        filter: {
-          categories: { nodes: { elemMatch: { slug: { eq: "proyectos" } } } }
-        }
+        filter: { categories: { nodes: { elemMatch: { slug: { eq: "proyectos" } } } } }
       ) {
         edges {
           node {
@@ -18,9 +16,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         }
       }
       blogPosts: allWpPost(
-        filter: {
-          categories: { nodes: { elemMatch: { slug: { eq: "blog" } } } }
-        }
+        filter: { categories: { nodes: { elemMatch: { slug: { eq: "blog" } } } } }
       ) {
         edges {
           node {
@@ -30,9 +26,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         }
       }
       podcastsPosts: allWpPost(
-        filter: {
-          categories: { nodes: { elemMatch: { slug: { eq: "podcasts" } } } }
-        }
+        filter: { categories: { nodes: { elemMatch: { slug: { eq: "podcasts" } } } } }
       ) {
         edges {
           node {
