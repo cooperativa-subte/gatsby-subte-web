@@ -34,9 +34,9 @@ type BlogPostPageType = {
 const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
   return (
     <StyledBlogPostContainer>
-      <div className='desktop-container'>
+      <div className="desktop-container">
         <h1>{blogPost.title}</h1>
-        <p dangerouslySetInnerHTML={{ __html: blogPost.content }}></p>
+        <p dangerouslySetInnerHTML={{ __html: blogPost.content }} />
       </div>
     </StyledBlogPostContainer>
   );

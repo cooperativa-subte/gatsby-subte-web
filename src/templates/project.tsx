@@ -18,32 +18,25 @@ type ProjectPageType = {
 
 const ProjectPage = ({ data: { project } }: ProjectPageType) => {
   const [featureImage, setFeatureImage] = useState<IGatsbyImageData>();
+
   useEffect(() => {
     if (project.featuredImage)
       setFeatureImage(
-        getImage(
-          project.featuredImage.node.localFile.childImageSharp.gatsbyImageData
-        )
+        getImage(project.featuredImage.node.localFile.childImageSharp.gatsbyImageData),
       );
   }, []);
 
   return (
     <StyledProjectPageContainer>
-      <div className='project-header'>
+      <div className="project-header">
         <h1>{project.datos_proyecto.nombre}</h1>
         <h2>{project.datos_proyecto.descripcionCorta}</h2>
       </div>
       {featureImage && (
-        <GatsbyImage
-          image={featureImage}
-          alt={project.featuredImage.node.altText}
-        />
+        <GatsbyImage alt={project.featuredImage.node.altText} image={featureImage} />
       )}
-      <div className='project-details-container'>
-        <div
-          className='content'
-          dangerouslySetInnerHTML={{ __html: project.content }}
-        ></div>
+      <div className="project-details-container">
+        <div className="content" dangerouslySetInnerHTML={{ __html: project.content }} />
         <p>
           <span>Cliente:{` `}</span>
           {project.datos_proyecto.cliente}

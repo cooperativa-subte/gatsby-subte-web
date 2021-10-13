@@ -33,31 +33,33 @@ const StyledFooterHomeContainer = styled.footer`
 const FooterHome = () => {
   return (
     <StyledFooterHomeContainer>
-      <div className='desktop-container'>
+      <div className="desktop-container">
         <p>
-          San Salvador 1510, Montevideo |{' '}
-          <a href='mailto:hola@subte.uy'>hola@subte.uy</a>
+          San Salvador 1510, Montevideo | <a href="mailto:hola@subte.uy">hola@subte.uy</a>
         </p>
         <a
-          className='img-container'
-          href='https://instagram.com/subteuy/'
-          target='_blank'
+          className="img-container"
+          href="https://instagram.com/subteuy/"
+          rel="noreferrer"
+          target="_blank"
         >
-          <img src={InstagramIcon} alt='Icono de Instagram' />
+          <img alt="Icono de Instagram" src={InstagramIcon} />
         </a>
         <a
-          className='img-container'
-          href='https://twitter.com/subte_uy'
-          target='_blank'
+          className="img-container"
+          href="https://twitter.com/subte_uy"
+          rel="noreferrer"
+          target="_blank"
         >
-          <img src={TwitterIcon} alt='Icono de Twitter' />
+          <img alt="Icono de Twitter" src={TwitterIcon} />
         </a>
         <a
-          className='img-container'
-          href='https://facebook.com/subteuy'
-          target='_blank'
+          className="img-container"
+          href="https://facebook.com/subteuy"
+          rel="noreferrer"
+          target="_blank"
         >
-          <img src={FacebookIcon} alt='Icono de Facebook' />
+          <img alt="Icono de Facebook" src={FacebookIcon} />
         </a>
       </div>
     </StyledFooterHomeContainer>

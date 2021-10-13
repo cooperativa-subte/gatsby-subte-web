@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-import Menu from './Menu';
-
 import LogoSUBTE from '../images/LogoSUBTE_horizontal.svg';
 import SearchIcon from '../images/search.svg';
+
+import Menu from './Menu';
 
 const StyledHeaderContainer = styled.header`
   position: sticky;
@@ -30,14 +30,14 @@ const Header = () => {
       <div className="desktop-container">
         <Link to="/">
           <img
+            alt="Logo de la cooperativa de trabajo SUBTE"
+            height="50"
             src={LogoSUBTE}
             width="200"
-            height="50"
-            alt="Logo de la cooperativa de trabajo SUBTE"
           />
         </Link>
         <Menu />
-        <img src={SearchIcon} alt="Icono de busqueda" />
+        <img alt="Icono de busqueda" src={SearchIcon} />
       </div>
     </StyledHeaderContainer>
   );
