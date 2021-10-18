@@ -21,7 +21,7 @@ const Contacto = () => {
         description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"
         title="Contacto"
       />
-      <Container maxW="container.lg" p={0}>
+      <Container maxW="container.lg" mt={12} p={0}>
         <Stack direction={['column', 'column', 'row']} spacing="2rem">
           <Box flex={1}>
             <FormControl>
