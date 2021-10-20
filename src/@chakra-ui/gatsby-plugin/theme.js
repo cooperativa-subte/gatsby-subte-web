@@ -14,11 +14,4 @@ export default extendTheme({
       lg: '1100px',
     },
   },
-  components: {
-    Input: {
-      baseStyle: {
-        borderColor: '#99a9bb',
-      },
-    },
-  },
 });
