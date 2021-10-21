@@ -119,7 +119,7 @@ const Contacto = () => {
                 />
               </FormControl>
               <Button
-                _hover={{ color: 'gray.200' }}
+                _hover={{ color: 'gray.200', backgroundColor: 'gray.800' }}
                 bgColor="primary"
                 borderRadius={0}
                 color="secondary"
