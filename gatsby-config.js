@@ -21,7 +21,6 @@ module.exports = {
         url: process.env.WPGRAPHQL_URL || `https://subtedesarrollo.xyz/graphql`,
         type: {
           MediaItem: {
-            lazyNodes: true,
             localFile: {
               excludeByMimeTypes: [`video/mp4`, 'audio/mpeg', 'audio/mpeg3', 'image/gif'],
             },
