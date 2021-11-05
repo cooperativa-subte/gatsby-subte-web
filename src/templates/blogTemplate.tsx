@@ -1,15 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
-
-const StyledBlogPostContainer = styled.div`
-  border-top: 1px solid var(--border-gray);
-  padding: 2rem 0;
-  .desktop-container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-`;
 
 type BlogPostPageType = {
   data: {
@@ -33,12 +23,12 @@ type BlogPostPageType = {
 
 const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
   return (
-    <StyledBlogPostContainer>
+    <div>
       <div className="desktop-container">
         <h1>{blogPost.title}</h1>
         <p dangerouslySetInnerHTML={{ __html: blogPost.content }} />
       </div>
-    </StyledBlogPostContainer>
+    </div>
   );
 };
 

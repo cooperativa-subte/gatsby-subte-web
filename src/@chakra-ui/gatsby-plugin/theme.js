@@ -2,6 +2,7 @@ import { extendTheme, theme } from '@chakra-ui/react';
 
 export default extendTheme({
   fonts: {
+    menuItem: 'HelveticaBold',
     heading: 'HelveticaMedium',
     body: 'HelveticaLight',
   },
@@ -11,7 +12,7 @@ export default extendTheme({
   },
   sizes: {
     container: {
-      lg: '1100px',
+      xl: '1200px',
     },
   },
 });

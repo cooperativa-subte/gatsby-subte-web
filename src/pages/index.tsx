@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import styled from 'styled-components';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 import SEO from '../components/seo';
-
-const StyledHomePageContainer = styled.div`
-  .gatsby-image-wrapper {
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
-    object-fit: contain;
-  }
-`;
 
 type ProyectoType = {
   id: string;
@@ -55,7 +45,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
   return (
     <>
       <SEO />
-      <StyledHomePageContainer>
+      <div>
         {Object.keys(imgsPortada).length > 0 &&
           Object.keys(imgsPortada).map((imgPortadaKey: string) => (
             <Link key={imgPortadaKey} to={`/${imgPortadaKey}`}>
@@ -65,7 +55,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
               />
             </Link>
           ))}
-      </StyledHomePageContainer>
+      </div>
     </>
   );
 };

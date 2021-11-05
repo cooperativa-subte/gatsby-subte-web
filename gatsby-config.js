@@ -45,7 +45,6 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -60,7 +59,6 @@ module.exports = {
     },
 
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
     {
       resolve: `@chakra-ui/gatsby-plugin`,
       options: {

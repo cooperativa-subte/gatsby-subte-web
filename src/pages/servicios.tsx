@@ -1,31 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const StyledServiciosContainer = styled.div`
-  border-top: 1px solid var(--border-gray);
-  padding-bottom: 2rem;
-  .desktop-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: calc(1100px / 12);
-    h1 {
-      margin: 3rem 0 1.5rem;
-    }
-    .service-item {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      strong {
-        font-family: 'HelveticaMedium';
-      }
-    }
-  }
-`;
 
 const Servicios = () => {
   return (
-    <StyledServiciosContainer>
+    <div>
       <div className="desktop-container">
         <div>
           <h1>Comunicación Visual</h1>
@@ -159,7 +137,7 @@ const Servicios = () => {
           </div>
         </div>
       </div>
-    </StyledServiciosContainer>
+    </div>
   );
 };
 

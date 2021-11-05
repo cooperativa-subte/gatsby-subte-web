@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { ProjectType } from '../types';
 
-const StyledProjectPageContainer = styled.div``;
 
 type ProjectPageType = {
   data: {
@@ -27,7 +25,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
   }, []);
 
   return (
-    <StyledProjectPageContainer>
+    <div>
       <div className="project-header">
         <h1>{project.datos_proyecto.nombre}</h1>
         <h2>{project.datos_proyecto.descripcionCorta}</h2>
@@ -54,7 +52,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           {project.datos_proyecto.cliente}
         </p>
       </div>
-    </StyledProjectPageContainer>
+    </div>
   );
 };
 

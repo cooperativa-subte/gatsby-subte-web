@@ -1,21 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
-
-const StyledMenuContainer = styled.nav`
-  ul {
-    display: flex;
-    li {
-      list-style: none;
-      margin: 0 1rem;
-      a {
-        color: black;
-        text-decoration: none;
-        font-family: 'HelveticaBold';
-      }
-    }
-  }
-`;
+import { Flex, List, ListItem } from '@chakra-ui/react';
 
 type MenuItem = {
   url: string;
@@ -53,15 +38,15 @@ const Menu = () => {
   if (!nodes || nodes.length === 0) return null;
 
   return (
-    <StyledMenuContainer>
-      <ul>
+    <Flex>
+      <List display="flex">
         {nodes[0].menuItems.nodes.map((menuItem: MenuItem) => (
-          <li key={menuItem.id}>
+          <ListItem key={menuItem.id} fontFamily="menuItem" marginLeft="5">
             <Link to={menuItem.url}>{menuItem.label}</Link>
-          </li>
+          </ListItem>
         ))}
-      </ul>
-    </StyledMenuContainer>
+      </List>
+    </Flex>
   );
 };
 

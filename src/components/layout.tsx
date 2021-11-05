@@ -1,13 +1,9 @@
 import React, { ReactDOM } from 'react';
-import styled from 'styled-components';
+import { Container } from '@chakra-ui/react';
 
 import Header from './Header';
 import Footer from './Footer';
 import FooterHome from './FooterHome';
-
-const StyledOuterContainer = styled.div`
-  margin: 0 auto;
-`;
 
 type LayoutTypes = {
   path: string;
@@ -16,13 +12,13 @@ type LayoutTypes = {
 
 const Layout = ({ path, children }: LayoutTypes) => {
   return (
-    <StyledOuterContainer>
+    <Container maxW="container.xl">
       <Header />
 
       <main>{children}</main>
 
       {path === '/' ? <FooterHome /> : <Footer />}
-    </StyledOuterContainer>
+    </Container>
   );
 };
 

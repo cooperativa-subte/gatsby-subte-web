@@ -1,69 +1,9 @@
 import { graphql, Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import styled from 'styled-components';
 
 import SEO from '../components/seo';
 
-const StyledBlogPageContainer = styled.div`
-  border-top: 1px solid var(--border-gray);
-  .desktop-container {
-    max-width: 1100px;
-    margin: 3rem auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10rem;
-    a {
-      font-size: 1rem;
-    }
-    .left-panel {
-      video {
-        max-width: 100%;
-      }
-      h2 {
-        margin: 1.5rem 0 1.5rem;
-        font-size: 2.5rem;
-      }
-      .podcast-title {
-        display: flex;
-        margin: 2rem 0;
-        align-items: center;
-        .gatsby-image-wrapper {
-          width: 100px;
-          height: 100px;
-          img {
-            width: 100px;
-            height: 100px;
-          }
-        }
-        h3 {
-          flex: 1;
-          padding-left: 0.5rem;
-        }
-      }
-      .podcast-post-container {
-        margin: 1rem 0;
-        .author {
-          font-family: 'HelveticaMedium';
-          margin: 0.5rem 0;
-        }
-        .excerpt {
-          margin: 0.5rem 0;
-        }
-      }
-    }
-    .right-panel {
-      h2 {
-        font-size: 35px;
-        margin-bottom: 1.5rem;
-      }
-      h3,
-      p {
-        margin: 0.5rem 0;
-      }
-    }
-  }
-`;
 
 type PostType = {
   id: string;
@@ -91,7 +31,7 @@ type BlogPageTypes = {
 
 const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
   return (
-    <StyledBlogPageContainer>
+    <div>
       <SEO
         description="En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa."
         title="Blog"
@@ -144,7 +84,7 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
           ))}
         </div>
       </div>
-    </StyledBlogPageContainer>
+    </div>
   );
 };
 

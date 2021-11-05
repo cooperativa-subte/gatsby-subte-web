@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/seo';
@@ -8,38 +7,6 @@ import CICLogo from '../images/cic-logo.svg';
 import ComunaLogo from '../images/comuna-logo.svg';
 import PedalLogo from '../images/pedal-logo.svg';
 
-const StyledNosotresPageContainer = styled.div`
-  border-top: 1px solid var(--border-gray);
-  .desktop-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 0 6rem;
-    h1 {
-      padding-right: 1rem;
-    }
-    p {
-      margin-bottom: 2rem;
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .row-5 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      align-items: center;
-      justify-items: center;
-    }
-    .photos-container {
-      gap: 1rem 1rem;
-      margin-bottom: 5rem;
-      p {
-        font-family: 'HelveticaMedium';
-      }
-    }
-  }
-`;
-
 const Nosotres = () => {
   return (
     <>
@@ -47,7 +14,7 @@ const Nosotres = () => {
         description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."
         title="Nosotres"
       />
-      <StyledNosotresPageContainer>
+      <div>
         <div className="desktop-container">
           <section className="row">
             <h1>No somos una agencia</h1>
@@ -124,7 +91,7 @@ const Nosotres = () => {
             <img alt="Logo de Cooperativa Integral Consultora (CIC)" src={CICLogo} />
           </section>
         </div>
-      </StyledNosotresPageContainer>
+      </div>
     </>
   );
 };
