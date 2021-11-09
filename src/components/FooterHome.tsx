@@ -9,6 +9,7 @@ const FooterHome = () => {
           San Salvador 1510, Montevideo | <a href="mailto:hola@subte.uy">hola@subte.uy</a>
         </Text>
         <Link
+          aria-label="Link de Instagram"
           href="https://instagram.com/subteuy/"
           mx={2}
           rel="noreferrer"
@@ -28,6 +29,7 @@ const FooterHome = () => {
           </svg>
         </Link>
         <Link
+          aria-label="Link de Twitter"
           href="https://twitter.com/subte_uy"
           mx={2}
           rel="noreferrer"
@@ -75,6 +77,7 @@ const FooterHome = () => {
           </svg>
         </Link>
         <Link
+          aria-label="Link de Facebook"
           href="https://facebook.com/subteuy"
           mx={2}
           rel="noreferrer"
