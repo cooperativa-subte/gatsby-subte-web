@@ -14,11 +14,13 @@ const Layout = ({ path, children }: LayoutTypes) => {
   return (
     <>
       {path !== '/' ? (
-        <Container maxW="container.xl">
+        <>
           <Header />
-          <main>{children}</main>
-          <Footer />
-        </Container>
+          <Container maxW="container.xl">
+            <main>{children}</main>
+            <Footer />
+          </Container>
+        </>
       ) : (
         <>
           <Container maxW="container.xl">

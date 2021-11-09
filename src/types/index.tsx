@@ -16,6 +16,7 @@ export type ProjectType = {
     fecha: string;
     nombre: string;
     sector: string;
+    imagenesComplementarias: string;
   };
   tags: {
     nodes: TagsType[];
