@@ -4,7 +4,9 @@ export default extendTheme({
   fonts: {
     menuItem: 'HelveticaBold',
     heading: 'HelveticaMedium',
-    body: 'HelveticaLight',
+    body: 'HelveticaRegular',
+    helveticaBold: 'HelveticaBold',
+    helveticaExtraBold: 'HelveticaExtraBold',
   },
   colors: {
     primary: theme.colors.black,

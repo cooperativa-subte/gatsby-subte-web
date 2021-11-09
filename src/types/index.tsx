@@ -8,6 +8,8 @@ export type TagsType = {
 
 export type ProjectType = {
   id: string;
+  slug: string;
+  content: string;
   datos_proyecto: {
     cliente: string;
     descripcionCorta: string;
@@ -15,18 +17,13 @@ export type ProjectType = {
     nombre: string;
     sector: string;
   };
-  content: string;
   tags: {
     nodes: TagsType[];
   };
   featuredImage: {
     node: {
       altText: string;
-      localFile: {
-        childImageSharp: {
-          gatsbyImageData: FileNode;
-        };
-      };
+      localFile: FileNode;
     };
   };
 };

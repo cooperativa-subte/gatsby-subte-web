@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   await result.data.proyectosPosts.edges.forEach((project) => {
     createPage({
-      path: `${project.node.slug}`,
+      path: `/proyectos/${project.node.slug}`,
       component: projectTemplate,
       context: {
         id: project.node.id,

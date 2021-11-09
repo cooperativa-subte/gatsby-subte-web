@@ -3,7 +3,7 @@ import { Center, Text, Link, Flex } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Center borderTop={1} borderTopColor="black" borderTopStyle="solid" mt={5} pt={3}>
+    <Center borderTop={1} borderTopColor="black" borderTopStyle="solid" mb={5} mt={5} pt={3}>
       <Flex alignItems="center">
         <Text fontFamily="heading" fontSize={15}>
           San Salvador 1510, Montevideo | <a href="mailto:hola@subte.uy">hola@subte.uy</a>
@@ -80,6 +80,7 @@ const Footer = () => {
           maxW={10}
           mx={2}
           rel="noreferrer"
+          target="_blank"
         >
           <svg
             enableBackground="new 0 0 24 24"
