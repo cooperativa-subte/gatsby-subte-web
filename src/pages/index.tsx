@@ -48,7 +48,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
       <div>
         {Object.keys(imgsPortada).length > 0 &&
           Object.keys(imgsPortada).map((imgPortadaKey: string) => (
-            <Link key={imgPortadaKey} to={`/${imgPortadaKey}`}>
+            <Link key={imgPortadaKey} to={`/proyectos/${imgPortadaKey}`}>
               <GatsbyImage
                 alt={proyectosPortada.nodes[0].featuredImage.node.altText}
                 image={imgsPortada[imgPortadaKey]}
