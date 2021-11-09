@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Box, Grid, Heading, Text } from '@chakra-ui/react';
+import { Box, Grid, Heading, Image, Text } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import FCPULogo from '../images/fcpu-logo.svg';
@@ -108,11 +108,11 @@ const Nosotres = () => {
         </Text>
       </Grid>
       <Grid as="section" gridColumnGap={5} gridTemplateColumns="repeat(5, 1fr)" mb={32} mt={20}>
-        <img alt="Logo de la Federación de Cooperativas del Uruguay" src={FCPULogo} />
-        <img alt="Logo de Pedal" src={PedalLogo} />
-        <img alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
-        <img alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
-        <img alt="Logo de Cooperativa Integral Consultora (CIC)" src={CICLogo} />
+        <Image alt="Logo de la Federación de Cooperativas del Uruguay" src={FCPULogo} />
+        <Image alt="Logo de Pedal" src={PedalLogo} />
+        <Image alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
+        <Image alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
+        <Image alt="Logo de Cooperativa Integral Consultora (CIC)" src={CICLogo} />
       </Grid>
     </>
   );

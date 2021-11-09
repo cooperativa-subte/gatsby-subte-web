@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 import SEO from '../components/seo';
+import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 
 type ProyectoType = {
   id: string;
   slug: string;
+  title: string;
   featuredImage: {
     node: {
       altText: string;
@@ -24,41 +25,28 @@ type IndexQueryProps = {
 
 type IndexPageProps = PageProps<IndexQueryProps>;
 
-const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
-  const [imgsPortada, setImgsPortada] = useState<{
-    [slug: string]: IGatsbyImageData;
-  }>();
-
-  useEffect(() => {
-    const tmpImages: { [slug: string]: IGatsbyImageData } = {};
-
-    proyectosPortada.nodes.map((proyecto: ProyectoType) => {
-      const img = getImage(proyecto.featuredImage.node.localFile);
-
-      if (img) tmpImages[proyecto.slug] = img;
-    });
-    setImgsPortada(tmpImages);
-  }, []);
-
-  if (!imgsPortada) return null;
-
-  return (
-    <>
-      <SEO />
-      <div>
-        {Object.keys(imgsPortada).length > 0 &&
-          Object.keys(imgsPortada).map((imgPortadaKey: string) => (
-            <Link key={imgPortadaKey} to={`/proyectos/${imgPortadaKey}`}>
-              <GatsbyImage
-                alt={proyectosPortada.nodes[0].featuredImage.node.altText}
-                image={imgsPortada[imgPortadaKey]}
+const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => (
+  <>
+    <SEO />
+    <div>
+      {proyectosPortada.nodes.length > 0 &&
+        proyectosPortada.nodes.map((project: ProyectoType) => (
+          <Link
+            key={project.slug}
+            aria-label={`Link a la página del proyecto de ${project.title}`}
+            to={`/proyectos/${project.slug}`}
+          >
+            {project.featuredImage && (
+              <CustomWrappterGatsbyImage
+                altText={proyectosPortada.nodes[0].featuredImage.node.altText}
+                localFile={project.featuredImage.node.localFile}
               />
-            </Link>
-          ))}
-      </div>
-    </>
-  );
-};
+            )}
+          </Link>
+        ))}
+    </div>
+  </>
+);
 
 export default IndexPage;
 
@@ -71,6 +59,7 @@ export const query = graphql`
       nodes {
         id
         slug
+        title
         featuredImage {
           node {
             altText

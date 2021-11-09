@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Box,
   Flex,
@@ -11,12 +12,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { graphql, Link, PageProps } from 'gatsby';
-import React, { useState } from 'react';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 import { ProjectType } from '../types';
 import SEO from '../components/seo';
+import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 
 type Tag = {
   name: string;
@@ -33,12 +32,6 @@ type ProyectosQueryProps = {
 };
 
 type ProyectosPageProps = PageProps<ProyectosQueryProps>;
-
-const ImageComponent = ({ localFile, altText }: { localFile: FileNode; altText: string }) => {
-  const [image] = useState<IGatsbyImageData | undefined>(getImage(localFile));
-
-  return <>{image && <GatsbyImage alt={altText} image={image} />}</>;
-};
 
 const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
   return (
@@ -80,7 +73,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
             <GridItem key={project.id}>
               {project.featuredImage && (
                 <Link to={`/proyectos/${project.slug}`}>
-                  <ImageComponent
+                  <CustomWrappterGatsbyImage
                     altText={project.featuredImage.node.altText}
                     localFile={project.featuredImage.node.localFile}
                   />
