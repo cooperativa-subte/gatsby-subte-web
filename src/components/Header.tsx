@@ -30,11 +30,17 @@ const Header = () => {
             />
           </Link>
           <Menu />
-          <Box display="flex" w={72}>
+          <Box display="flex" w={64}>
             <SlideFade in={isOpen} offsetX={10} offsetY={0}>
-              <Input />
+              <Input aria-label="Buscar en el sitio de SUBTE" placeholder="Buscar..." />
             </SlideFade>
-            <Image alt="Icono de busqueda" cursor="pointer" src={SearchIcon} onClick={onToggle} />
+            <Image
+              alt="Icono de busqueda"
+              cursor="pointer"
+              ml={3}
+              src={SearchIcon}
+              onClick={onToggle}
+            />
           </Box>
         </Flex>
       </Container>
