@@ -40,7 +40,7 @@ const Contacto = () => {
         description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"
         title="Contacto"
       />
-      <Stack direction={['column', 'column', 'row']} spacing="2rem">
+      <Stack direction={['column', 'column', 'row']} mt={10} spacing="2rem">
         <Box flex={1}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl isInvalid={errors.fullName !== undefined}>

@@ -41,7 +41,12 @@ const Menu = () => {
     <Flex>
       <List display="flex">
         {nodes[0].menuItems.nodes.map((menuItem: MenuItem) => (
-          <ListItem key={menuItem.id} fontFamily="menuItem" marginLeft="5">
+          <ListItem
+            key={menuItem.id}
+            _first={{ marginLeft: 0 }}
+            fontFamily="menuItem"
+            marginLeft={5}
+          >
             <Link to={menuItem.url}>{menuItem.label}</Link>
           </ListItem>
         ))}

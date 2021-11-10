@@ -49,6 +49,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         borderBottomStyle="solid"
         justifyContent="space-between"
         mb={8}
+        mt={10}
         pb={3}
       >
         <Heading>Proyectos</Heading>
