@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Accordion,
   AccordionButton,
-  AccordionIcon,
   AccordionItem,
   AccordionPanel,
   AspectRatio,
@@ -17,15 +16,20 @@ import { ArrowForwardIcon, AddIcon } from '@chakra-ui/icons';
 
 import SEO from '../components/seo';
 
-interface Props {}
-
-function ConversatoriosPage(props: Props): JSX.Element {
+function ConversatoriosPage(): JSX.Element {
   return (
     <>
       <SEO title="Conversatorios subterráneos #1" />
-      <Grid gridColumnGap={8} gridTemplateColumns="repeat(2, 1fr)" my={10}>
-        <Box>
-          <Heading mb={6}>¿Qué son?</Heading>
+      <Grid
+        alignItems="flex-start"
+        gridColumnGap={8}
+        gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+        my={10}
+      >
+        <Box order={[2, 1]}>
+          <Heading fontFamily="helveticaLight" fontSize="6xl" mb={[0, 6]} mt={[5, 0]}>
+            QUÉ SON
+          </Heading>
           <Text>
             Los Conversatorios Subterráneos son espacios donde nos proponemos reflexionar
             colectivamente sobre los principales problemas de la comunicación en las cooperativas,
@@ -79,7 +83,9 @@ function ConversatoriosPage(props: Props): JSX.Element {
                     _focus={{ boxShadow: 'none' }}
                     _hover={{ backgroundColor: 'transparent' }}
                     display="grid"
-                    gridTemplateColumns="1fr 1fr"
+                    gridTemplateColumns={['2fr 1fr ', '1fr 1fr']}
+                    paddingInlineEnd={[0, 2]}
+                    paddingInlineStart={[0, 2]}
                   >
                     <Box textAlign="left">
                       <Box as="span" fontFamily="HelveticaBold">
@@ -125,7 +131,9 @@ function ConversatoriosPage(props: Props): JSX.Element {
                     _focus={{ boxShadow: 'none' }}
                     _hover={{ backgroundColor: 'transparent' }}
                     display="grid"
-                    gridTemplateColumns="1fr 1fr"
+                    gridTemplateColumns={['2fr 1fr ', '1fr 1fr']}
+                    paddingInlineEnd={[0, 2]}
+                    paddingInlineStart={[0, 2]}
                   >
                     <Box textAlign="left">
                       <Box as="span" fontFamily="HelveticaBold">
@@ -170,7 +178,9 @@ function ConversatoriosPage(props: Props): JSX.Element {
                     _focus={{ boxShadow: 'none' }}
                     _hover={{ backgroundColor: 'transparent' }}
                     display="grid"
-                    gridTemplateColumns="1fr 1fr"
+                    gridTemplateColumns={['2fr 1fr ', '1fr 1fr']}
+                    paddingInlineEnd={[0, 2]}
+                    paddingInlineStart={[0, 2]}
                   >
                     <Box textAlign="left">
                       <Box as="span" fontFamily="HelveticaBold">
@@ -213,7 +223,7 @@ function ConversatoriosPage(props: Props): JSX.Element {
             </AccordionItem>
           </Accordion>
         </Box>
-        <AspectRatio>
+        <AspectRatio order={[1, 2]} ratio={1}>
           <video autoPlay controls loop muted className="video-conversatorios">
             <source
               src="https://res.cloudinary.com/subteuy/video/upload/v1635955826/subte.uy/Conversatorios/Conversatorios_SPOTcuadrado_2021_brjgwl.mp4"

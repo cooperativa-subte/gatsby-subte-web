@@ -7,6 +7,7 @@ export default extendTheme({
     body: 'HelveticaRegular',
     helveticaBold: 'HelveticaBold',
     helveticaExtraBold: 'HelveticaExtraBold',
+    helveticaLight: 'HelveticaLight',
   },
   colors: {
     primary: theme.colors.black,

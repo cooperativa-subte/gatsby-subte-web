@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { Flex, List, ListItem } from '@chakra-ui/react';
+import { List, ListItem } from '@chakra-ui/react';
 
 type MenuItem = {
   url: string;
@@ -8,7 +8,27 @@ type MenuItem = {
   id: string;
 };
 
-const Menu = () => {
+const query = graphql`
+  query HeaderQuery {
+    allWpMenu {
+      nodes {
+        menuItems {
+          nodes {
+            url
+            label
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
+type Props = {
+  isMenuOpen: boolean;
+};
+
+const Menu = ({ isMenuOpen }: Props) => {
   const {
     allWpMenu: { nodes },
   }: {
@@ -19,39 +39,28 @@ const Menu = () => {
         };
       }[];
     };
-  } = useStaticQuery(graphql`
-    query HeaderQuery {
-      allWpMenu {
-        nodes {
-          menuItems {
-            nodes {
-              url
-              label
-              id
-            }
-          }
-        }
-      }
-    }
-  `);
+  } = useStaticQuery(query);
 
   if (!nodes || nodes.length === 0) return null;
 
   return (
-    <Flex>
-      <List display="flex">
-        {nodes[0].menuItems.nodes.map((menuItem: MenuItem) => (
-          <ListItem
-            key={menuItem.id}
-            _first={{ marginLeft: 0 }}
-            fontFamily="menuItem"
-            marginLeft={5}
-          >
-            <Link to={menuItem.url}>{menuItem.label}</Link>
-          </ListItem>
-        ))}
-      </List>
-    </Flex>
+    <List
+      display={{ base: isMenuOpen ? 'flex' : 'none', sm: 'flex' }}
+      flexDirection={['column', 'row']}
+      gridArea="menu"
+      mt={{ base: isMenuOpen ? '3' : '0', sm: '0' }}
+    >
+      {nodes[0].menuItems.nodes.map((menuItem: MenuItem) => (
+        <ListItem
+          key={menuItem.id}
+          _first={{ marginLeft: 0 }}
+          fontFamily="menuItem"
+          marginLeft={[0, 5]}
+        >
+          <Link to={menuItem.url}>{menuItem.label}</Link>
+        </ListItem>
+      ))}
+    </List>
   );
 };
 
