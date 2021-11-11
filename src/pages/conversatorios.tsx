@@ -15,6 +15,7 @@ import {
 import { ArrowForwardIcon, AddIcon } from '@chakra-ui/icons';
 
 import SEO from '../components/seo';
+import RegistroConversatoriosForm from '../components/RegistroConversatoriosForm';
 
 function ConversatoriosPage(): JSX.Element {
   return (
@@ -68,6 +69,7 @@ function ConversatoriosPage(): JSX.Element {
               <Link textDecor="underline">Inscribirse</Link>
             </Box>
           </Flex>
+          <RegistroConversatoriosForm />
           <Box as="hr" my={8} />
           <Text mb={8}>
             En esta oportunidad nos preguntamos cuáles son los principales problemas y estrategias
