@@ -27,7 +27,7 @@ function ConversatoriosPage(): JSX.Element {
         my={10}
       >
         <Box order={[2, 1]}>
-          <Heading fontFamily="helveticaLight" fontSize="6xl" mb={[0, 6]} mt={[5, 0]}>
+          <Heading fontFamily="helveticaLight" fontSize={['6xl', '4xl']} mb={[0, 6]} mt={[5, 0]}>
             QUÉ SON
           </Heading>
           <Text>

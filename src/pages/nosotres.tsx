@@ -16,8 +16,15 @@ const Nosotres = () => {
         title="Nosotres"
       />
       <section>
-        <Grid gridColumnGap={5} my="10" templateColumns="repeat(3, 1fr)">
-          <Heading maxW={56}>No somos una agencia</Heading>
+        <Grid gridColumnGap={5} my="10" templateColumns={['1fr', 'repeat(3, 1fr)']}>
+          <Heading
+            fontFamily="helveticaLight"
+            fontSize={['6xl', '4xl']}
+            maxW={['100%', 56]}
+            mb={[5, 0]}
+          >
+            No somos una agencia
+          </Heading>
           <Box>
             <Text mb={5}>
               Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva
@@ -44,7 +51,12 @@ const Nosotres = () => {
           </Box>
         </Grid>
       </section>
-      <Grid as="section" gridColumnGap={5} gridRowGap={5} gridTemplateColumns="repeat(3, 1fr)">
+      <Grid
+        as="section"
+        gridColumnGap={5}
+        gridRowGap={5}
+        gridTemplateColumns={['1fr', 'repeat(3, 1fr)']}
+      >
         <Box>
           <StaticImage
             alt="Foto de Mari en blanco y negro"
@@ -100,14 +112,24 @@ const Nosotres = () => {
           </Text>
         </Box>
       </Grid>
-      <Grid as="section" gridColumnGap={5} gridTemplateColumns="repeat(3, 1fr)" mt={20}>
-        <Heading as="h2">Proyectos aliados</Heading>
+      <Grid as="section" gridColumnGap={5} gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} mt={20}>
+        <Heading as="h2" mb={[5, 0]}>
+          Proyectos aliados
+        </Heading>
         <Text>
           Subte es una cooperativa que busca crecer practicando la intercooperación. Estos son los
           proyectos con los que venimos alcanzando acuerdos de trabajo conjunto.
         </Text>
       </Grid>
-      <Grid as="section" gridColumnGap={5} gridTemplateColumns="repeat(5, 1fr)" mb={32} mt={20}>
+      <Grid
+        alignItems="center"
+        as="section"
+        gridColumnGap={5}
+        gridTemplateColumns={['repeat(2, 1fr)', 'repeat(5, 1fr)']}
+        mb={32}
+        mt={20}
+        rowGap={3}
+      >
         <Image alt="Logo de la Federación de Cooperativas del Uruguay" src={FCPULogo} />
         <Image alt="Logo de Pedal" src={PedalLogo} />
         <Image alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />

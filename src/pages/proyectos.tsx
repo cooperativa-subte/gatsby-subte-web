@@ -47,6 +47,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         borderBottom="0.5px"
         borderBottomColor="blackAlpha.500"
         borderBottomStyle="solid"
+        flexWrap="wrap"
         justifyContent="space-between"
         mb={8}
         mt={10}
@@ -55,12 +56,12 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         <Heading>Proyectos</Heading>
         <Box>
           {allWpTag.nodes.length > 0 && (
-            <List display="flex" flexDirection="row">
-              <ListItem>
+            <List display="flex" flexDirection="row" flexWrap="wrap">
+              <ListItem mr={5}>
                 <Link to="/">Todos</Link>
               </ListItem>
               {allWpTag.nodes.map((tag: Tag) => (
-                <ListItem key={tag.slug} ml={5}>
+                <ListItem key={tag.slug} mr={5}>
                   <Link to={`/${tag.slug}`}>{tag.name}</Link>
                 </ListItem>
               ))}
@@ -69,7 +70,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         </Box>
       </Flex>
       {allWpPost.nodes.length > 0 && (
-        <Grid gridColumnGap={8} gridRowGap={8} gridTemplateColumns="repeat(2, 1fr)">
+        <Grid gridColumnGap={8} gridRowGap={8} gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}>
           {allWpPost.nodes.map((project: ProjectType) => (
             <GridItem key={project.id}>
               {project.featuredImage && (

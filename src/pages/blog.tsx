@@ -1,9 +1,8 @@
-import { graphql, Link } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
+import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/react';
+import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/seo';
-
 
 type PostType = {
   id: string;
@@ -31,13 +30,13 @@ type BlogPageTypes = {
 
 const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
   return (
-    <div>
+    <>
       <SEO
         description="En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa."
         title="Blog"
       />
-      <div className="desktop-container">
-        <div className="left-panel">
+      <Grid gridColumnGap={52} gridTemplateColumns={['1fr', 'repeat(2, 1fr)']} my={10}>
+        <Box>
           <video
             autoPlay
             controls
@@ -46,45 +45,65 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             poster="https://subtedesarrollo.xyz/wp-content/uploads/2021/07/Conversatorios_imagen.webp"
             src="https://res.cloudinary.com/subteuy/video/upload/v1610826241/subte.uy/Conversatorios/SPOTCS_C4_baja_u82811.mp4"
           />
-          <h2>Conversatorios subterráneos</h2>
-          <p>
+          <Heading mt={[8, 0]}>Conversatorios subterráneos</Heading>
+          <Text>
             Los Conversatorios Subterráneos son espacios donde nos proponemos reflexionar
             colectivamente sobre los principales problemas de la comunicación en las cooperativas,
             organizaciones sociales, culturales y políticas.
-          </p>
-          <div className="podcast-title">
-            <StaticImage alt="Imagen Episodio #0" src="../images/CoverEpisodios.webp" />
-            <h3>Los problemas de comunicación de las organizaciones populares</h3>
-          </div>
+          </Text>
+          <Flex align="center" my={8}>
+            <Flex
+              align="center"
+              bg="black"
+              color="white"
+              fontFamily="helveticaExtraBold"
+              fontSize="5xl"
+              h={20}
+              justify="center"
+              mr={3}
+              w={20}
+            >
+              <Box as="span">#0</Box>
+            </Flex>
+            <Heading as="h3" fontSize="2xl">
+              Los problemas de
+              <br /> comunicación de las
+              <br /> organizaciones populares
+            </Heading>
+          </Flex>
           {podcastsPosts.nodes.map((post: PodcastPostType) => (
-            <div key={post.id} className="podcast-post-container">
+            <Box key={post.id}>
               <Link to={`/${post.slug}`}>
-                <h3>{post.title}</h3>
+                <Heading as="h3">{post.title}</Heading>
               </Link>
-              <p className="author">{post.podcasts_fields.autoraPodcast}</p>
-              <div className="excerpt" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+              <Text fontFamily="helveticaBold" my={3}>
+                {post.podcasts_fields.autoraPodcast}
+              </Text>
+              <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
               <Link to={`/${post.slug}`}>Leer</Link>
-            </div>
+            </Box>
           ))}
-        </div>
-        <div className="right-panel">
-          <h2>Subsuelo. Apuntes cooperativos</h2>
-          <p>
+        </Box>
+        <Box>
+          <Heading as="h2" fontSize="4xl" mb={8}>
+            Subsuelo. Apuntes cooperativos
+          </Heading>
+          <Text>
             Abrimos este espacio para registrar y compartir algunas reflexiones sobre nuestra
             experiencia cooperativa, sobre las experiencias de autogestión, los proyectos de
             trabajo, los procesos colaborativos, las tristezas y las alegrías que atravesamos en
             este espacio autogestionado que estamos creando.
-          </p>
+          </Text>
           {blogPosts.nodes.map((post: PostType) => (
-            <div key={post.id} className="blog-post-container">
-              <h3>{post.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+            <Box key={post.id} mt={5}>
+              <Heading as="h3">{post.title}</Heading>
+              <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} />
               <Link to={`/${post.slug}`}>Leer</Link>
-            </div>
+            </Box>
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Grid>
+    </>
   );
 };
 

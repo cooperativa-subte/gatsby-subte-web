@@ -4,8 +4,14 @@ import { Center, Text, Link, Flex } from '@chakra-ui/react';
 const Footer = () => {
   return (
     <Center borderTop={1} borderTopColor="black" borderTopStyle="solid" mb={5} mt={5} pt={3}>
-      <Flex alignItems="center">
-        <Text fontFamily="heading" fontSize={15}>
+      <Flex alignItems="center" flexWrap="wrap" justifyContent="center">
+        <Text
+          fontFamily="heading"
+          fontSize={15}
+          mb={[3, 0]}
+          textAlign={['center', 'left']}
+          w={['100%', 'auto']}
+        >
           San Salvador 1510, Montevideo | <a href="mailto:hola@subte.uy">hola@subte.uy</a>
         </Text>
         <Link
