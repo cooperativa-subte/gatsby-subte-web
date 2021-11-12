@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -8,9 +9,11 @@ import {
   FormLabel,
   Heading,
   Input,
+  Spinner,
   Stack,
   Text,
   Textarea,
+  useToast,
 } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
@@ -27,11 +30,42 @@ const Contacto = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormData>();
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const toast = useToast();
 
-  function onSubmit(values: FormData) {
-    console.log(values);
+  async function sendEmail(data: FormData) {
+    try {
+      setIsSubmitting(true);
+      const response = await axios.post(process.env.GATSBY_AWS_LAMBDA_URL ?? '', {
+        email: data.email,
+        tel: data.phoneNumber,
+        name: data.fullName,
+        message: data.message,
+        subject: data.subject,
+        requestType: 'contact',
+      });
+
+      if (response && response.data.status === 'ok') {
+        toast({
+          title: '¡Gracias!',
+          description: 'Tu mensaje ha sido enviado correctamente',
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  async function onSubmit(values: FormData) {
+    await sendEmail(values);
   }
 
   return (
@@ -68,7 +102,7 @@ const Contacto = () => {
               <FormErrorMessage>{errors.fullName && errors.fullName.message}</FormErrorMessage>
             </FormControl>
             <FormControl mt={2}>
-              <FormLabel color="primary">Teléfono: *</FormLabel>
+              <FormLabel color="primary">Teléfono:</FormLabel>
               <Input
                 _focus={{ boxShadow: 'none', borderColor: 'primary' }}
                 _hover={{ borderColor: '#99a9bb' }}
@@ -77,6 +111,7 @@ const Contacto = () => {
                 borderWidth="1px"
                 height="8"
                 type="text"
+                {...register('phoneNumber')}
               />
             </FormControl>
             <FormControl isInvalid={errors.email !== undefined} mt={2}>
@@ -105,6 +140,7 @@ const Contacto = () => {
                 borderWidth="1px"
                 height="8"
                 type="text"
+                {...register('subject')}
               />
             </FormControl>
             <FormControl mt={2}>
@@ -114,6 +150,9 @@ const Contacto = () => {
                 _hover={{ borderColor: '#99a9bb' }}
                 borderColor="#99a9bb"
                 borderRadius={0}
+                {...register('message', {
+                  required: { value: true, message: 'El mensaje es un campo requerido' },
+                })}
               />
             </FormControl>
             <Button
@@ -123,8 +162,10 @@ const Contacto = () => {
               color="secondary"
               mt={5}
               type="submit"
+              w={36}
             >
-              Enviar Mensaje
+              {isSubmitting ? 'Enviando' : 'Enviar Mensaje'}
+              {isSubmitting && <Spinner ml={3} />}
             </Button>
           </form>
         </Box>

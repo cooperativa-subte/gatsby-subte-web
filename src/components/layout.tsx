@@ -23,9 +23,7 @@ const Layout = ({ path, children }: LayoutTypes) => {
         </>
       ) : (
         <>
-          <Container maxW="container.xl">
-            <Header />
-          </Container>
+          <Header />
           <main>{children}</main>
           <FooterHome />
         </>

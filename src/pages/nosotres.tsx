@@ -130,11 +130,10 @@ const Nosotres = () => {
         mt={20}
         rowGap={3}
       >
-        <Image alt="Logo de la Federación de Cooperativas del Uruguay" src={FCPULogo} />
-        <Image alt="Logo de Pedal" src={PedalLogo} />
-        <Image alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
-        <Image alt="Logo de la Cooperativa de trabajo Comuna" src={ComunaLogo} />
-        <Image alt="Logo de Cooperativa Integral Consultora (CIC)" src={CICLogo} />
+        <Image alt="Logo de la Federación de Cooperativas del Uruguay" mx="auto" src={FCPULogo} />
+        <Image alt="Logo de Pedal" mx="auto" src={PedalLogo} />
+        <Image alt="Logo de la Cooperativa de trabajo Comuna" mx="auto" src={ComunaLogo} />
+        <Image alt="Logo de Cooperativa Integral Consultora (CIC)" mx="auto" src={CICLogo} />
       </Grid>
     </>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  AspectRatio,
   Box,
   Flex,
   Grid,
@@ -74,14 +75,16 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
           {allWpPost.nodes.map((project: ProjectType) => (
             <GridItem key={project.id}>
               {project.featuredImage && (
-                <Link to={`/proyectos/${project.slug}`}>
-                  <CustomWrappterGatsbyImage
-                    altText={project.featuredImage.node.altText}
-                    localFile={project.featuredImage.node.localFile}
-                  />
-                </Link>
+                <AspectRatio ratio={16 / 9}>
+                  <Link to={`/proyectos/${project.slug}`}>
+                    <CustomWrappterGatsbyImage
+                      altText={project.featuredImage.node.altText}
+                      localFile={project.featuredImage.node.localFile}
+                    />
+                  </Link>
+                </AspectRatio>
               )}
-              <Heading as="h4" fontFamily="helveticaExtraBold" fontSize="xl" mt={3}>
+              <Heading as="h4" fontFamily="HelveticaBold" fontSize="xl" mt={3}>
                 {project.datos_proyecto.nombre}
               </Heading>
               <Stack
@@ -147,6 +150,7 @@ export const query = graphql`
           cliente
           sector
           nombre
+          featuredVideo
         }
         tags {
           nodes {

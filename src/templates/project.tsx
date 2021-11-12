@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import { Box, Container, Flex, Grid, Heading, Image, Text } from '@chakra-ui/react';
+import {
+  AspectRatio,
+  Box,
+  Container,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  Text,
+} from '@chakra-ui/react';
 
 import { ProjectType } from '../types';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
@@ -31,19 +41,37 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
   return (
     <>
       <SEO title={`Proyecto ${project.datos_proyecto.nombre}`} />
-      <Flex bg="white" flexWrap="wrap" justify="space-between" pb={6} pt={10}>
-        <Heading fontFamily="helveticaLight" fontSize="6xl" maxW={96}>
+      <Grid bg="white" gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} pb={6} pt={10}>
+        <GridItem as="h1" colSpan={2} fontFamily="helveticaLight" fontSize="6xl">
           {project.datos_proyecto.nombre}
-        </Heading>
-        <Heading as="h2" fontSize="xl" maxW={96}>
+        </GridItem>
+        <GridItem as="h2" fontSize="xl" maxW={96}>
           {project.datos_proyecto.descripcionCorta}
-        </Heading>
-      </Flex>
-      {project.featuredImage && (
-        <CustomWrappterGatsbyImage
-          altText={project.featuredImage.node.altText}
-          localFile={project.featuredImage.node.localFile}
-        />
+        </GridItem>
+      </Grid>
+      {project.datos_proyecto.featuredVideo ? (
+        <>
+          <AspectRatio ratio={16 / 9}>
+            <iframe
+              allowFullScreen
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              frameBorder="0"
+              id="cover-video"
+              src={project.datos_proyecto.featuredVideo}
+              title="cover-video"
+              width="100%"
+            />
+          </AspectRatio>
+        </>
+      ) : (
+        <>
+          {project.featuredImage && (
+            <CustomWrappterGatsbyImage
+              altText={project.featuredImage.node.altText}
+              localFile={project.featuredImage.node.localFile}
+            />
+          )}
+        </>
       )}
       <Container
         maxW="container.xl"
@@ -167,6 +195,7 @@ export const pageQuery = graphql`
         nombre
         sector
         imagenesComplementarias
+        featuredVideo
       }
       content
       tags {

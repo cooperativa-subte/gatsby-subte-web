@@ -55,7 +55,9 @@ const Menu = ({ isMenuOpen }: Props) => {
           key={menuItem.id}
           _first={{ marginLeft: 0 }}
           fontFamily="menuItem"
+          fontSize={['lg', 'lg']}
           marginLeft={[0, 5]}
+          mb={[1, 0]}
         >
           <Link to={menuItem.url}>{menuItem.label}</Link>
         </ListItem>

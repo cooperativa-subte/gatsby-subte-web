@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import { Stack } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
@@ -28,7 +29,7 @@ type IndexPageProps = PageProps<IndexQueryProps>;
 const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => (
   <>
     <SEO />
-    <div>
+    <Stack maxW="1440px">
       {proyectosPortada.nodes.length > 0 &&
         proyectosPortada.nodes.map((project: ProyectoType) => (
           <Link
@@ -44,7 +45,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => (
             )}
           </Link>
         ))}
-    </div>
+    </Stack>
   </>
 );
 
@@ -65,7 +66,7 @@ export const query = graphql`
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData(width: 1500)
+                gatsbyImageData
               }
             }
           }
