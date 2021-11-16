@@ -9,7 +9,11 @@ import SearchIcon from '../images/search.svg';
 import Menu from './Menu';
 import SearchModal from './SearchModal';
 
-const Header = () => {
+type Props = {
+  path: string;
+};
+
+const Header = ({ path }: Props) => {
   const { isOpen: isSearchDialogOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isMenuOpen, onToggle: onToggleMenuOpen } = useDisclosure();
 
@@ -67,7 +71,7 @@ const Header = () => {
             </Box>
           </GridItem>
           <GridItem colSpan={[12, 1]} order={[2, 1]}>
-            <Menu isMenuOpen={isMenuOpen} />
+            <Menu isMenuOpen={isMenuOpen} path={path} />
           </GridItem>
         </Grid>
       </Container>

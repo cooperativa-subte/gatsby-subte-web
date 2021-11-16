@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AspectRatio,
   Box,
@@ -35,6 +35,22 @@ type ProyectosQueryProps = {
 type ProyectosPageProps = PageProps<ProyectosQueryProps>;
 
 const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
+  const [selectedTag, setSelectedTag] = useState<string>('todos');
+  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(allWpPost.nodes);
+
+  function filterProjects(slug: string) {
+    setSelectedTag(slug);
+    if (slug === 'todos') {
+      setFilteredProjects(allWpPost.nodes);
+    } else {
+      setFilteredProjects(
+        allWpPost.nodes.filter((p: ProjectType) =>
+          p.tags.nodes.map((t: Tag) => t.slug).includes(slug),
+        ),
+      );
+    }
+  }
+
   return (
     <>
       <SEO
@@ -58,21 +74,44 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         <Box>
           {allWpTag.nodes.length > 0 && (
             <List display="flex" flexDirection="row" flexWrap="wrap">
-              <ListItem mr={5}>
-                <Link to="/">Todos</Link>
+              <ListItem
+                bgColor={selectedTag === 'todos' ? 'gray.200' : 'white'}
+                borderRadius={15}
+                mr={2}
+                px="3"
+                py="1"
+              >
+                <Text cursor="pointer" onClick={() => filterProjects('todos')}>
+                  Todos
+                </Text>
               </ListItem>
               {allWpTag.nodes.map((tag: Tag) => (
-                <ListItem key={tag.slug} mr={5}>
-                  <Link to={`/${tag.slug}`}>{tag.name}</Link>
+                <ListItem
+                  key={tag.slug}
+                  bgColor={selectedTag === tag.slug ? 'gray.200' : 'white'}
+                  borderRadius={15}
+                  mr={2}
+                  px="3"
+                  py="1"
+                >
+                  <Text cursor="pointer" onClick={() => filterProjects(tag.slug)}>
+                    {tag.name}
+                  </Text>
                 </ListItem>
               ))}
             </List>
           )}
         </Box>
       </Flex>
-      {allWpPost.nodes.length > 0 && (
-        <Grid gridColumnGap={8} gridRowGap={8} gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}>
-          {allWpPost.nodes.map((project: ProjectType) => (
+      {filteredProjects.length > 0 && (
+        <Grid
+          as="section"
+          gridColumnGap={8}
+          gridRowGap={8}
+          gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+          mb={10}
+        >
+          {filteredProjects.map((project: ProjectType) => (
             <GridItem key={project.id}>
               {project.featuredImage && (
                 <AspectRatio ratio={16 / 9}>
@@ -84,7 +123,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
                   </Link>
                 </AspectRatio>
               )}
-              <Heading as="h4" fontFamily="HelveticaBold" fontSize="xl" mt={3}>
+              <Heading as="h4" fontFamily="HelveticaMedium" fontSize="3xl" mt={3}>
                 {project.datos_proyecto.nombre}
               </Heading>
               <Stack
@@ -141,7 +180,10 @@ export const query = graphql`
         slug
       }
     }
-    allWpPost(sort: { fields: date, order: DESC }) {
+    allWpPost(
+      sort: { fields: date, order: DESC }
+      filter: { categories: { nodes: { elemMatch: { slug: { eq: "proyectos" } } } } }
+    ) {
       nodes {
         id
         slug

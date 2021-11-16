@@ -18,7 +18,7 @@ const Nosotres = () => {
       <section>
         <Grid gridColumnGap={5} my="10" templateColumns={['1fr', 'repeat(3, 1fr)']}>
           <Heading
-            fontFamily="helveticaLight"
+            fontFamily="helveticaBold"
             fontSize={['6xl', '4xl']}
             maxW={['100%', 56]}
             mb={[5, 0]}

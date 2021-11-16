@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, Heading, Text, Link as ChakraLink } from '@chakra-ui/react';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/seo';
@@ -14,6 +14,7 @@ type PostType = {
 type PodcastPostType = PostType & {
   podcasts_fields: {
     autoraPodcast: string;
+    urlDePodcast: string;
   };
 };
 
@@ -45,7 +46,7 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
             poster="https://subtedesarrollo.xyz/wp-content/uploads/2021/07/Conversatorios_imagen.webp"
             src="https://res.cloudinary.com/subteuy/video/upload/v1610826241/subte.uy/Conversatorios/SPOTCS_C4_baja_u82811.mp4"
           />
-          <Heading mt={[8, 0]}>Conversatorios subterráneos</Heading>
+          <Heading mt={[8, 5]}>Conversatorios subterráneos</Heading>
           <Text>
             Los Conversatorios Subterráneos son espacios donde nos proponemos reflexionar
             colectivamente sobre los principales problemas de la comunicación en las cooperativas,
@@ -80,7 +81,16 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
                 {post.podcasts_fields.autoraPodcast}
               </Text>
               <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
-              <Link to={`/${post.slug}`}>Leer</Link>
+              <Text>
+                <Link to={`/${post.slug}`}>Leer</Link> |{' '}
+                <ChakraLink
+                  href={post.podcasts_fields.urlDePodcast}
+                  rel="nonoopener noreferrer"
+                  target="_blank"
+                >
+                  Escuchar
+                </ChakraLink>
+              </Text>
             </Box>
           ))}
         </Box>
@@ -96,7 +106,9 @@ const Blog = ({ data: { blogPosts, podcastsPosts } }: BlogPageTypes) => {
           </Text>
           {blogPosts.nodes.map((post: PostType) => (
             <Box key={post.id} mt={5}>
-              <Heading as="h3">{post.title}</Heading>
+              <Heading as="h3">
+                <Link to={`/${post.slug}`}>{post.title}</Link>
+              </Heading>
               <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} />
               <Link to={`/${post.slug}`}>Leer</Link>
             </Box>
@@ -133,6 +145,7 @@ export const query = graphql`
         excerpt
         podcasts_fields {
           autoraPodcast
+          urlDePodcast
         }
       }
     }

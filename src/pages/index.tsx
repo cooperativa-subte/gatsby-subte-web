@@ -29,7 +29,7 @@ type IndexPageProps = PageProps<IndexQueryProps>;
 const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => (
   <>
     <SEO />
-    <Stack maxW="1440px">
+    <Stack maxW="1440px" mx="auto">
       {proyectosPortada.nodes.length > 0 &&
         proyectosPortada.nodes.map((project: ProyectoType) => (
           <Link
