@@ -1,5 +1,12 @@
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
+export type PostType = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+};
+
 export type TagsType = {
   id: string;
   slug: string;

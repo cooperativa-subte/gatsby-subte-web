@@ -11,17 +11,13 @@ type LayoutTypes = {
 };
 
 const Layout = ({ path, children }: LayoutTypes) => {
-  console.log(path);
-
   return (
     <>
       {path !== '/' ? (
         <>
           <Header path={path} />
-          <Container maxW="container.xl">
-            <main>{children}</main>
-            <Footer />
-          </Container>
+          <main>{children}</main>
+          <Footer />
         </>
       ) : (
         <>
