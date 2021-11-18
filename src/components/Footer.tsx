@@ -3,7 +3,15 @@ import { Center, Text, Link, Flex } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Center borderTop={1} borderTopColor="black" borderTopStyle="solid" mb={5} mt={5} pt={3}>
+    <Center
+      as="footer"
+      borderTop={1}
+      borderTopColor="black"
+      borderTopStyle="solid"
+      mb={5}
+      mt={5}
+      pt={3}
+    >
       <Flex alignItems="center" flexWrap="wrap" justifyContent="center">
         <Text
           fontFamily="heading"

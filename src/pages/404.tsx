@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { Container, Text } from '@chakra-ui/react';
 
-import Layout from '../components/layout';
 import Seo from '../components/seo';
 
 type NotFoundPageProps = {
@@ -16,17 +16,15 @@ type NotFoundPageProps = {
 };
 
 const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
-  const siteTitle = data.site.siteMetadata.title;
-
   return (
     <>
       <Seo title="404: Not Found" />
-      <Layout location={location} title={siteTitle}>
-        <div>
-          <h1>404: Not Found</h1>
-          <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-        </div>
-      </Layout>
+      <Container maxW="container.xl">
+        <Text>
+          Ups, la página que estás buscando no existe. Verificá la URL o dirigite a la{' '}
+          <Link to="/">página de inicio</Link>.
+        </Text>
+      </Container>
     </>
   );
 };

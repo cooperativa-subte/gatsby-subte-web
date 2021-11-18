@@ -3,7 +3,7 @@ import { Center, Container, Link, Text } from '@chakra-ui/react';
 
 const FooterHome = () => {
   return (
-    <Container bottom={0} left={0} position="fixed" right={0}>
+    <Container as="footer" bottom={0} left={0} position="fixed" right={0}>
       <Center alignItems="center" flexWrap="wrap" justifyContent="center" py={3}>
         <Text
           fontFamily="heading"

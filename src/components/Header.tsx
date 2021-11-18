@@ -19,6 +19,7 @@ const Header = ({ path }: Props) => {
 
   return (
     <Box
+      as="header"
       bg="white"
       borderBottomColor="blackAlpha.300"
       borderBottomStyle="solid"

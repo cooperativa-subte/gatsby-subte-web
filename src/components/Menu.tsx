@@ -46,6 +46,7 @@ const Menu = ({ isMenuOpen, path }: Props) => {
 
   return (
     <List
+      as="nav"
       display={{ base: isMenuOpen ? 'flex' : 'none', sm: 'flex' }}
       flexDirection={['column', 'row']}
       gridArea="menu"

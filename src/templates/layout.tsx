@@ -1,9 +1,8 @@
 import React, { ReactDOM } from 'react';
-import { Container } from '@chakra-ui/react';
 
-import Header from './Header';
-import Footer from './Footer';
-import FooterHome from './FooterHome';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import FooterHome from '../components/FooterHome';
 
 type LayoutTypes = {
   path: string;
