@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   AspectRatio,
   Box,
+  Container,
   Flex,
   Grid,
   GridItem,
@@ -58,114 +59,116 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
         description="Navegá por los proyectos creados por la cooperativa y enterate de todos los servicios que ofrecemos"
         title="Proyectos"
       />
-      <Flex
-        alignItems="center"
-        as="section"
-        borderBottom="0.5px"
-        borderBottomColor="blackAlpha.500"
-        borderBottomStyle="solid"
-        flexWrap="wrap"
-        justifyContent="space-between"
-        mb={8}
-        mt={10}
-        pb={3}
-      >
-        <Heading>Proyectos</Heading>
-        <Box>
-          {allWpTag.nodes.length > 0 && (
-            <List display="flex" flexDirection="row" flexWrap="wrap">
-              <ListItem
-                bgColor={selectedTag === 'todos' ? 'gray.200' : 'white'}
-                borderRadius={15}
-                mr={2}
-                px="3"
-                py="1"
-              >
-                <Text cursor="pointer" onClick={() => filterProjects('todos')}>
-                  Todos
-                </Text>
-              </ListItem>
-              {allWpTag.nodes.map((tag: Tag) => (
+      <Container maxW="container.xl">
+        <Flex
+          alignItems="center"
+          as="section"
+          borderBottom="0.5px"
+          borderBottomColor="blackAlpha.500"
+          borderBottomStyle="solid"
+          flexWrap="wrap"
+          justifyContent="space-between"
+          mb={8}
+          mt={10}
+          pb={3}
+        >
+          <Heading>Proyectos</Heading>
+          <Box>
+            {allWpTag.nodes.length > 0 && (
+              <List display="flex" flexDirection="row" flexWrap="wrap">
                 <ListItem
-                  key={tag.slug}
-                  bgColor={selectedTag === tag.slug ? 'gray.200' : 'white'}
+                  bgColor={selectedTag === 'todos' ? 'gray.200' : 'white'}
                   borderRadius={15}
                   mr={2}
                   px="3"
                   py="1"
                 >
-                  <Text cursor="pointer" onClick={() => filterProjects(tag.slug)}>
-                    {tag.name}
+                  <Text cursor="pointer" onClick={() => filterProjects('todos')}>
+                    Todos
                   </Text>
                 </ListItem>
-              ))}
-            </List>
-          )}
-        </Box>
-      </Flex>
-      {filteredProjects.length > 0 && (
-        <Grid
-          as="section"
-          gridColumnGap={8}
-          gridRowGap={8}
-          gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
-          mb={10}
-        >
-          {filteredProjects.map((project: ProjectType) => (
-            <GridItem key={project.id}>
-              {project.featuredImage && (
-                <AspectRatio ratio={16 / 9}>
-                  <Link to={`/proyectos/${project.slug}`}>
-                    <CustomWrappterGatsbyImage
-                      altText={project.featuredImage.node.altText}
-                      localFile={project.featuredImage.node.localFile}
-                    />
-                  </Link>
-                </AspectRatio>
-              )}
-              <Heading as="h4" fontFamily="HelveticaMedium" fontSize="3xl" mt={3}>
-                {project.datos_proyecto.nombre}
-              </Heading>
-              <Stack
-                direction="row"
-                divider={<StackDivider borderColor="gray.200" />}
-                mt={3}
-                spacing={3}
-              >
-                <Box>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    Cliente:
-                  </Text>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    {project.datos_proyecto.cliente}
-                  </Text>
-                </Box>
-                <Box>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    Sector:
-                  </Text>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    {project.datos_proyecto.sector}
-                  </Text>
-                </Box>
-                <Box>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    Tipo de proyecto:
-                  </Text>
-                  <Text color="blackAlpha.500" fontSize="sm">
-                    {project.tags.nodes.reduce((currentText, tag, i) => {
-                      currentText +=
-                        i === project.tags.nodes.length - 1 ? tag.name : `${tag.name}, `;
+                {allWpTag.nodes.map((tag: Tag) => (
+                  <ListItem
+                    key={tag.slug}
+                    bgColor={selectedTag === tag.slug ? 'gray.200' : 'white'}
+                    borderRadius={15}
+                    mr={2}
+                    px="3"
+                    py="1"
+                  >
+                    <Text cursor="pointer" onClick={() => filterProjects(tag.slug)}>
+                      {tag.name}
+                    </Text>
+                  </ListItem>
+                ))}
+              </List>
+            )}
+          </Box>
+        </Flex>
+        {filteredProjects.length > 0 && (
+          <Grid
+            as="section"
+            gridColumnGap={8}
+            gridRowGap={8}
+            gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+            mb={10}
+          >
+            {filteredProjects.map((project: ProjectType) => (
+              <GridItem key={project.id}>
+                {project.featuredImage && (
+                  <AspectRatio ratio={16 / 9}>
+                    <Link to={`/proyectos/${project.slug}`}>
+                      <CustomWrappterGatsbyImage
+                        altText={project.featuredImage.node.altText}
+                        localFile={project.featuredImage.node.localFile}
+                      />
+                    </Link>
+                  </AspectRatio>
+                )}
+                <Heading as="h4" fontFamily="HelveticaMedium" fontSize="3xl" mt={3}>
+                  {project.datos_proyecto.nombre}
+                </Heading>
+                <Stack
+                  direction="row"
+                  divider={<StackDivider borderColor="gray.200" />}
+                  mt={3}
+                  spacing={3}
+                >
+                  <Box>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      Cliente:
+                    </Text>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      {project.datos_proyecto.cliente}
+                    </Text>
+                  </Box>
+                  <Box>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      Sector:
+                    </Text>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      {project.datos_proyecto.sector}
+                    </Text>
+                  </Box>
+                  <Box>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      Tipo de proyecto:
+                    </Text>
+                    <Text color="blackAlpha.500" fontSize="sm">
+                      {project.tags.nodes.reduce((currentText, tag, i) => {
+                        currentText +=
+                          i === project.tags.nodes.length - 1 ? tag.name : `${tag.name}, `;
 
-                      return currentText;
-                    }, '')}
-                  </Text>
-                </Box>
-              </Stack>
-            </GridItem>
-          ))}
-        </Grid>
-      )}
+                        return currentText;
+                      }, '')}
+                    </Text>
+                  </Box>
+                </Stack>
+              </GridItem>
+            ))}
+          </Grid>
+        )}
+      </Container>
     </>
   );
 };

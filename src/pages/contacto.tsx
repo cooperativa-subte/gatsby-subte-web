@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import {
-  Box,
   Button,
+  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Grid,
+  GridItem,
   Heading,
   Input,
   Spinner,
-  Stack,
   Text,
   Textarea,
   useToast,
@@ -74,109 +75,118 @@ const Contacto = () => {
         description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"
         title="Contacto"
       />
-      <Stack direction={['column', 'column', 'row']} mt={10} spacing="2rem">
-        <Box flex={1}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <FormControl isInvalid={errors.fullName !== undefined}>
-              <FormLabel color="primary" htmlFor="fullName">
-                Nombre y Apellido: *
-              </FormLabel>
-              <Input
-                _focus={{ boxShadow: 'none', borderColor: 'primary' }}
-                _hover={{ borderColor: '#99a9bb' }}
-                borderColor="#99a9bb"
+      <Container maxW="container.xl" my={10}>
+        <Grid
+          gridColumnGap={40}
+          gridTemplateAreas={[
+            "'contactText' 'contactForm' 'contactMap'",
+            "'contactForm contactText' 'contactForm contactMap'",
+          ]}
+          gridTemplateColumns={['1fr', '1fr 1fr']}
+        >
+          <GridItem gridArea="contactForm">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl isInvalid={errors.fullName !== undefined}>
+                <FormLabel color="primary" htmlFor="fullName">
+                  Nombre y Apellido: *
+                </FormLabel>
+                <Input
+                  _focus={{ boxShadow: 'none', borderColor: 'primary' }}
+                  _hover={{ borderColor: '#99a9bb' }}
+                  borderColor="#99a9bb"
+                  borderRadius={0}
+                  borderWidth="1px"
+                  height="8"
+                  id="fullName"
+                  type="text"
+                  variant="outline"
+                  {...register('fullName', {
+                    required: { value: true, message: 'El nombre es un campo requerido' },
+                    minLength: {
+                      value: 3,
+                      message: 'El nombre debe tener al menos 3 caracteres',
+                    },
+                  })}
+                />
+                <FormErrorMessage>{errors.fullName && errors.fullName.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl mt={2}>
+                <FormLabel color="primary">Teléfono:</FormLabel>
+                <Input
+                  _focus={{ boxShadow: 'none', borderColor: 'primary' }}
+                  _hover={{ borderColor: '#99a9bb' }}
+                  borderColor="#99a9bb"
+                  borderRadius={0}
+                  borderWidth="1px"
+                  height="8"
+                  type="text"
+                  {...register('phoneNumber')}
+                />
+              </FormControl>
+              <FormControl isInvalid={errors.email !== undefined} mt={2}>
+                <FormLabel color="primary">Email: *</FormLabel>
+                <Input
+                  _focus={{ boxShadow: 'none', borderColor: 'primary' }}
+                  _hover={{ borderColor: '#99a9bb' }}
+                  borderColor="#99a9bb"
+                  borderRadius={0}
+                  borderWidth="1px"
+                  height="8"
+                  type="email"
+                  {...register('email', {
+                    required: { value: true, message: 'El email es un campo requerido' },
+                  })}
+                />
+                <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl mt={2}>
+                <FormLabel color="primary">Asunto:</FormLabel>
+                <Input
+                  _focus={{ boxShadow: 'none', borderColor: 'primary' }}
+                  _hover={{ borderColor: '#99a9bb' }}
+                  borderColor="#99a9bb"
+                  borderRadius={0}
+                  borderWidth="1px"
+                  height="8"
+                  type="text"
+                  {...register('subject')}
+                />
+              </FormControl>
+              <FormControl mt={2}>
+                <FormLabel> Mensaje: *</FormLabel>
+                <Textarea
+                  _focus={{ borderColor: 'primary', boxShadow: 'none' }}
+                  _hover={{ borderColor: '#99a9bb' }}
+                  borderColor="#99a9bb"
+                  borderRadius={0}
+                  {...register('message', {
+                    required: { value: true, message: 'El mensaje es un campo requerido' },
+                  })}
+                />
+              </FormControl>
+              <Button
+                _hover={{ color: 'gray.200', backgroundColor: 'gray.800' }}
+                bgColor="primary"
                 borderRadius={0}
-                borderWidth="1px"
-                height="8"
-                id="fullName"
-                type="text"
-                variant="outline"
-                {...register('fullName', {
-                  required: { value: true, message: 'El nombre es un campo requerido' },
-                  minLength: {
-                    value: 3,
-                    message: 'El nombre debe tener al menos 3 caracteres',
-                  },
-                })}
-              />
-              <FormErrorMessage>{errors.fullName && errors.fullName.message}</FormErrorMessage>
-            </FormControl>
-            <FormControl mt={2}>
-              <FormLabel color="primary">Teléfono:</FormLabel>
-              <Input
-                _focus={{ boxShadow: 'none', borderColor: 'primary' }}
-                _hover={{ borderColor: '#99a9bb' }}
-                borderColor="#99a9bb"
-                borderRadius={0}
-                borderWidth="1px"
-                height="8"
-                type="text"
-                {...register('phoneNumber')}
-              />
-            </FormControl>
-            <FormControl isInvalid={errors.email !== undefined} mt={2}>
-              <FormLabel color="primary">Email: *</FormLabel>
-              <Input
-                _focus={{ boxShadow: 'none', borderColor: 'primary' }}
-                _hover={{ borderColor: '#99a9bb' }}
-                borderColor="#99a9bb"
-                borderRadius={0}
-                borderWidth="1px"
-                height="8"
-                type="email"
-                {...register('email', {
-                  required: { value: true, message: 'El email es un campo requerido' },
-                })}
-              />
-              <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
-            </FormControl>
-            <FormControl mt={2}>
-              <FormLabel color="primary">Asunto:</FormLabel>
-              <Input
-                _focus={{ boxShadow: 'none', borderColor: 'primary' }}
-                _hover={{ borderColor: '#99a9bb' }}
-                borderColor="#99a9bb"
-                borderRadius={0}
-                borderWidth="1px"
-                height="8"
-                type="text"
-                {...register('subject')}
-              />
-            </FormControl>
-            <FormControl mt={2}>
-              <FormLabel> Mensaje: *</FormLabel>
-              <Textarea
-                _focus={{ borderColor: 'primary', boxShadow: 'none' }}
-                _hover={{ borderColor: '#99a9bb' }}
-                borderColor="#99a9bb"
-                borderRadius={0}
-                {...register('message', {
-                  required: { value: true, message: 'El mensaje es un campo requerido' },
-                })}
-              />
-            </FormControl>
-            <Button
-              _hover={{ color: 'gray.200', backgroundColor: 'gray.800' }}
-              bgColor="primary"
-              borderRadius={0}
-              color="secondary"
-              mt={5}
-              type="submit"
-              w={36}
-            >
-              {isSubmitting ? 'Enviando' : 'Enviar Mensaje'}
-              {isSubmitting && <Spinner ml={3} />}
-            </Button>
-          </form>
-        </Box>
-        <Box flex={1}>
-          <Heading as="h1">Contactanos</Heading>
-          <Text>
-            Si buscás servicios de diseño, programación o ilustración no dudes en ponerte en
-            contacto con nosotres. Tenemos planes especiales para cooperativas y organizaciones
-            sociales.
-          </Text>
-          <Box>
+                color="secondary"
+                mt={5}
+                type="submit"
+                w={36}
+              >
+                {isSubmitting ? 'Enviando' : 'Enviar Mensaje'}
+                {isSubmitting && <Spinner ml={3} />}
+              </Button>
+            </form>
+          </GridItem>
+          <GridItem gridArea="contactText">
+            <Heading as="h1">Contactanos</Heading>
+            <Text mb={8}>
+              Si buscás servicios de diseño, programación o ilustración no dudes en ponerte en
+              contacto con nosotres. Tenemos planes especiales para cooperativas y organizaciones
+              sociales.
+            </Text>
+          </GridItem>
+          <GridItem gridArea="contactMap">
             <iframe
               allowFullScreen
               height="450"
@@ -185,9 +195,9 @@ const Contacto = () => {
               style={{ border: 0 }}
               width="100%"
             />
-          </Box>
-        </Box>
-      </Stack>
+          </GridItem>
+        </Grid>
+      </Container>
     </>
   );
 };
