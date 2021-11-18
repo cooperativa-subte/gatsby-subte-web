@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Box, Container, Grid, Heading } from '@chakra-ui/react';
 
-type BlogPostPageType = {
+interface Props {
   data: {
-    blogPost: {
+    conversatorioPost: {
       id: string;
       content: string;
       title: string;
@@ -17,24 +17,24 @@ type BlogPostPageType = {
       };
     };
   };
-};
+}
 
-const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
+function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element {
   return (
     <Container maxW="container.xl" my={10}>
       <Grid gridColumnGap={20} gridTemplateColumns={['1fr', '1fr 2fr']}>
-        <Heading mb={8}>{blogPost.title}</Heading>
-        <Box dangerouslySetInnerHTML={{ __html: blogPost.content }} />
+        <Heading mb={8}>{conversatorioPost.title}</Heading>
+        <Box dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
       </Grid>
     </Container>
   );
-};
+}
 
-export default BlogTemplatePage;
+export default ConversatorioPage;
 
 export const pageQuery = graphql`
-  query BlogPost($id: String!) {
-    blogPost: wpPost(id: { eq: $id }) {
+  query ConversatorioPost($id: String!) {
+    conversatorioPost: wpPost(id: { eq: $id }) {
       id
       content
       title

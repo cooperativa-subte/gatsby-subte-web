@@ -38,8 +38,6 @@ type ConversatoriosPageTypes = {
 function ConversatoriosPage({
   data: { conversatorioCeroPosts, conversatorioUnoPosts },
 }: ConversatoriosPageTypes): JSX.Element {
-  console.log(conversatorioCeroPosts);
-
   return (
     <>
       <SEO title="Conversatorios subterráneos #1" />
@@ -110,7 +108,7 @@ function ConversatoriosPage({
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text>
-                    <Link to={`/${post.slug}`}>Leer</Link> |{' '}
+                    <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
                       href={post.podcasts_fields.urlDePodcast}
                       rel="nonoopener noreferrer"

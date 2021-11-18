@@ -3,6 +3,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const projectTemplate = path.resolve(`./src/templates/project.tsx`);
   const blogTemplate = path.resolve(`./src/templates/blogTemplate.tsx`);
+  const conversatorioTemplate = path.resolve('./src/templates/conversatorioTemplate.tsx');
   const result = await graphql(`
     query {
       proyectosPosts: allWpPost(
@@ -27,6 +28,21 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       }
       podcastsPosts: allWpPost(
         filter: { categories: { nodes: { elemMatch: { slug: { eq: "podcasts" } } } } }
+      ) {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
+      conversatoriosPosts: allWpPost(
+        sort: { fields: date, order: DESC }
+        filter: {
+          categories: {
+            nodes: { elemMatch: { slug: { in: ["conversatorio-0", "conversatorio-1"] } } }
+          }
+        }
       ) {
         edges {
           node {
@@ -62,6 +78,15 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     createPage({
       path: `${post.node.slug}`,
       component: blogTemplate,
+      context: {
+        id: post.node.id,
+      },
+    });
+  });
+  await result.data.conversatoriosPosts.edges.forEach((post) => {
+    createPage({
+      path: `/conversatorios/${post.node.slug}`,
+      component: conversatorioTemplate,
       context: {
         id: post.node.id,
       },
