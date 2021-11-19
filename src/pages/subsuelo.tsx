@@ -40,7 +40,9 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
         <Grid gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']} my={10}>
           {blogPosts.nodes.map((blog: PostType) => (
             <Box key={blog.id}>
-              <Heading>{blog.title}</Heading>
+              <Heading>
+                <Link to={`/${blog.slug}`}>{blog.title}</Link>
+              </Heading>
               <Box dangerouslySetInnerHTML={{ __html: blog.excerpt }} />
               <Link to={`/${blog.slug}`}>Leer</Link>
             </Box>

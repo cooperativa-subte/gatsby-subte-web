@@ -1,5 +1,8 @@
 import {
   Button,
+  FormControl,
+  FormLabel,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,7 +10,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
 } from '@chakra-ui/react';
 import React from 'react';
 
@@ -23,12 +25,15 @@ function SearchModal({ isOpen, onClose }: Props): JSX.Element {
       <ModalContent>
         <ModalHeader>Buscar</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
-          <Text>hola</Text>
+        <ModalBody mb={4} textAlign="right">
+          <FormControl id="buscar">
+            <FormLabel>Encuentra contenido en la página</FormLabel>
+            <Input type="text" />
+          </FormControl>
+          <Button alignSelf="flex-end" mt={4}>
+            Buscar
+          </Button>
         </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );
