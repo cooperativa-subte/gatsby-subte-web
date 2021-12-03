@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { Container, Text } from '@chakra-ui/react';
+import { Center, Container, Heading, Text } from '@chakra-ui/react';
 
 import Seo from '../components/seo';
 
@@ -20,10 +20,15 @@ const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
     <>
       <Seo title="404: Not Found" />
       <Container maxW="container.xl">
-        <Text>
-          Ups, la página que estás buscando no existe. Verificá la URL o dirigite a la{' '}
-          <Link to="/">página de inicio</Link>.
-        </Text>
+        <Center minH="80vh">
+          <Heading textAlign="center">
+            Ups, la página que estás buscando no existe. Verificá la URL o dirigite a la{' '}
+            <Link style={{ textDecoration: 'underline' }} to="/">
+              página de inicio
+            </Link>
+            .
+          </Heading>
+        </Center>
       </Container>
     </>
   );
