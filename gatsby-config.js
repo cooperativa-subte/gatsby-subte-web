@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
+        name: `Cooperativa de trabajo SUBTE`,
         short_name: `GatsbyJS & WP`,
         start_url: `/`,
         background_color: `#ffffff`,

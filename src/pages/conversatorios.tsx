@@ -114,7 +114,7 @@ function ConversatoriosPage({
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
-                      Escuchar
+                      Escuchar en Spotify
                     </ChakraLink>
                   </Text>
                 </Box>
@@ -162,7 +162,7 @@ function ConversatoriosPage({
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
-                      Escuchar
+                      Escuchar en Spotify
                     </ChakraLink>
                   </Text>
                 </Box>
