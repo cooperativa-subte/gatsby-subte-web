@@ -1,10 +1,9 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Box, Container, Grid, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Container, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import FCPULogo from '../images/fcpu-logo.svg';
-import CICLogo from '../images/cic-logo.svg';
 import ComunaLogo from '../images/comuna-logo.svg';
 import PedalLogo from '../images/pedal-logo.svg';
 
@@ -119,27 +118,37 @@ const Nosotres = () => {
           gridTemplateColumns={['1fr', 'repeat(3, 1fr)']}
           mt={20}
         >
-          <Heading as="h2" mb={[5, 0]}>
-            Proyectos aliados
-          </Heading>
-          <Text>
-            Subte es una cooperativa que busca crecer practicando la intercooperación. Estos son los
-            proyectos con los que venimos alcanzando acuerdos de trabajo conjunto.
-          </Text>
-        </Grid>
-        <Grid
-          alignItems="center"
-          as="section"
-          gridColumnGap={5}
-          gridTemplateColumns={['repeat(2, 1fr)', 'repeat(5, 1fr)']}
-          mb={32}
-          mt={20}
-          rowGap={3}
-        >
-          <Image alt="Logo de la Federación de Cooperativas del Uruguay" mx="auto" src={FCPULogo} />
-          <Image alt="Logo de Pedal" mx="auto" src={PedalLogo} />
-          <Image alt="Logo de la Cooperativa de trabajo Comuna" mx="auto" src={ComunaLogo} />
-          <Image alt="Logo de Cooperativa Integral Consultora (CIC)" mx="auto" src={CICLogo} />
+          <GridItem>
+            <Heading as="h2" mb={[5, 4]}>
+              Proyectos aliados
+            </Heading>
+            <Text>
+              Subte es una cooperativa que busca crecer practicando la intercooperación. Estos son
+              los proyectos con los que venimos alcanzando acuerdos de trabajo conjunto.
+            </Text>
+          </GridItem>
+          <GridItem
+            alignItems="center"
+            colSpan={2}
+            display="grid"
+            gridColumnGap={5}
+            gridTemplateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
+            mt={[8, 0]}
+            rowGap={3}
+          >
+            <Image
+              alt="Logo de la Federación de Cooperativas del Uruguay"
+              mx="auto"
+              src={FCPULogo}
+            />
+            <Image alt="Logo de Pedal" mt={[4, 0]} mx="auto" src={PedalLogo} />
+            <Image
+              alt="Logo de la Cooperativa de trabajo Comuna"
+              mt={[4, 0]}
+              mx="auto"
+              src={ComunaLogo}
+            />
+          </GridItem>
         </Grid>
       </Container>
     </>

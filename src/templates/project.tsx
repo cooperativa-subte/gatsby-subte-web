@@ -65,14 +65,14 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
             </AspectRatio>
           </>
         ) : (
-          <>
+          <Box mb={[4, 0]}>
             {project.featuredImage && (
               <CustomWrappterGatsbyImage
                 altText={project.featuredImage.node.altText}
                 localFile={project.featuredImage.node.localFile}
               />
             )}
-          </>
+          </Box>
         )}
         <Container
           maxW="container.xl"

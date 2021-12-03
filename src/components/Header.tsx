@@ -72,7 +72,7 @@ const Header = ({ path }: Props) => {
             </Box>
           </GridItem>
           <GridItem colSpan={[12, 1]} order={[2, 1]}>
-            <Menu isMenuOpen={isMenuOpen} path={path} />
+            <Menu isMenuOpen={isMenuOpen} path={path} onToggleMenuOpen={onToggleMenuOpen} />
           </GridItem>
         </Grid>
       </Container>

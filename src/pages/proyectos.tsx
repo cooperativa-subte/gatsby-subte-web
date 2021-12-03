@@ -72,7 +72,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
           mt={10}
           pb={3}
         >
-          <Heading>Proyectos</Heading>
+          <Heading mb={[4, 0]}>Proyectos</Heading>
           <Box>
             {allWpTag.nodes.length > 0 && (
               <List display="flex" flexDirection="row" flexWrap="wrap">

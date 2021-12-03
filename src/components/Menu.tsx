@@ -27,9 +27,10 @@ const query = graphql`
 type Props = {
   isMenuOpen: boolean;
   path: string;
+  onToggleMenuOpen: () => void;
 };
 
-const Menu = ({ isMenuOpen, path }: Props) => {
+const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
   const {
     allWpMenu: { nodes },
   }: {
@@ -56,13 +57,21 @@ const Menu = ({ isMenuOpen, path }: Props) => {
         <ListItem
           key={menuItem.id}
           _first={{ marginLeft: 0 }}
-          borderBottom={path === `${menuItem.url}/` ? '2px solid black' : 'none'}
           fontFamily="menuItem"
           fontSize={['lg', 'lg']}
           marginLeft={[0, 5]}
           mb={[1, 0]}
         >
-          <Link to={menuItem.url}>{menuItem.label}</Link>
+          <Link
+            style={{
+              borderBottom: path === `${menuItem.url}/` ? '2px solid black' : 'none',
+              paddingBottom: '2px',
+            }}
+            to={menuItem.url}
+            onClick={onToggleMenuOpen}
+          >
+            {menuItem.label}
+          </Link>
         </ListItem>
       ))}
     </List>

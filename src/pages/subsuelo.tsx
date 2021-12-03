@@ -22,8 +22,8 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
       />
       <Center bg="black">
         <Container maxW="container.xl" my={14}>
-          <Grid color="white" gridColumnGap={52} gridTemplateColumns={['1fr 1fr']}>
-            <GridItem>
+          <Grid color="white" gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']}>
+            <GridItem mb={[8, 0]}>
               <Heading fontFamily="HelveticaBlack">Subsuelo</Heading>
               <Text fontSize={'xl'}>Apuntes cooperativos</Text>
             </GridItem>
@@ -39,7 +39,7 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
       <Container maxW="container.xl">
         <Grid gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']} my={10}>
           {blogPosts.nodes.map((blog: PostType) => (
-            <Box key={blog.id}>
+            <Box key={blog.id} mb="12">
               <Heading>
                 <Link to={`/${blog.slug}`}>{blog.title}</Link>
               </Heading>

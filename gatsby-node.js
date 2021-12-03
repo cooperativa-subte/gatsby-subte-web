@@ -93,3 +93,25 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     });
   });
 };
+
+exports.createResolvers = ({ actions, cache, createNodeId, createResolvers, store, reporter }) => {
+  const { createNode } = actions;
+
+  createResolvers({
+    WpMediaItem: {
+      imageFile: {
+        type: `File`,
+        resolve(source) {
+          return createRemoteFileNode({
+            url: source.sourceUrl,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          });
+        },
+      },
+    },
+  });
+};

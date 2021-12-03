@@ -44,13 +44,13 @@ function ConversatoriosPage({
       <Center bg="black">
         <Grid
           gridColumnGap={52}
-          gridTemplateColumns={['1fr 1fr']}
+          gridTemplateColumns={['1fr', '1fr 1fr']}
           maxW="container.xl"
           my={10}
           paddingInlineEnd={4}
           paddingInlineStart={4}
         >
-          <GridItem>
+          <GridItem display="flex" justifyContent={['center', 'flex-start']} mb={[8, 0]}>
             <ConversatoriosSubterraneosIcon h={24} w={60} />
           </GridItem>
           <GridItem>
@@ -99,7 +99,7 @@ function ConversatoriosPage({
 
             {conversatorioCeroPosts.nodes.length > 0 &&
               conversatorioCeroPosts.nodes.map((post: PodcastPostType) => (
-                <Box key={post.id}>
+                <Box key={post.id} mb="12">
                   <Link to={`/${post.slug}`}>
                     <Heading as="h3">{post.title}</Heading>
                   </Link>
@@ -147,7 +147,7 @@ function ConversatoriosPage({
             </Flex>
             {conversatorioUnoPosts.nodes.length > 0 &&
               conversatorioUnoPosts.nodes.map((post: PodcastPostType) => (
-                <Box key={post.id}>
+                <Box key={post.id} mb="12">
                   <Link to={`/${post.slug}`}>
                     <Heading as="h3">{post.title}</Heading>
                   </Link>
