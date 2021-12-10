@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
-import { Stack, useMediaQuery } from '@chakra-ui/react';
+import { Box, Stack, Text, useMediaQuery } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
@@ -44,6 +44,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
             <Link
               key={project.slug}
               aria-label={`Link a la página del proyecto de ${project.title}`}
+              style={{ marginTop: 0, position: 'relative' }}
               to={`/proyectos/${project.slug}`}
             >
               {isLargerThan560
@@ -59,6 +60,30 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                       localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
                     />
                   )}
+              <Box position="absolute" top="0" w="100%">
+                <Text
+                  color="white"
+                  fontSize="md"
+                  mt={['10', '20']}
+                  mx="auto"
+                  paddingInlineEnd="1rem"
+                  paddingInlineStart="1rem"
+                  w={['auto', 'container.xl']}
+                >
+                  Proyectos
+                </Text>
+                <Text
+                  color="white"
+                  fontFamily="helveticaBold"
+                  fontSize="2xl"
+                  mx="auto"
+                  paddingInlineEnd="1rem"
+                  paddingInlineStart="1rem"
+                  w={['auto', 'container.xl']}
+                >
+                  {project.title}
+                </Text>
+              </Box>
             </Link>
           ))}
       </Stack>
