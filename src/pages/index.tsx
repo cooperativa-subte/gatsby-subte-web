@@ -33,8 +33,6 @@ type IndexQueryProps = {
 type IndexPageProps = PageProps<IndexQueryProps>;
 
 const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
-  const [isLargerThan560] = useMediaQuery('(min-width: 560px)');
-
   return (
     <>
       <SEO />
@@ -47,19 +45,22 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
               style={{ marginTop: 0, position: 'relative' }}
               to={`/proyectos/${project.slug}`}
             >
-              {isLargerThan560
-                ? project.datos_proyecto_portada.imagenPortadaDesktop && (
-                    <CustomWrappterGatsbyImage
-                      altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
-                      localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
-                    />
-                  )
-                : project.datos_proyecto_portada.imagenPortadaMobile && (
-                    <CustomWrappterGatsbyImage
-                      altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
-                      localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
-                    />
-                  )}
+              {project.datos_proyecto_portada.imagenPortadaDesktop && (
+                <Box display={['none', 'block']}>
+                  <CustomWrappterGatsbyImage
+                    altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
+                    localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
+                  />
+                </Box>
+              )}
+              {project.datos_proyecto_portada.imagenPortadaMobile && (
+                <Box display={['block', 'none']}>
+                  <CustomWrappterGatsbyImage
+                    altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
+                    localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
+                  />
+                </Box>
+              )}
               <Box position="absolute" top="0" w="100%">
                 <Text
                   color="white"
