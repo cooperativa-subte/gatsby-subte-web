@@ -26,7 +26,7 @@ const Header = ({ path }: Props) => {
       borderBottomWidth="0.5px"
       position="sticky"
       top={0}
-      zIndex={1}
+      zIndex={2}
     >
       <Container maxW="container.xl">
         <Grid

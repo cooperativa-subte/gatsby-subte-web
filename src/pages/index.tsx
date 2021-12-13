@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
-import { Box, Stack, Text, useMediaQuery } from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';

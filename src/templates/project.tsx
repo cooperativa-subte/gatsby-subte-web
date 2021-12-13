@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import {
-  AspectRatio,
-  Box,
-  Container,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Image,
-  Text,
-} from '@chakra-ui/react';
+import { AspectRatio, Box, Container, Grid, GridItem, Image, Text } from '@chakra-ui/react';
 
 import { ProjectType } from '../types';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
@@ -42,7 +32,14 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
     <>
       <SEO title={`Proyecto ${project.datos_proyecto.nombre}`} />
       <Container maxW="container.xl">
-        <Grid bg="white" gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} pb={6} pt={10}>
+        <Grid
+          bg="white"
+          gridTemplateColumns={['1fr', 'repeat(3, 1fr)']}
+          pb={6}
+          position="relative"
+          pt={10}
+          zIndex={1}
+        >
           <GridItem as="h1" colSpan={2} fontFamily="helveticaLight" fontSize="6xl">
             {project.datos_proyecto.nombre}
           </GridItem>
@@ -67,10 +64,12 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
         ) : (
           <Box mb={[4, 0]}>
             {project.featuredImage && (
-              <CustomWrappterGatsbyImage
-                altText={project.featuredImage.node.altText}
-                localFile={project.featuredImage.node.localFile}
-              />
+              <Box position="relative" zIndex="1">
+                <CustomWrappterGatsbyImage
+                  altText={project.featuredImage.node.altText}
+                  localFile={project.featuredImage.node.localFile}
+                />
+              </Box>
             )}
           </Box>
         )}
@@ -79,7 +78,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           paddingInlineStart={0}
           position={['static', 'fixed']}
           top={[20, 32]}
-          zIndex={-1}
+          zIndex={0}
         >
           <Grid gridColumnGap={8} gridTemplateColumns={['1fr', '1fr 1fr']} mr={4}>
             <Box
@@ -104,7 +103,14 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
               ))}
           </Grid>
         </Grid>
-        <Grid gridColumnGap={8} gridRowGap={8} gridTemplateColumns={['1fr', '1fr 1fr']} pt={8}>
+        <Grid
+          gridColumnGap={8}
+          gridRowGap={8}
+          gridTemplateColumns={['1fr', '1fr 1fr']}
+          position="relative"
+          pt={8}
+          zIndex="1"
+        >
           {complementaryImages
             .filter(
               (e, i) =>
@@ -123,13 +129,22 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           bg="white"
           gridColumnGap={8}
           gridTemplateColumns={['1fr', '1fr 1fr']}
+          position="relative"
           pt={8}
+          zIndex="1"
         >
-          <Text fontFamily="helveticaBold" fontSize="x-large" mb={[8, 0]} mr={[0, 32]}>
-            Militan con el objetivo de brindar asesoramiento y acompañamiento a mujeres en el
-            proceso de interrupción voluntaria del embarazo, y también defienden y luchan por los
-            derechos humanos.
-          </Text>
+          {project.datos_proyecto.fraseDestacada ? (
+            <Text
+              dangerouslySetInnerHTML={{ __html: project.datos_proyecto.fraseDestacada }}
+              fontFamily="helveticaBold"
+              fontSize="x-large"
+              mb={[8, 0]}
+              mr={[0, 32]}
+            />
+          ) : (
+            <Text />
+          )}
+
           {complementaryImages[IMAGES_DISTRIBUTION.firstGroup + 2] && (
             <Image
               alt="Imagen complementaria del proyecto"
@@ -141,11 +156,14 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           alignItems="flex-end"
           bg="white"
           columnGap={8}
+          gridTemplateAreas={["'remainingPhotos' 'projectData'", "'projectData remainingPhotos'"]}
           gridTemplateColumns={['1fr', '1fr 1fr']}
-          mb={32}
+          mb={[10, 20]}
+          position="relative"
           pt={8}
+          zIndex={1}
         >
-          <Box>
+          <Box gridArea="projectData" mt={[8, 0]}>
             <Text fontSize="lg">
               <Text as="span" fontFamily="helveticaBold">
                 Cliente:{` `}
@@ -171,13 +189,15 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
               {project.datos_proyecto.cliente}
             </Text>
           </Box>
-          <Box>
+          <Box gridArea="remainingPhotos">
             {complementaryImages
               .filter((src, i) => i > IMAGES_DISTRIBUTION.firstGroup + 2)
               .map((src, i) => (
                 <Image
                   key={`img_project_${i}`}
+                  _last={{ marginBottom: 0 }}
                   alt="Imagen complementaria del proyecto"
+                  mb={8}
                   src={src}
                 />
               ))}
@@ -203,6 +223,7 @@ export const pageQuery = graphql`
         sector
         imagenesComplementarias
         featuredVideo
+        fraseDestacada
       }
       content
       tags {

@@ -14,7 +14,7 @@ const Nosotres = () => {
         description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."
         title="Nosotres"
       />
-      <Container maxW="container.xl">
+      <Container maxW="container.xl" mb="10">
         <Box as="section">
           <Grid gridColumnGap={5} my="10" templateColumns={['1fr', 'repeat(3, 1fr)']}>
             <Heading
