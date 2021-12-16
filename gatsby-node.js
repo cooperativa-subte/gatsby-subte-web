@@ -2,7 +2,7 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const projectTemplate = path.resolve(`./src/templates/project.tsx`);
-  const blogTemplate = path.resolve(`./src/templates/blogTemplate.tsx`);
+  const blogTemplate = path.resolve(`./src/templates/subsueloTemplate.tsx`);
   const conversatorioTemplate = path.resolve('./src/templates/conversatorioTemplate.tsx');
   const result = await graphql(`
     query {
@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   });
   await result.data.podcastsPosts.edges.forEach((post) => {
     createPage({
-      path: `${post.node.slug}`,
+      path: `/subsuelo/${post.node.slug}`,
       component: blogTemplate,
       context: {
         id: post.node.id,

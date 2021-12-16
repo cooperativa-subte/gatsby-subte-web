@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Grid, Heading, Text, Container, GridItem, Center } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text, Container, GridItem, Center } from '@chakra-ui/react';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/seo';
@@ -41,10 +41,10 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
           {blogPosts.nodes.map((blog: PostType) => (
             <Box key={blog.id} mb="12">
               <Heading>
-                <Link to={`/${blog.slug}`}>{blog.title}</Link>
+                <Link to={`/subsuelo/${blog.slug}`}>{blog.title}</Link>
               </Heading>
               <Box dangerouslySetInnerHTML={{ __html: blog.excerpt }} />
-              <Link to={`/${blog.slug}`}>Leer</Link>
+              <Link to={`/subsuelo/${blog.slug}`}>Leer</Link>
             </Box>
           ))}
         </Grid>

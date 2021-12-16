@@ -100,7 +100,7 @@ function ConversatoriosPage({
             {conversatorioCeroPosts.nodes.length > 0 &&
               conversatorioCeroPosts.nodes.map((post: PodcastPostType) => (
                 <Box key={post.id} mb="12">
-                  <Link to={`/${post.slug}`}>
+                  <Link to={`/conversatorios/${post.slug}`}>
                     <Heading as="h3">{post.title}</Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>

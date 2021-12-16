@@ -46,7 +46,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
               to={`/proyectos/${project.slug}`}
             >
               {project.datos_proyecto_portada.imagenPortadaDesktop && (
-                <Box display={['none', 'block']}>
+                <Box display={['none', 'block']} maxH="100vh">
                   <CustomWrappterGatsbyImage
                     altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
                     localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}

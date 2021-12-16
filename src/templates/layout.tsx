@@ -22,7 +22,7 @@ const Layout = ({ path, children }: LayoutTypes) => {
         <>
           <Header path={path} />
           <main>{children}</main>
-          <FooterHome />
+          {/* <FooterHome /> */}
         </>
       )}
     </>

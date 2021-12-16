@@ -1,6 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Box, Container, Grid, Heading } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+
+const StyledContent = styled.div`
+  & > p {
+    margin-bottom: 0.5rem;
+  }
+`;
 
 interface Props {
   data: {
@@ -24,7 +31,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
     <Container maxW="container.xl" my={10}>
       <Grid gridColumnGap={20} gridTemplateColumns={['1fr', '1fr 2fr']}>
         <Heading mb={8}>{conversatorioPost.title}</Heading>
-        <Box dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
+        <StyledContent dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
       </Grid>
     </Container>
   );
