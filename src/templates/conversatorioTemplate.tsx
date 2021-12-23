@@ -1,7 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Container, Grid, Heading } from '@chakra-ui/react';
+import { Box, Button, Container, Grid, Heading, Link, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import { GiSpeaker } from 'react-icons/gi';
+
+import SEO from '../components/seo';
 
 const StyledContent = styled.div`
   & > p {
@@ -15,11 +18,20 @@ interface Props {
       id: string;
       content: string;
       title: string;
+      podcasts_fields: {
+        autoraPodcast: string;
+        urlDePodcast: string;
+      };
       tags: {
         nodes: {
           id: string;
           slug: string;
           name: string;
+        }[];
+      };
+      categories: {
+        nodes: {
+          slug: string;
         }[];
       };
     };
@@ -28,12 +40,68 @@ interface Props {
 
 function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element {
   return (
-    <Container maxW="container.xl" my={10}>
-      <Grid gridColumnGap={20} gridTemplateColumns={['1fr', '1fr 2fr']}>
-        <Heading mb={8}>{conversatorioPost.title}</Heading>
-        <StyledContent dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
-      </Grid>
-    </Container>
+    <>
+      <SEO title={conversatorioPost.title} />
+      <Container maxW="container.xl" my={10}>
+        <Container maxW="container.lg">
+          <Grid gridTemplateColumns="75px 650px">
+            <Box />
+            <Text fontFamily="helveticaBold">Blog</Text>
+          </Grid>
+          <Grid gridTemplateColumns={['75px 300px', '75px 650px']}>
+            <Box
+              alignItems="center"
+              as="span"
+              backgroundColor="black"
+              color="white"
+              display="flex"
+              fontFamily="helveticaExtraBold"
+              fontSize="4xl"
+              height="75px"
+              justifyContent="center"
+              marginLeft="-4"
+              width="75px"
+            >
+              #0
+            </Box>
+            <Box>
+              <Text>Conversatorios subterráneos</Text>
+              <Text fontFamily="helveticaBold">
+                Los problemas de comunicación de las
+                <br /> orgnizaciones populares
+              </Text>
+            </Box>
+          </Grid>
+          <Grid gridTemplateColumns={['1fr', '75px 650px']} mt={16}>
+            <Box />
+            <Box>
+              <Heading mb={8}>{conversatorioPost.title}</Heading>
+              <Text fontFamily="helveticaBold">
+                {conversatorioPost.podcasts_fields.autoraPodcast}
+              </Text>
+              <Box mb="8" mt={3}>
+                <Link
+                  _hover={{ background: 'white' }}
+                  alignItems="center"
+                  border="1px solid black"
+                  borderRadius="15px"
+                  display="inline-flex"
+                  href={conversatorioPost.podcasts_fields.urlDePodcast}
+                  pl="4"
+                  pr="3"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  Escuchar
+                  <GiSpeaker style={{ display: 'inline', marginLeft: '0.25rem' }} />
+                </Link>
+              </Box>
+              <StyledContent dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
+            </Box>
+          </Grid>
+        </Container>
+      </Container>
+    </>
   );
 }
 
@@ -45,11 +113,20 @@ export const pageQuery = graphql`
       id
       content
       title
+      podcasts_fields {
+        autoraPodcast
+        urlDePodcast
+      }
       tags {
         nodes {
           id
           slug
           name
+        }
+      }
+      categories {
+        nodes {
+          slug
         }
       }
     }

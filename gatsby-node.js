@@ -26,16 +26,6 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           }
         }
       }
-      podcastsPosts: allWpPost(
-        filter: { categories: { nodes: { elemMatch: { slug: { eq: "podcasts" } } } } }
-      ) {
-        edges {
-          node {
-            id
-            slug
-          }
-        }
-      }
       conversatoriosPosts: allWpPost(
         sort: { fields: date, order: DESC }
         filter: {
@@ -66,15 +56,6 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     });
   });
   await result.data.blogPosts.edges.forEach((post) => {
-    createPage({
-      path: `${post.node.slug}`,
-      component: blogTemplate,
-      context: {
-        id: post.node.id,
-      },
-    });
-  });
-  await result.data.podcastsPosts.edges.forEach((post) => {
     createPage({
       path: `/subsuelo/${post.node.slug}`,
       component: blogTemplate,
