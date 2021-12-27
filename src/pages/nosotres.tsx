@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Box, Container, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Container, Grid, GridItem, Heading, Image, Link, Text } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
 import FCPULogo from '../images/fcpu-logo.svg';
@@ -132,22 +132,28 @@ const Nosotres = () => {
             colSpan={2}
             display="grid"
             gridColumnGap={5}
+            gridRowGap={3}
             gridTemplateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
             mt={[8, 0]}
-            rowGap={3}
           >
-            <Image
-              alt="Logo de la Federación de Cooperativas del Uruguay"
-              mx="auto"
-              src={FCPULogo}
-            />
-            <Image alt="Logo de Pedal" mt={[4, 0]} mx="auto" src={PedalLogo} />
-            <Image
-              alt="Logo de la Cooperativa de trabajo Comuna"
-              mt={[4, 0]}
-              mx="auto"
-              src={ComunaLogo}
-            />
+            <Link href="https://fcpu.coop/" rel="noopener noreferrer" target="_blank">
+              <Image
+                alt="Logo de la Federación de Cooperativas del Uruguay"
+                mx="auto"
+                src={FCPULogo}
+              />
+            </Link>
+            <Link href="https://radiopedal.uy" rel="noopener noreferrer" target="_blank">
+              <Image alt="Logo de Pedal" mt={[4, 0]} mx="auto" src={PedalLogo} />
+            </Link>
+            <Link href="https://cooperativacomuna.uy/" rel="noopener noreferrer" target="_blank">
+              <Image
+                alt="Logo de la Cooperativa de trabajo Comuna"
+                mt={[4, 0]}
+                mx="auto"
+                src={ComunaLogo}
+              />
+            </Link>
           </GridItem>
         </Grid>
       </Container>
