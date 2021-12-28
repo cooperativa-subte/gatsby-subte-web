@@ -36,56 +36,60 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
   return (
     <>
       <SEO />
-      <Stack maxW="1440px" mx="auto">
+      <Stack height="100vh" mx="auto" overflowY="scroll" style={{ scrollSnapType: 'y mandatory' }}>
         {proyectosPortada.nodes.length > 0 &&
           proyectosPortada.nodes.map((project: ProyectoType) => (
-            <Link
-              key={project.slug}
-              aria-label={`Link a la página del proyecto de ${project.title}`}
-              style={{ marginTop: 0, position: 'relative' }}
-              to={`/proyectos/${project.slug}`}
-            >
-              {project.datos_proyecto_portada.imagenPortadaDesktop && (
-                <Box display={['none', 'block']} maxH="100vh">
-                  <CustomWrappterGatsbyImage
-                    altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
-                    localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
-                  />
+            <Box key={project.slug} h="100vh" style={{ scrollSnapAlign: 'start' }}>
+              <Link
+                aria-label={`Link a la página del proyecto de ${project.title}`}
+                style={{
+                  marginTop: 0,
+                  position: 'relative',
+                }}
+                to={`/proyectos/${project.slug}`}
+              >
+                {project.datos_proyecto_portada.imagenPortadaDesktop && (
+                  <Box display={['none', 'block']} height="100vh" maxH="1000vh">
+                    <CustomWrappterGatsbyImage
+                      altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
+                      localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
+                    />
+                  </Box>
+                )}
+                {project.datos_proyecto_portada.imagenPortadaMobile && (
+                  <Box display={['block', 'none']}>
+                    <CustomWrappterGatsbyImage
+                      altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
+                      localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
+                    />
+                  </Box>
+                )}
+                <Box position="absolute" top="0" w="100%">
+                  <Text
+                    color="white"
+                    fontSize="md"
+                    mt={['10', '20']}
+                    mx="auto"
+                    paddingInlineEnd="1rem"
+                    paddingInlineStart="1rem"
+                    w={['auto', 'container.xl']}
+                  >
+                    Proyectos
+                  </Text>
+                  <Text
+                    color="white"
+                    fontFamily="helveticaBold"
+                    fontSize="2xl"
+                    mx="auto"
+                    paddingInlineEnd="1rem"
+                    paddingInlineStart="1rem"
+                    w={['auto', 'container.xl']}
+                  >
+                    {project.title}
+                  </Text>
                 </Box>
-              )}
-              {project.datos_proyecto_portada.imagenPortadaMobile && (
-                <Box display={['block', 'none']}>
-                  <CustomWrappterGatsbyImage
-                    altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
-                    localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
-                  />
-                </Box>
-              )}
-              <Box position="absolute" top="0" w="100%">
-                <Text
-                  color="white"
-                  fontSize="md"
-                  mt={['10', '20']}
-                  mx="auto"
-                  paddingInlineEnd="1rem"
-                  paddingInlineStart="1rem"
-                  w={['auto', 'container.xl']}
-                >
-                  Proyectos
-                </Text>
-                <Text
-                  color="white"
-                  fontFamily="helveticaBold"
-                  fontSize="2xl"
-                  mx="auto"
-                  paddingInlineEnd="1rem"
-                  paddingInlineStart="1rem"
-                  w={['auto', 'container.xl']}
-                >
-                  {project.title}
-                </Text>
-              </Box>
-            </Link>
+              </Link>
+            </Box>
           ))}
       </Stack>
     </>
@@ -110,7 +114,7 @@ export const query = graphql`
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(transformOptions: { fit: CONTAIN })
               }
             }
           }
