@@ -68,6 +68,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                     <CustomWrappterGatsbyImage
                       altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
                       localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
+                      style={{ height: 'calc(100vh - 72px)' }}
                     />
                   </Box>
                 )}
