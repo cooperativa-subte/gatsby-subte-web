@@ -44,7 +44,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
       <SEO title={conversatorioPost.title} />
       <Container maxW="container.xl" my={10}>
         <Container maxW="container.lg">
-          <Grid gridTemplateColumns="75px 650px">
+          <Grid gridTemplateColumns={['75px 300px', '75px 650px']}>
             <Box />
             <Text fontFamily="helveticaBold">Blog</Text>
           </Grid>
@@ -62,14 +62,21 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
               marginLeft="-4"
               width="75px"
             >
-              #0
+              {conversatorioPost.categories.nodes.map((c) => c.slug).includes('conversatorio-1')
+                ? '#1'
+                : '#0'}
             </Box>
             <Box>
               <Text>Conversatorios subterráneos</Text>
-              <Text fontFamily="helveticaBold">
-                Los problemas de comunicación de las
-                <br /> orgnizaciones populares
-              </Text>
+
+              {conversatorioPost.categories.nodes.map((c) => c.slug).includes('conversatorio-1') ? (
+                <Text fontFamily="helveticaBold">Comunicación y Cooperativas</Text>
+              ) : (
+                <Text fontFamily="helveticaBold">
+                  Los problemas de comunicación de las
+                  <br /> orgnizaciones populares
+                </Text>
+              )}
             </Box>
           </Grid>
           <Grid gridTemplateColumns={['1fr', '75px 650px']} mt={16}>

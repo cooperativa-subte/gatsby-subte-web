@@ -5,14 +5,25 @@ function FooterBlog(): JSX.Element {
   return (
     <Container maxW="container.xl">
       <Box borderTop="1px solid black" mb="4" />
-      <Flex justifyContent="space-between" mb="4">
-        <Text fontSize="sm">
+      <Flex flexWrap="wrap" justifyContent="space-between" mb="4">
+        <Text fontSize="sm" textAlign={['center', 'left']}>
           <Box as="span" fontFamily="helveticaBold">
             Cooperar.{` `}
           </Box>
+          <Box as="br" display={['block', 'none']} />
           Una idea simple y potente que elegimos para trabajar juntes
         </Text>
-        <Flex alignItems="center">
+        <Box
+          as="span"
+          borderTopColor="blackAlpha.300"
+          borderTopStyle="solid"
+          borderTopWidth="0.5px"
+          display={['block', 'none']}
+          mx="auto"
+          my="2"
+          w="50%"
+        />
+        <Flex alignItems="center" flexWrap="wrap" justifyContent={['center', 'flex-start']}>
           <Text
             fontFamily="heading"
             fontSize="sm"

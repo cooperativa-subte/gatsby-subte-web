@@ -148,7 +148,7 @@ function ConversatoriosPage({
             {conversatorioUnoPosts.nodes.length > 0 &&
               conversatorioUnoPosts.nodes.map((post: PodcastPostType) => (
                 <Box key={post.id} mb="12">
-                  <Link to={`/${post.slug}`}>
+                  <Link to={`/conversatorios/${post.slug}`}>
                     <Heading as="h3">{post.title}</Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
@@ -156,7 +156,7 @@ function ConversatoriosPage({
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text>
-                    <Link to={`/${post.slug}`}>Leer</Link> |{' '}
+                    <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
                       href={post.podcasts_fields.urlDePodcast}
                       rel="nonoopener noreferrer"

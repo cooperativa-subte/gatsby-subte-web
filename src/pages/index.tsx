@@ -39,12 +39,19 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
       <Stack height="100vh" mx="auto" overflowY="scroll" style={{ scrollSnapType: 'y mandatory' }}>
         {proyectosPortada.nodes.length > 0 &&
           proyectosPortada.nodes.map((project: ProyectoType) => (
-            <Box key={project.slug} h="100vh" style={{ scrollSnapAlign: 'start' }}>
+            <Box
+              key={project.slug}
+              h="100vh"
+              position="relative"
+              style={{ scrollSnapAlign: 'start' }}
+            >
               <Link
                 aria-label={`Link a la página del proyecto de ${project.title}`}
                 style={{
                   marginTop: 0,
                   position: 'relative',
+                  width: '100vw',
+                  display: 'inline-block',
                 }}
                 to={`/proyectos/${project.slug}`}
               >
@@ -64,7 +71,14 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                     />
                   </Box>
                 )}
-                <Box position="absolute" top="0" w="100%">
+                <Box
+                  left="0"
+                  mx="auto"
+                  position="absolute"
+                  right="0"
+                  top="0"
+                  w={['auto', 'container.xl']}
+                >
                   <Text
                     color="white"
                     fontSize="md"
