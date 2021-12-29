@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import {
+  Box,
   Button,
   Container,
   FormControl,
@@ -11,11 +12,14 @@ import {
   GridItem,
   Heading,
   Input,
+  Link,
   Spinner,
   Text,
   Textarea,
   useToast,
 } from '@chakra-ui/react';
+import { StaticImage } from 'gatsby-plugin-image';
+import styled from '@emotion/styled';
 
 import SEO from '../components/seo';
 
@@ -26,6 +30,15 @@ type FormData = {
   subject: string;
   message: string;
 };
+
+const StyledImageContainer = styled.div`
+  .gatsby-image-wrapper {
+    img {
+      aspect-ratio: 1;
+      object-position: bottom;
+    }
+  }
+`;
 
 const Contacto = () => {
   const {
@@ -76,15 +89,25 @@ const Contacto = () => {
         title="Contacto"
       />
       <Container maxW="container.xl" my={10}>
-        <Grid
-          gridColumnGap={40}
-          gridTemplateAreas={[
-            "'contactText' 'contactForm' 'contactMap'",
-            "'contactForm contactText' 'contactForm contactMap'",
-          ]}
-          gridTemplateColumns={['1fr', '1fr 1fr']}
-        >
-          <GridItem gridArea="contactForm">
+        <Heading as="h1" size="xl">
+          Contacto
+        </Heading>
+        <Box
+          as="span"
+          borderTopColor="blackAlpha.300"
+          borderTopStyle="solid"
+          borderTopWidth="0.5px"
+          display="block"
+          mb={6}
+          mt={2}
+          width="full"
+        />
+        <Grid gridColumnGap={40} gridTemplateColumns={['1fr', '1fr 1fr']}>
+          <GridItem>
+            <Text mb={10}>
+              Si te interesa pensar y desarrollar la comunicación de tu organización ponete en
+              contacto con nosotres.
+            </Text>
             <form onSubmit={handleSubmit(onSubmit)}>
               <FormControl isInvalid={errors.fullName !== undefined}>
                 <FormLabel color="primary" htmlFor="fullName">
@@ -178,24 +201,27 @@ const Contacto = () => {
               </Button>
             </form>
           </GridItem>
-          <GridItem gridArea="contactText">
-            <Heading as="h1">Contactanos</Heading>
-            <Text mb={8}>
-              Si buscás servicios de diseño, programación o ilustración no dudes en ponerte en
-              contacto con nosotres. Tenemos planes especiales para cooperativas y organizaciones
-              sociales.
+          <GridItem>
+            <StyledImageContainer>
+              <StaticImage
+                alt="Foto de la fachada de casa en el aire"
+                objectPosition="bottom bottom"
+                src="../images/casa_en_el_aire.webp"
+              />
+            </StyledImageContainer>
+            <Text fontFamily="helveticaBold" fontSize="xl" mt={10}>
+              San Salvador 1510
             </Text>
-          </GridItem>
-          <GridItem gridArea="contactMap">
-            <iframe
-              allowFullScreen
-              height="450"
-              loading="lazy"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.784452366345!2d-56.18463988488356!3d-34.91185838038084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f815c6b7fd04f%3A0x83520e5d5391232c!2sCooperativa%20de%20trabajo%20SUBTE!5e0!3m2!1sen!2suy!4v1634234253068!5m2!1sen!2suy"
-              style={{ border: 0 }}
-              title="Mapa de la oficina de SUBTE"
-              width="100%"
-            />
+            <Text fontFamily="helveticaLight" fontSize="xl">
+              Montevideo, Uruguay
+            </Text>
+            <Link fontFamily="helveticaLight" fontSize="xl" href="mailto:hola@subte.uy">
+              hola@subte.uy
+            </Link>
+            <Text fontFamily="helveticaLight" fontSize="xl" mt="10">
+              La oficina de SUBTE se encuentra en Casa en el aire, una casa cultural y espacio de
+              trabajo colaborativo en el barrio Palermo.
+            </Text>
           </GridItem>
         </Grid>
       </Container>
