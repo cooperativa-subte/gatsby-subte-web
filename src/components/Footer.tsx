@@ -1,17 +1,10 @@
 import React from 'react';
-import { Center, Text, Link, Flex } from '@chakra-ui/react';
+import { Center, Text, Link, Flex, Container, Box } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Center
-      as="footer"
-      borderTop={1}
-      borderTopColor="black"
-      borderTopStyle="solid"
-      mb={5}
-      mt={5}
-      pt={3}
-    >
+    <Container as="footer" maxW="container.xl" mb="5" mt={5} mx="auto">
+      <Box as="span" border="0.5px solid black" display="block" mb={5} />
       <Flex alignItems="center" flexWrap="wrap" justifyContent="center">
         <Text
           fontFamily="heading"
@@ -112,7 +105,7 @@ const Footer = () => {
           </svg>
         </Link>
       </Flex>
-    </Center>
+    </Container>
   );
 };
 

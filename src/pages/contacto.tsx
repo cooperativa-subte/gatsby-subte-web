@@ -103,7 +103,7 @@ const Contacto = () => {
           width="full"
         />
         <Grid gridColumnGap={40} gridTemplateColumns={['1fr', '1fr 1fr']}>
-          <GridItem>
+          <GridItem mb={[8, 0]}>
             <Text mb={10}>
               Si te interesa pensar y desarrollar la comunicación de tu organización ponete en
               contacto con nosotres.
@@ -209,16 +209,32 @@ const Contacto = () => {
                 src="../images/casa_en_el_aire.webp"
               />
             </StyledImageContainer>
-            <Text fontFamily="helveticaBold" fontSize="xl" mt={10}>
+          </GridItem>
+        </Grid>
+        <Box as="span" borderTop="0.5px solid black" display="block" mb={[10, 16]} mt={[10, 8]} />
+        <iframe
+          allowFullScreen
+          height="450"
+          loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.784452366345!2d-56.18463988488356!3d-34.91185838038084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f815c6b7fd04f%3A0x83520e5d5391232c!2sCooperativa%20de%20trabajo%20SUBTE!5e0!3m2!1sen!2suy!4v1634234253068!5m2!1sen!2suy"
+          style={{ border: 0 }}
+          title="Mapa de la oficina de SUBTE"
+          width="100%"
+        />
+        <Grid gridTemplateColumns={['1fr', '350px 400px']} mb="20" mt={8}>
+          <GridItem mb={[8, 0]}>
+            <Text fontFamily="helveticaBold" fontSize="md">
               San Salvador 1510
             </Text>
-            <Text fontFamily="helveticaLight" fontSize="xl">
+            <Text fontFamily="helveticaBold" fontSize="md">
               Montevideo, Uruguay
             </Text>
-            <Link fontFamily="helveticaLight" fontSize="xl" href="mailto:hola@subte.uy">
+            <Link fontFamily="helveticaLight" fontSize="md" href="mailto:hola@subte.uy">
               hola@subte.uy
             </Link>
-            <Text fontFamily="helveticaLight" fontSize="xl" mt="10">
+          </GridItem>
+          <GridItem>
+            <Text fontFamily="helveticaLight" fontSize="md">
               La oficina de SUBTE se encuentra en Casa en el aire, una casa cultural y espacio de
               trabajo colaborativo en el barrio Palermo.
             </Text>
