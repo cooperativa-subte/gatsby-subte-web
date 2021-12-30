@@ -36,7 +36,12 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
   return (
     <>
       <SEO />
-      <Stack height="100vh" mx="auto" overflowY="scroll" style={{ scrollSnapType: 'y mandatory' }}>
+      <Stack
+        height="calc(100vh - 72px)"
+        mx="auto"
+        overflowY="scroll"
+        style={{ scrollSnapType: 'y mandatory' }}
+      >
         {proyectosPortada.nodes.length > 0 &&
           proyectosPortada.nodes.map((project: ProyectoType) => (
             <Box
