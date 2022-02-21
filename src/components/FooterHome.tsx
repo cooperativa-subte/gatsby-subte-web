@@ -1,6 +1,8 @@
 import React from 'react';
 import { Center, Container, Link, Text } from '@chakra-ui/react';
 
+import { SOCIAL_NETWORKS_URLS } from '../constants';
+
 const FooterHome = () => {
   return (
     <Container as="footer" bottom={0} left={0} position="fixed" right={0}>
@@ -16,7 +18,7 @@ const FooterHome = () => {
         </Text>
         <Link
           aria-label="Link de Instagram"
-          href="https://instagram.com/subteuy/"
+          href={SOCIAL_NETWORKS_URLS.instagram}
           mx={2}
           rel="noreferrer"
           style={{ width: '1.1rem', height: '1.1rem' }}
@@ -36,7 +38,7 @@ const FooterHome = () => {
         </Link>
         <Link
           aria-label="Link de Twitter"
-          href="https://twitter.com/subte_uy"
+          href={SOCIAL_NETWORKS_URLS.twitter}
           mx={2}
           rel="noreferrer"
           style={{ width: '1.1rem', height: '1.1rem' }}
@@ -84,7 +86,7 @@ const FooterHome = () => {
         </Link>
         <Link
           aria-label="Link de Facebook"
-          href="https://facebook.com/subteuy"
+          href={SOCIAL_NETWORKS_URLS.facebook}
           mx={2}
           rel="noreferrer"
           style={{ width: '1.1rem', height: '1.1rem' }}

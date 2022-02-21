@@ -1,6 +1,8 @@
 import { Box, Container, Flex, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 
+import { SOCIAL_NETWORKS_URLS } from '../constants';
+
 function FooterBlog(): JSX.Element {
   return (
     <Container maxW="container.xl">
@@ -39,7 +41,7 @@ function FooterBlog(): JSX.Element {
           <Link
             aria-label="Link de Instagram"
             className="img-container"
-            href="https://instagram.com/subteuy/"
+            href={SOCIAL_NETWORKS_URLS.instagram}
             ml={4}
             mr={2}
             rel="noreferrer"
@@ -60,7 +62,7 @@ function FooterBlog(): JSX.Element {
           <Link
             aria-label="Link de Twitter"
             className="img-container"
-            href="https://twitter.com/subte_uy"
+            href={SOCIAL_NETWORKS_URLS.twitter}
             mx={2}
             rel="noreferrer"
             target="_blank"
@@ -108,7 +110,7 @@ function FooterBlog(): JSX.Element {
           <Link
             aria-label="Link de Facebook"
             className="img-container"
-            href="https://facebook.com/subteuy"
+            href={SOCIAL_NETWORKS_URLS.facebook}
             maxW={10}
             ml={1}
             mr={2}
