@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import { List, ListItem } from '@chakra-ui/react';
+import { Box, List, ListItem } from '@chakra-ui/react';
 
 type MenuItem = {
   url: string;
@@ -64,13 +64,20 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
         >
           <Link
             style={{
-              borderBottom: path === `${menuItem.url}/` ? '2px solid black' : 'none',
               paddingBottom: '2px',
+              display: 'inline-block',
+              width: '100%',
             }}
             to={menuItem.url}
             onClick={onToggleMenuOpen}
           >
-            {menuItem.label}
+            <Box
+              as="span"
+              borderBottom={path === `${menuItem.url}/` ? '2px solid black' : 'none'}
+              pb="1"
+            >
+              {menuItem.label}
+            </Box>
           </Link>
         </ListItem>
       ))}
