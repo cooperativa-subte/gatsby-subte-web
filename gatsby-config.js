@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: process.env.WPGRAPHQL_URL || `https://subtedesarrollo.xyz/graphql`,
+        url: process.env.WPGRAPHQL_URL || `https://cms.subte.uy/graphql`,
         type: {
           MediaItem: {
             localFile: {
