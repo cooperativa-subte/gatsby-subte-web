@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 import { Box, Stack, Text } from '@chakra-ui/react';
@@ -33,6 +33,12 @@ type IndexQueryProps = {
 type IndexPageProps = PageProps<IndexQueryProps>;
 
 const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
+  const [randomProjects, setRandomProjects] = useState<ProyectoType[]>([]);
+
+  useEffect(() => {
+    setRandomProjects([...proyectosPortada.nodes].sort(() => 0.5 - Math.random()));
+  }, [proyectosPortada.nodes]);
+
   return (
     <>
       <SEO />
@@ -42,8 +48,8 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
         overflowY="scroll"
         style={{ scrollSnapType: 'y mandatory' }}
       >
-        {proyectosPortada.nodes.length > 0 &&
-          proyectosPortada.nodes.map((project: ProyectoType) => (
+        {randomProjects.length > 0 &&
+          randomProjects.map((project: ProyectoType) => (
             <Box
               key={project.slug}
               h="100vh"
