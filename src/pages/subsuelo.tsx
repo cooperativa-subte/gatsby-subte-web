@@ -3,12 +3,12 @@ import { Box, Grid, Heading, Text, Container, GridItem, Center } from '@chakra-u
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/seo';
-import { PostType } from '../types';
+import { BlogPostType } from '../types';
 
 type SubsueloPageTypes = {
   data: {
     blogPosts: {
-      nodes: PostType[];
+      nodes: BlogPostType[];
     };
   };
 };
@@ -24,8 +24,12 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
         <Container maxW="container.xl" my={14}>
           <Grid color="white" gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']}>
             <GridItem mb={[8, 0]}>
-              <Heading fontFamily="HelveticaBlack">Subsuelo</Heading>
-              <Text fontSize={'xl'}>Apuntes cooperativos</Text>
+              <Heading fontFamily="HelveticaBlack" fontSize="5xl">
+                Subsuelo
+              </Heading>
+              <Text color="alternative" fontFamily="helveticaBold" fontSize={'2xl'}>
+                Apuntes cooperativos
+              </Text>
             </GridItem>
             <GridItem>
               <Text>
@@ -37,14 +41,23 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
         </Container>
       </Center>
       <Container maxW="container.xl">
-        <Grid gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']} my={10}>
-          {blogPosts.nodes.map((blog: PostType) => (
+        <Grid gridColumnGap={42} gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} my={10}>
+          {blogPosts.nodes.map((blog: BlogPostType) => (
             <Box key={blog.id} mb="12">
-              <Heading>
-                <Link to={`/subsuelo/${blog.slug}`}>{blog.title}</Link>
+              <Heading fontFamily="helveticaBold" fontSize="2xl" mb={6}>
+                <Link to={`/subsuelo/${blog.slug}`}>
+                  <Box as="span" color="alternative">
+                    {blog.subsueloFields.featuredTitleWord}
+                  </Box>{' '}
+                  {blog.title}
+                </Link>
               </Heading>
-              <Box dangerouslySetInnerHTML={{ __html: blog.excerpt }} />
-              <Link to={`/subsuelo/${blog.slug}`}>Leer</Link>
+              <Box dangerouslySetInnerHTML={{ __html: blog.excerpt }} mb={3} />
+              <Link to={`/subsuelo/${blog.slug}`}>
+                <Box as="span" color="alternative">
+                  Leer
+                </Box>
+              </Link>
             </Box>
           ))}
         </Grid>
@@ -66,6 +79,9 @@ export const query = graphql`
         slug
         title
         excerpt
+        subsueloFields {
+          featuredTitleWord
+        }
       }
     }
   }

@@ -12,6 +12,7 @@ export default extendTheme({
   colors: {
     primary: theme.colors.black,
     secondary: 'white',
+    alternative: '#EB6D62',
   },
   sizes: {
     container: {

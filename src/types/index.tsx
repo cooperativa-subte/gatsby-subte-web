@@ -37,3 +37,9 @@ export type ProjectType = {
     };
   };
 };
+
+export interface BlogPostType extends PostType {
+  subsueloFields: {
+    featuredTitleWord: string;
+  };
+}

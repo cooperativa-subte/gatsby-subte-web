@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Button, Container, Grid, Heading, Link, Text } from '@chakra-ui/react';
+import { Box, Container, Grid, Heading, Link, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { GiSpeaker } from 'react-icons/gi';
 

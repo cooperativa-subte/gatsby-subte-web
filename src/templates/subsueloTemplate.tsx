@@ -1,13 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Container, Grid, Heading } from '@chakra-ui/react';
+import { Box, Container, Heading } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import SEO from '../components/seo';
+import Share from '../components/Share';
 
 const StyledContent = styled.div`
   & > p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 18px;
   }
 `;
 
@@ -17,6 +19,9 @@ type BlogPostPageType = {
       id: string;
       content: string;
       title: string;
+      subsueloFields: {
+        featuredTitleWord: string;
+      };
       tags: {
         nodes: {
           id: string;
@@ -33,10 +38,26 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
     <>
       <SEO title={blogPost.title} />
       <Container maxW="container.xl" my={10}>
-        <Grid gridColumnGap={20} gridTemplateColumns={['1fr', '1fr 2fr']}>
-          <Heading mb={8}>{blogPost.title}</Heading>
+        <Container marginInlineStart={'200px'} maxW="container.sm">
+          <Box
+            as="small"
+            color="alternative"
+            display="inline-block"
+            fontFamily="helveticaBold"
+            fontSize="md"
+            mb={8}
+          >
+            Subsuelo
+          </Box>
+          <Heading mb={8}>
+            <Box as="span" color="alternative">
+              {blogPost.subsueloFields.featuredTitleWord}{' '}
+            </Box>
+            {blogPost.title}
+          </Heading>
+          <Share />
           <StyledContent dangerouslySetInnerHTML={{ __html: blogPost.content }} />
-        </Grid>
+        </Container>
       </Container>
     </>
   );
@@ -50,6 +71,9 @@ export const pageQuery = graphql`
       id
       content
       title
+      subsueloFields {
+        featuredTitleWord
+      }
       tags {
         nodes {
           id
