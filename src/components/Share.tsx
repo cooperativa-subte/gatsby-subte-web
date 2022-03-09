@@ -1,19 +1,26 @@
 import {
   Button,
+  IconButton,
+  Link,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
-  PopoverHeader,
   PopoverTrigger,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FiShare2 } from 'react-icons/fi';
+import { FaFacebookF } from 'react-icons/fa';
 
-function Share(): JSX.Element {
+type ShareProps = {
+  slug: string;
+  title: string;
+};
+
+function Share({ slug, title }: ShareProps): JSX.Element {
   return (
-    <Popover>
+    <Popover placement="right">
       <PopoverTrigger>
         <Button
           _active={{ bg: 'transparent' }}
@@ -30,13 +37,18 @@ function Share(): JSX.Element {
           Compartir
         </Button>
       </PopoverTrigger>
-      <PopoverContent bg="tomato" color="white">
-        <PopoverHeader fontWeight="semibold">Customization</PopoverHeader>
-        <PopoverArrow bg="pink.500" />
-        <PopoverCloseButton bg="purple.500" />
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
         <PopoverBody>
-          Tadaa!! The arrow color and background color is customized. Check the props for each
-          component.
+          <Link
+            aria-label="Compartir en Facebook"
+            href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsubte.uy%2F${slug}%2F&amp;src=sdkpreparse`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaFacebookF />
+          </Link>
         </PopoverBody>
       </PopoverContent>
     </Popover>

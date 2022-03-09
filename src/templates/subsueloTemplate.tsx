@@ -19,6 +19,7 @@ type BlogPostPageType = {
       id: string;
       content: string;
       title: string;
+      slug: string;
       subsueloFields: {
         featuredTitleWord: string;
       };
@@ -38,7 +39,7 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
     <>
       <SEO title={blogPost.title} />
       <Container maxW="container.xl" my={10}>
-        <Container marginInlineStart={'200px'} maxW="container.sm">
+        <Container marginInlineStart={['inherit', '200px']} maxW="container.sm">
           <Box
             as="small"
             color="alternative"
@@ -55,7 +56,7 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
             </Box>
             {blogPost.title}
           </Heading>
-          <Share />
+          <Share slug={blogPost.slug} title={blogPost.title} />
           <StyledContent dangerouslySetInnerHTML={{ __html: blogPost.content }} />
         </Container>
       </Container>
@@ -71,6 +72,7 @@ export const pageQuery = graphql`
       id
       content
       title
+      slug
       subsueloFields {
         featuredTitleWord
       }
