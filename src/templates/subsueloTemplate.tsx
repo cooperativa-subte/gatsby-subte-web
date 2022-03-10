@@ -50,14 +50,19 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
           >
             Subsuelo
           </Box>
-          <Heading mb={8}>
+          <Heading mb={2}>
             <Box as="span" color="alternative">
               {blogPost.subsueloFields.featuredTitleWord}{' '}
             </Box>
             {blogPost.title}
           </Heading>
-          <Share slug={blogPost.slug} title={blogPost.title} />
+          <Box mb={14}>
+            <Share placement="bottom-start" slug={blogPost.slug} title={blogPost.title} />
+          </Box>
           <StyledContent dangerouslySetInnerHTML={{ __html: blogPost.content }} />
+          <Box mb={20}>
+            <Share placement="top-start" slug={blogPost.slug} title={blogPost.title} />
+          </Box>
         </Container>
       </Container>
     </>
