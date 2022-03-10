@@ -108,7 +108,9 @@ function ConversatoriosPage({
               conversatorioCeroPosts.nodes.map((post: PodcastPostType) => (
                 <Box key={post.id} mb="12">
                   <Link to={`/conversatorios/${post.slug}`}>
-                    <Heading as="h3">{post.title}</Heading>
+                    <Heading as="h3" fontSize="26px">
+                      {post.title}
+                    </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
                     {post.podcasts_fields.autoraPodcast}
@@ -159,7 +161,9 @@ function ConversatoriosPage({
               conversatorioUnoPosts.nodes.map((post: PodcastPostType) => (
                 <Box key={post.id} mb="12">
                   <Link to={`/conversatorios/${post.slug}`}>
-                    <Heading as="h3">{post.title}</Heading>
+                    <Heading as="h3" fontSize="26px">
+                      {post.title}
+                    </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
                     {post.podcasts_fields.autoraPodcast}

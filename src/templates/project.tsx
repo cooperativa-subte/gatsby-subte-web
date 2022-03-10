@@ -26,7 +26,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
     if (project.datos_proyecto.imagenesComplementarias) {
       setComplementaryImages(JSON.parse(project.datos_proyecto.imagenesComplementarias));
     }
-  }, []);
+  }, [project.datos_proyecto]);
 
   return (
     <>
@@ -40,10 +40,10 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           pt={10}
           zIndex={1}
         >
-          <GridItem as="h1" colSpan={2} fontFamily="helveticaLight" fontSize="6xl">
+          <GridItem as="h1" colSpan={2} fontFamily="helveticaBold" fontSize="5xl" lineHeight="1">
             {project.datos_proyecto.nombre}
           </GridItem>
-          <GridItem as="h2" fontSize="xl" maxW={96}>
+          <GridItem as="h2" fontFamily="helveticaMedium" fontSize="xl" maxW={96}>
             {project.datos_proyecto.descripcionCorta}
           </GridItem>
         </Grid>

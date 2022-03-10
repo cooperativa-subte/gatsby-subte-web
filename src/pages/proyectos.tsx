@@ -125,7 +125,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
                     </Link>
                   </AspectRatio>
                 )}
-                <Heading as="h3" fontFamily="HelveticaMedium" fontSize="3xl" mt={3}>
+                <Heading as="h3" fontFamily="HelveticaMedium" fontSize="2xl" mt={3}>
                   {project.datos_proyecto.nombre}
                 </Heading>
                 <Stack

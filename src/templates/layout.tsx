@@ -2,8 +2,6 @@ import React, { ReactDOM } from 'react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import FooterHome from '../components/FooterHome';
-import FooterBlog from '../components/FooterBlog';
 
 type LayoutTypes = {
   path: string;
@@ -13,27 +11,17 @@ type LayoutTypes = {
 const Layout = ({ path, children }: LayoutTypes) => {
   return (
     <>
-      {/\/conversatorios\/.*/.test(path) || /\/subsuelo\/.*/.test(path) ? (
+      {path !== '/' ? (
         <>
           <Header path={path} />
           <main>{children}</main>
-          <FooterBlog />
+          <Footer />
         </>
       ) : (
         <>
-          {path !== '/' ? (
-            <>
-              <Header path={path} />
-              <main>{children}</main>
-              <Footer />
-            </>
-          ) : (
-            <>
-              <Header path={path} />
-              <main>{children}</main>
-              {/* <FooterHome /> */}
-            </>
-          )}
+          <Header path={path} />
+          <main>{children}</main>
+          {/* <FooterHome /> */}
         </>
       )}
     </>
