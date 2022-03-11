@@ -65,5 +65,6 @@ module.exports = {
         isUsingColorMode: true,
       },
     },
+    `gatsby-plugin-gatsby-cloud`,
   ],
 };

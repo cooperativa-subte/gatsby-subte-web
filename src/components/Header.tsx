@@ -46,11 +46,12 @@ const Header = ({ path }: Props) => {
             </Link>
           </GridItem>
           {/* Botón de menú para Mobile */}
-          <GridItem colEnd={11} colstart={10} display={['flex', 'none']} justifyContent="flex-end">
+          <GridItem colEnd={11} colStart={10} display={['flex', 'none']} justifyContent="flex-end">
             <Button
               _active={{ backgroundColor: 'transparent', boxShadow: 'none' }}
               _focus={{ boxShadow: 'none' }}
               _hover={{ backgroundColor: 'transparent' }}
+              aria-label="Botón de Menú"
               bg="transparent"
               justifyContent="flex-end"
               onClick={onToggleMenuOpen}
