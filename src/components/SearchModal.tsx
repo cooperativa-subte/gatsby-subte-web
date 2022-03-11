@@ -45,9 +45,14 @@ function SearchModal({ isOpen, onClose }: Props): JSX.Element {
   async function onSubmit(searchTerm: FormData) {
     try {
       setLoading.on();
-      const response = await axios.get(
-        `${WP_REST_ENDPOINT}/search?search=${searchTerm.searchTerm}&per_page=100&context=embed&term=post`,
-      );
+      const response = await axios.get(`${WP_REST_ENDPOINT}/search`, {
+        params: {
+          search: searchTerm.searchTerm,
+          per_page: 100,
+          context: 'embed',
+          term: 'post',
+        },
+      });
 
       if (response.data && response.data.length > 0) {
         const regex = new RegExp(process.env.GATSBY_BACKEND_URL ?? '', 'gi');
@@ -55,7 +60,7 @@ function SearchModal({ isOpen, onClose }: Props): JSX.Element {
         setSearchResults(
           response.data.map((result: any) => {
             let url = result.url.replace(regex, '');
-            const [, category, postName] = url.split('/');
+            const [category, postName] = url.split('/');
 
             switch (category) {
               case 'conversatorio-0':
