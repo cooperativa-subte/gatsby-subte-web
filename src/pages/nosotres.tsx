@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Box, Container, Grid, GridItem, Heading, Image, Link, Text } from '@chakra-ui/react';
 
@@ -7,7 +7,71 @@ import FCPULogo from '../images/fcpu-logo.svg';
 import ComunaLogo from '../images/comuna-logo.svg';
 import PedalLogo from '../images/pedal-logo.svg';
 
+const fotosNosotres = [
+  <Box key="mariana">
+    <StaticImage
+      alt="Foto de Mari en blanco y negro"
+      src="../images/Nosotres-Mari-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Mariana Escobar
+    </Text>
+  </Box>,
+  <Box key="cata">
+    <StaticImage
+      alt="Foto de Cata en blanco y negro"
+      src="../images/Nosotres-Cata-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Catalina Alonso
+    </Text>
+  </Box>,
+  <Box key="nati">
+    <StaticImage
+      alt="Foto de Nati en blanco y negro"
+      src="../images/Nosotres-Nati-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Natalia Acosta
+    </Text>
+  </Box>,
+  <Box key="pancho">
+    <StaticImage
+      alt="Foto de Pancho en blanco y negro"
+      src="../images/Nosotres-Pancho-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Francisco Cobas
+    </Text>
+  </Box>,
+  <Box key="vale">
+    <StaticImage
+      alt="Foto de Vale en blanco y negro"
+      src="../images/Nosotres-Vale-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Valentina Lasalvia
+    </Text>
+  </Box>,
+  <Box key="joaco">
+    <StaticImage
+      alt="Foto de Joaco en blanco y negro"
+      src="../images/Nosotres-Joaco-Web-700x700.webp"
+    />
+    <Text fontFamily="helveticaBold" mt={3}>
+      Joaquín Cabrera
+    </Text>
+  </Box>,
+];
+
 const Nosotres = () => {
+  const [fotosRandomNosotres, setFotosRandomNosotres] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    // Randomize the order of the images
+    setFotosRandomNosotres([...fotosNosotres].sort(() => Math.random() - 0.5));
+  }, []);
+
   return (
     <>
       <SEO
@@ -57,60 +121,7 @@ const Nosotres = () => {
           gridRowGap={5}
           gridTemplateColumns={['1fr', 'repeat(3, 1fr)']}
         >
-          <Box>
-            <StaticImage
-              alt="Foto de Mari en blanco y negro"
-              src="../images/Nosotres-Mari-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Mariana Escobar
-            </Text>
-          </Box>
-          <Box>
-            <StaticImage
-              alt="Foto de Cata en blanco y negro"
-              src="../images/Nosotres-Cata-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Catalina Alonso
-            </Text>
-          </Box>
-          <Box>
-            <StaticImage
-              alt="Foto de Nati en blanco y negro"
-              src="../images/Nosotres-Nati-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Natalia Acosta
-            </Text>
-          </Box>
-          <Box>
-            <StaticImage
-              alt="Foto de Pancho en blanco y negro"
-              src="../images/Nosotres-Pancho-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Francisco Cobas
-            </Text>
-          </Box>
-          <Box>
-            <StaticImage
-              alt="Foto de Vale en blanco y negro"
-              src="../images/Nosotres-Vale-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Valentina Lasalvia
-            </Text>
-          </Box>
-          <Box>
-            <StaticImage
-              alt="Foto de Joaco en blanco y negro"
-              src="../images/Nosotres-Joaco-Web-700x700.webp"
-            />
-            <Text fontFamily="helveticaBold" mt={3}>
-              Joaquín Cabrera
-            </Text>
-          </Box>
+          {fotosRandomNosotres.map((foto) => foto)}
         </Grid>
         <Grid
           as="section"

@@ -1,14 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Container, Grid, Heading, Link, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Grid, Heading, Link, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { GiSpeaker } from 'react-icons/gi';
 
 import SEO from '../components/seo';
+import Share from '../components/Share';
 
 const StyledContent = styled.div`
   & > p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -18,6 +19,7 @@ interface Props {
       id: string;
       content: string;
       title: string;
+      slug: string;
       podcasts_fields: {
         autoraPodcast: string;
         urlDePodcast: string;
@@ -44,7 +46,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
       <SEO title={conversatorioPost.title} />
       <Container maxW="container.xl" my={10}>
         <Container maxW="container.lg">
-          <Grid gridTemplateColumns={['75px 300px', '75px 650px']}>
+          <Grid gridTemplateColumns={['75px 300px', '75px 650px']} mb={4}>
             <Box />
             <Text fontFamily="helveticaBold">Blog</Text>
           </Grid>
@@ -67,12 +69,14 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
                 : '#0'}
             </Box>
             <Box>
-              <Text>Conversatorios subterráneos</Text>
+              <Text lineHeight={1} mb={1}>
+                Conversatorios subterráneos
+              </Text>
 
               {conversatorioPost.categories.nodes.map((c) => c.slug).includes('conversatorio-1') ? (
                 <Text fontFamily="helveticaBold">Comunicación y Cooperativas</Text>
               ) : (
-                <Text fontFamily="helveticaBold">
+                <Text fontFamily="helveticaBold" lineHeight={1.25}>
                   Los problemas de comunicación de las
                   <br /> orgnizaciones populares
                 </Text>
@@ -82,28 +86,45 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
           <Grid gridTemplateColumns={['1fr', '75px 650px']} mt={16}>
             <Box />
             <Box>
-              <Heading mb={8}>{conversatorioPost.title}</Heading>
-              <Text fontFamily="helveticaBold">
+              <Heading fontSize="2rem" mb={2}>
+                {conversatorioPost.title}
+              </Heading>
+              <Text color="alternative" fontFamily="helveticaBold">
                 {conversatorioPost.podcasts_fields.autoraPodcast}
               </Text>
-              <Box mb="8" mt={3}>
+              <Flex alignItems="center" mb="8" mt={3}>
                 <Link
                   _hover={{ background: 'white' }}
                   alignItems="center"
                   border="1px solid black"
                   borderRadius="15px"
                   display="inline-flex"
+                  h={6}
                   href={conversatorioPost.podcasts_fields.urlDePodcast}
+                  mr={2}
                   pl="4"
                   pr="3"
                   rel="noreferrer noopener"
                   target="_blank"
                 >
                   Escuchar
-                  <GiSpeaker style={{ display: 'inline', marginLeft: '0.25rem' }} />
+                  <GiSpeaker
+                    fontSize="1.25rem"
+                    style={{ display: 'inline', marginLeft: '0.25rem' }}
+                  />
                 </Link>
-              </Box>
+                <Share
+                  placement="bottom-start"
+                  slug={`conversatorios/${conversatorioPost.slug}`}
+                  title={conversatorioPost.title}
+                />
+              </Flex>
               <StyledContent dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
+              <Share
+                placement="top-start"
+                slug={`converstaorios/${conversatorioPost.slug}`}
+                title={conversatorioPost.title}
+              />
             </Box>
           </Grid>
         </Container>
@@ -120,6 +141,7 @@ export const pageQuery = graphql`
       id
       content
       title
+      slug
       podcasts_fields {
         autoraPodcast
         urlDePodcast
