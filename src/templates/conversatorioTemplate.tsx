@@ -10,6 +10,7 @@ import Share from '../components/Share';
 const StyledContent = styled.div`
   & > p {
     margin-bottom: 2rem;
+    font-size: 20px;
   }
 `;
 
@@ -89,7 +90,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
               <Heading fontSize="2rem" mb={2}>
                 {conversatorioPost.title}
               </Heading>
-              <Text color="alternative" fontFamily="helveticaBold">
+              <Text color="alternative" fontFamily="helveticaBold" fontSize="20px">
                 {conversatorioPost.podcasts_fields.autoraPodcast}
               </Text>
               <Flex alignItems="center" mb="8" mt={3}>

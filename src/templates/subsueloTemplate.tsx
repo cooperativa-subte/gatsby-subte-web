@@ -9,7 +9,7 @@ import Share from '../components/Share';
 const StyledContent = styled.div`
   & > p {
     margin-bottom: 2rem;
-    font-size: 18px;
+    font-size: 20px;
   }
 `;
 
