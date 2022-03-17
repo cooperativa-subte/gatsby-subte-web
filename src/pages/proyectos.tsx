@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AspectRatio,
   Box,
@@ -37,7 +37,14 @@ type ProyectosPageProps = PageProps<ProyectosQueryProps>;
 
 const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
   const [selectedTag, setSelectedTag] = useState<string>('todos');
-  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(allWpPost.nodes);
+  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>([]);
+
+  useEffect(() => {
+    // Randomize projects array
+    setFilteredProjects([...allWpPost.nodes].sort(() => 0.5 - Math.random()));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function filterProjects(slug: string) {
     setSelectedTag(slug);

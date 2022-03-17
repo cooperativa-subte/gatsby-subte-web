@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { AspectRatio, Box, Container, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 import { ProjectType } from '../types';
 import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 import SEO from '../components/seo';
+
+const StyledProjectContent = styled.div`
+  a {
+    text-decoration: underline;
+  }
+`;
 
 type ProjectPageType = {
   data: {
@@ -81,11 +88,9 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           zIndex={0}
         >
           <Grid gridColumnGap={8} gridTemplateColumns={['1fr', '1fr 1fr']} mr={4}>
-            <Box
-              className="content"
-              dangerouslySetInnerHTML={{ __html: project.content }}
-              fontSize="lg"
-            />
+            <Box fontSize="lg">
+              <StyledProjectContent dangerouslySetInnerHTML={{ __html: project.content }} />
+            </Box>
             <Box />
           </Grid>
         </Container>
