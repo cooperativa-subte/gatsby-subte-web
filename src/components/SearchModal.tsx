@@ -83,6 +83,7 @@ function SearchModal({ isOpen, onClose }: Props): JSX.Element {
         );
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     } finally {
       setLoading.off();

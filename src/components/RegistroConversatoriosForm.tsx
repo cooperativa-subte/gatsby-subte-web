@@ -60,12 +60,11 @@ function RegistroConversatoriosForm(): JSX.Element {
     handleSubmit,
     register,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormData>();
   const [operation] = useState<{ label: string; value: string }>(shuffle(VERIFICACIONES)[0]);
 
   function onSubmit(values: FormData) {
-    console.log(values);
     if (values.question !== operation.value) {
       setError('question', { type: 'message', message: 'Respuesta inválida' });
     }

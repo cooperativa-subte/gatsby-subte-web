@@ -36,6 +36,7 @@ function Share({ slug, title, placement }: ShareProps): JSX.Element {
         }, 2000);
       },
       function () {
+        // eslint-disable-next-line no-console
         console.log('Failed to copy');
       },
     );
