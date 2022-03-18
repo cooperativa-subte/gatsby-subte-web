@@ -12,17 +12,10 @@ import {
   Link as ChakraLink,
 } from '@chakra-ui/react';
 import { graphql, Link } from 'gatsby';
-import styled from '@emotion/styled';
 
 import SEO from '../components/seo';
 import ConversatoriosSubterraneosIcon from '../icons/ConversatoriosSubterraneos';
 import { PostType } from '../types';
-
-const StyledGatsbyLink = styled.span`
-  a:hover {
-    text-decoration: underline;
-  }
-`;
 
 type PodcastPostType = PostType & {
   podcasts_fields: {
@@ -116,11 +109,14 @@ function ConversatoriosPage({
                     {post.podcasts_fields.autoraPodcast}
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
-                  <Text>
-                    <StyledGatsbyLink>
-                      <Link to={`/conversatorios/${post.slug}`}>Leer</Link>
-                    </StyledGatsbyLink>{' '}
-                    |{' '}
+                  <Text
+                    sx={{
+                      '> a:hover': {
+                        textDecoration: 'underline',
+                      },
+                    }}
+                  >
+                    <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
                       href={post.podcasts_fields.urlDePodcast}
                       rel="nonoopener noreferrer"

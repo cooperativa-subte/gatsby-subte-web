@@ -19,7 +19,6 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
-import styled from '@emotion/styled';
 
 import SEO from '../components/seo';
 
@@ -30,15 +29,6 @@ type FormData = {
   subject: string;
   message: string;
 };
-
-const StyledImageContainer = styled.div`
-  .gatsby-image-wrapper {
-    img {
-      aspect-ratio: 1;
-      object-position: bottom;
-    }
-  }
-`;
 
 const Contacto = () => {
   const {
@@ -201,14 +191,19 @@ const Contacto = () => {
               </Button>
             </form>
           </GridItem>
-          <GridItem>
-            <StyledImageContainer>
-              <StaticImage
-                alt="Foto de la fachada de casa en el aire"
-                objectPosition="bottom bottom"
-                src="../images/casa_en_el_aire.webp"
-              />
-            </StyledImageContainer>
+          <GridItem
+            sx={{
+              '& .gatsby-image-wrapper img': {
+                aspectRatio: '1',
+                objectPosition: 'bottom',
+              },
+            }}
+          >
+            <StaticImage
+              alt="Foto de la fachada de casa en el aire"
+              objectPosition="bottom bottom"
+              src="../images/casa_en_el_aire.webp"
+            />
           </GridItem>
         </Grid>
         <Box as="span" borderTop="0.5px solid black" display="block" mb={[10, 16]} mt={[10, 8]} />

@@ -1,19 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Box, Container, Flex, Grid, Heading, Link, Text } from '@chakra-ui/react';
-import styled from '@emotion/styled';
 import { GiSpeaker } from 'react-icons/gi';
 
 import SEO from '../components/seo';
 import Share from '../components/Share';
-
-const StyledContent = styled.div`
-  & > p {
-    margin-bottom: 2rem;
-    font-size: 20px;
-  }
-`;
-
 interface Props {
   data: {
     conversatorioPost: {
@@ -120,7 +111,15 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
                   title={conversatorioPost.title}
                 />
               </Flex>
-              <StyledContent dangerouslySetInnerHTML={{ __html: conversatorioPost.content }} />
+              <Box
+                dangerouslySetInnerHTML={{ __html: conversatorioPost.content }}
+                sx={{
+                  '> p': {
+                    marginBottom: '2rem',
+                    fontSize: '20px',
+                  },
+                }}
+              />
               <Share
                 placement="top-start"
                 slug={`converstaorios/${conversatorioPost.slug}`}

@@ -1,17 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Box, Container, Heading } from '@chakra-ui/react';
-import styled from '@emotion/styled';
 
 import SEO from '../components/seo';
 import Share from '../components/Share';
-
-const StyledContent = styled.div`
-  & > p {
-    margin-bottom: 2rem;
-    font-size: 20px;
-  }
-`;
 
 type BlogPostPageType = {
   data: {
@@ -59,7 +51,10 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
           <Box mb={14}>
             <Share placement="bottom-start" slug={blogPost.slug} title={blogPost.title} />
           </Box>
-          <StyledContent dangerouslySetInnerHTML={{ __html: blogPost.content }} />
+          <Box
+            dangerouslySetInnerHTML={{ __html: blogPost.content }}
+            sx={{ '> p': { marginBottom: '2rem', fontSize: '20px' } }}
+          />
           <Box mb={20}>
             <Share placement="top-start" slug={blogPost.slug} title={blogPost.title} />
           </Box>
