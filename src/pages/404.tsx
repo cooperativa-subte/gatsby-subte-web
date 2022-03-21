@@ -1,24 +1,13 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
-import { Center, Container, Heading, Text } from '@chakra-ui/react';
+import { Link } from 'gatsby';
+import { Center, Container, Heading } from '@chakra-ui/react';
 
 import Seo from '../components/seo';
 
-type NotFoundPageProps = {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
-  location: {};
-};
-
-const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
+const NotFoundPage = () => {
   return (
     <>
-      <Seo title="404: Not Found" />
+      <Seo title="404: Página no encontrada" />
       <Container maxW="container.xl">
         <Center minH="80vh">
           <Heading textAlign="center">
@@ -35,13 +24,3 @@ const NotFoundPage = ({ data, location }: NotFoundPageProps) => {
 };
 
 export default NotFoundPage;
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

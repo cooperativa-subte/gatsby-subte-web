@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
+import logo from '../images/PerfilSubte.jpg';
+
 const SEO = ({
   title,
   description,
@@ -17,13 +19,12 @@ const SEO = ({
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
 
-  const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage } =
-    site.siteMetadata;
+  const { defaultTitle, titleTemplate, defaultDescription, siteUrl } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${siteUrl}${image || logo}`,
     url: `${siteUrl}${pathname}`,
   };
 
@@ -67,7 +68,6 @@ const query = graphql`
         titleTemplate
         defaultDescription: description
         siteUrl: url
-        defaultImage: image
       }
     }
   }
