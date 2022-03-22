@@ -8,5 +8,7 @@ export default function handler(req: GatsbyFunctionRequest, res: GatsbyFunctionR
 
   if (!body.raiting) return res.status(400).send({ message: 'Param is missing' });
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   res.json({ message: 'Yey! Gracias por completar el desafío' });
 }
