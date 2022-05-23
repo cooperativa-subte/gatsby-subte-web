@@ -68,5 +68,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'G-EV7G1LME9D',
+        head: false,
+      },
+    },
   ],
 };
