@@ -35,6 +35,7 @@ const Contacto = () => {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const toast = useToast();
@@ -51,11 +52,21 @@ const Contacto = () => {
         requestType: 'contact',
       });
 
-      if (response && response.data.status === 'ok') {
+      if (response && response.data.statusCode >= 200 && response.data.statusCode < 300) {
         toast({
           title: '¡Gracias!',
           description: 'Tu mensaje ha sido enviado correctamente',
           status: 'success',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        });
+        reset();
+      } else {
+        toast({
+          title: 'Error',
+          description: 'Ha ocurrido un error al enviar el mensaje',
+          status: 'error',
           duration: 4000,
           isClosable: true,
           position: 'top',
