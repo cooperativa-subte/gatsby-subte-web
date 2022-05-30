@@ -72,6 +72,9 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
             onClick={onToggleMenuOpen}
           >
             <Box
+              _hover={{
+                borderBottom: '2px solid black',
+              }}
               as="span"
               borderBottom={path === `${menuItem.url}/` ? '2px solid black' : 'none'}
               pb="1"
