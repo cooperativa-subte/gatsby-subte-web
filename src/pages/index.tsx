@@ -43,7 +43,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
     <>
       <SEO />
       <Stack
-        height="calc(100vh - 72px)"
+        height="calc(100vh - 72.5px)"
         mx="auto"
         overflowY="scroll"
         style={{ scrollSnapType: 'y mandatory' }}
@@ -52,7 +52,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
           randomProjects.map((project: ProyectoType) => (
             <Box
               key={project.slug}
-              h="100vh"
+              h="calc(100vh - 72.5px)"
               position="relative"
               style={{ scrollSnapAlign: 'start' }}
             >
@@ -67,7 +67,16 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                 to={`/proyectos/${project.slug}`}
               >
                 {project.datos_proyecto_portada.imagenPortadaDesktop && (
-                  <Box display={['none', 'block']} height="100vh" maxH="1000vh">
+                  <Box
+                    display={['none', 'block']}
+                    height="calc(100vh - 72.5px)"
+                    maxH="1000vh"
+                    sx={{
+                      '& img': {
+                        objectPosition: '0 -50px',
+                      },
+                    }}
+                  >
                     <CustomWrappterGatsbyImage
                       altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
                       localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
@@ -94,7 +103,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                   <Text
                     color="white"
                     fontSize="md"
-                    mt={['10', '20']}
+                    mt={[5, 10]}
                     mx="auto"
                     paddingInlineEnd="1rem"
                     paddingInlineStart="1rem"
