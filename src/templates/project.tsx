@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { AspectRatio, Box, Container, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { ProjectType } from '../types';
-import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 import SEO from '../components/seo';
 
 type ProjectPageType = {
@@ -63,14 +63,15 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           </>
         ) : (
           <Box mb={[4, 0]}>
-            {project.featuredImage && (
-              <Box position="relative" zIndex="1">
-                <CustomWrappterGatsbyImage
-                  altText={project.featuredImage.node.altText}
-                  localFile={project.featuredImage.node.localFile}
+            <Box position="relative" zIndex="1">
+              {project.featuredImage && (
+                <GatsbyImage
+                  alt={project.featuredImage.node.altText}
+                  // @ts-ignore
+                  image={getImage(project.featuredImage.node.localFile)}
                 />
-              </Box>
-            )}
+              )}
+            </Box>
           </Box>
         )}
         <Container
