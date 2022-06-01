@@ -14,6 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { graphql, Link, PageProps } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { ProjectType } from '../types';
 import SEO from '../components/seo';
@@ -125,9 +126,10 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
                 {project.featuredImage && (
                   <AspectRatio ratio={16 / 9}>
                     <Link to={`/proyectos/${project.slug}`}>
-                      <CustomWrappterGatsbyImage
-                        altText={project.featuredImage.node.altText}
-                        localFile={project.featuredImage.node.localFile}
+                      <GatsbyImage
+                        alt={project.featuredImage.node.altText}
+                        // @ts-ignore
+                        image={getImage(project.featuredImage.node.localFile)}
                       />
                     </Link>
                   </AspectRatio>
