@@ -18,7 +18,6 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { ProjectType } from '../types';
 import SEO from '../components/seo';
-import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 
 type Tag = {
   name: string;

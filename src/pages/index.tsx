@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 import { Box, Stack, Text } from '@chakra-ui/react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/seo';
-import CustomWrappterGatsbyImage from '../components/CustomWrappterGatsbyImage';
 
 type ProyectoType = {
   id: string;
@@ -77,17 +77,21 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                       },
                     }}
                   >
-                    <CustomWrappterGatsbyImage
-                      altText={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
-                      localFile={project.datos_proyecto_portada.imagenPortadaDesktop.localFile}
+                    <GatsbyImage
+                      alt={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
+                      //@ts-ignore
+                      image={getImage(
+                        project.datos_proyecto_portada.imagenPortadaDesktop.localFile,
+                      )}
                     />
                   </Box>
                 )}
                 {project.datos_proyecto_portada.imagenPortadaMobile && (
                   <Box display={['block', 'none']}>
-                    <CustomWrappterGatsbyImage
-                      altText={project.datos_proyecto_portada.imagenPortadaMobile.altText}
-                      localFile={project.datos_proyecto_portada.imagenPortadaMobile.localFile}
+                    <GatsbyImage
+                      alt={project.datos_proyecto_portada.imagenPortadaMobile.altText}
+                      // @ts-ignore
+                      image={getImage(project.datos_proyecto_portada.imagenPortadaMobile.localFile)}
                       style={{ height: 'calc(100vh - 72px)' }}
                     />
                   </Box>
