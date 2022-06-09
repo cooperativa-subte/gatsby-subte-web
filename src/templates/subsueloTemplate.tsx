@@ -49,14 +49,22 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
             {blogPost.title}
           </Heading>
           <Box mb={14}>
-            <Share placement="bottom-start" slug={blogPost.slug} title={blogPost.title} />
+            <Share
+              placement="bottom-start"
+              slug={`subsuelo/${blogPost.slug}`}
+              title={blogPost.title}
+            />
           </Box>
           <Box
             dangerouslySetInnerHTML={{ __html: blogPost.content }}
             sx={{ '> p': { marginBottom: '2rem', fontSize: '20px' } }}
           />
           <Box mb={20}>
-            <Share placement="top-start" slug={blogPost.slug} title={blogPost.title} />
+            <Share
+              placement="top-start"
+              slug={`subsuelo/${blogPost.slug}`}
+              title={blogPost.title}
+            />
           </Box>
         </Container>
       </Container>
