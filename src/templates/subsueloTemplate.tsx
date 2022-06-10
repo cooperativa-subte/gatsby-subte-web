@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { Box, Container, Heading } from '@chakra-ui/react';
 
 import SEO from '../components/seo';
@@ -40,7 +40,7 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
             fontSize="md"
             mb={8}
           >
-            Subsuelo
+            <Link to="/subsuelo">Subsuelo</Link>
           </Box>
           <Heading mb={2}>
             <Box as="span" color="alternative">
