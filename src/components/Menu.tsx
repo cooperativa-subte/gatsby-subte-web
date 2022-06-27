@@ -10,14 +10,12 @@ type MenuItem = {
 
 const query = graphql`
   query HeaderQuery {
-    allWpMenu {
-      nodes {
-        menuItems {
-          nodes {
-            url
-            label
-            id
-          }
+    wpMenu(slug: { eq: "menu-principal" }) {
+      menuItems {
+        nodes {
+          url
+          label
+          id
         }
       }
     }
@@ -32,18 +30,14 @@ type Props = {
 
 const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
   const {
-    allWpMenu: { nodes },
+    wpMenu,
   }: {
-    allWpMenu: {
-      nodes: {
-        menuItems: {
-          nodes: MenuItem[];
-        };
-      }[];
+    wpMenu: {
+      menuItems: {
+        nodes: MenuItem[];
+      };
     };
   } = useStaticQuery(query);
-
-  if (!nodes || nodes.length === 0) return null;
 
   return (
     <List
@@ -53,7 +47,7 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
       gridArea="menu"
       mt={{ base: isMenuOpen ? '3' : '0', sm: '0' }}
     >
-      {nodes[0].menuItems.nodes.map((menuItem: MenuItem) => (
+      {wpMenu.menuItems.nodes.map((menuItem: MenuItem) => (
         <ListItem
           key={menuItem.id}
           _first={{ marginLeft: 0 }}
