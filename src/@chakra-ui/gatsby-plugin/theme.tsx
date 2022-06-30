@@ -1,5 +1,4 @@
 import { extendTheme, theme } from '@chakra-ui/react';
-import { withProse } from '@nikolovlazar/chakra-ui-prose';
 
 export default extendTheme({
   fonts: {

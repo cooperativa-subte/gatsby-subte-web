@@ -1,27 +1,28 @@
-import React, { ReactDOM } from 'react';
+import * as React from 'react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 type LayoutTypes = {
   path: string;
-  children: ReactDOM;
+  children: React.ReactNode;
 };
+
+const pagesWithoutFooter = ['/', '/links/'];
 
 const Layout = ({ path, children }: LayoutTypes) => {
   return (
     <>
-      {path !== '/' ? (
+      {!pagesWithoutFooter.includes(path) ? (
         <>
           <Header path={path} />
           <main>{children}</main>
-          <Footer />
+          <Footer path={path} />
         </>
       ) : (
         <>
           <Header path={path} />
           <main>{children}</main>
-          {/* <FooterHome /> */}
         </>
       )}
     </>
