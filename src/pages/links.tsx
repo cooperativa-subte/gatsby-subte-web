@@ -35,7 +35,8 @@ function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
   return (
     <>
       <SEO title="Links" />
-      <Flex alignItems="center" background="black" flexDir="column" height={`calc(100vh - 72.5px)`}>
+
+      <Flex alignItems="center" background="black" flex="1" flexDir="column">
         <Container flex="1" maxW="400px" pt="30px">
           {wpMenu.menuItems.nodes.map((item) => {
             return item.url.startsWith('/') ? (
