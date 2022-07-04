@@ -49,7 +49,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
         </Grid>
         {project.datos_proyecto.featuredVideo ? (
           <>
-            <AspectRatio ratio={16 / 9}>
+            <AspectRatio ratio={16 / 9} zIndex="1">
               <iframe
                 allowFullScreen
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
