@@ -31,11 +31,12 @@ type ProyectosQueryProps = {
   allWpTag: {
     nodes: Tag[];
   };
+  location: any;
 };
 
 type ProyectosPageProps = PageProps<ProyectosQueryProps>;
 
-const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
+const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPageProps) => {
   const [selectedTag, setSelectedTag] = useState<string>('todos');
   const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>([]);
 
@@ -43,6 +44,12 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
     // Randomize projects array
     setFilteredProjects([...allWpPost.nodes].sort(() => 0.5 - Math.random()));
 
+    if (location.search) {
+      const tag = location.search.split('=')[1];
+
+      setSelectedTag(tag);
+      filterProjects(tag);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -103,9 +110,11 @@ const Proyectos = ({ data: { allWpPost, allWpTag } }: ProyectosPageProps) => {
                     px="3"
                     py="1"
                   >
-                    <Text cursor="pointer" onClick={() => filterProjects(tag.slug)}>
-                      {tag.name}
-                    </Text>
+                    <Link to={`?tag=${tag.slug}`}>
+                      <Text cursor="pointer" onClick={() => filterProjects(tag.slug)}>
+                        {tag.name}
+                      </Text>
+                    </Link>
                   </ListItem>
                 ))}
               </List>
