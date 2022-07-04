@@ -3,9 +3,9 @@ import React from 'react';
 
 import { SOCIAL_NETWORKS_URLS } from '../constants';
 
-function FooterBlog({ path }: { path: string }): JSX.Element {
+function FooterBlog(): JSX.Element {
   return (
-    <Box as="footer" background={path === '/links/' ? 'black' : 'transparent'} pt={20}>
+    <Box as="footer" pt={20}>
       <Container maxW="container.xl">
         <Box borderTop="1px solid black" mb="4" />
         <Flex flexWrap="wrap" justifyContent="space-between" mb="4">

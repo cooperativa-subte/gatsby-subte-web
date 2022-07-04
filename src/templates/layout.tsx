@@ -6,25 +6,17 @@ import Footer from '../components/Footer';
 type LayoutTypes = {
   path: string;
   children: React.ReactNode;
+  location: any;
 };
 
-const pagesWithoutFooter = ['/', '/links/'];
+const Layout = ({ path, children, location }: LayoutTypes) => {
+  const pagesWithoutFooter = ['/', '/links/'];
 
-const Layout = ({ path, children }: LayoutTypes) => {
   return (
     <>
-      {!pagesWithoutFooter.includes(path) ? (
-        <>
-          <Header path={path} />
-          <main style={{ display: 'flex' }}>{children}</main>
-          <Footer path={path} />
-        </>
-      ) : (
-        <>
-          <Header path={path} />
-          <main style={{ display: 'flex' }}>{children}</main>
-        </>
-      )}
+      <Header path={path} />
+      <main style={{ display: 'flex' }}>{children}</main>
+      {!pagesWithoutFooter.includes(location.pathname) && <Footer />}
     </>
   );
 };
