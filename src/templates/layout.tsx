@@ -16,13 +16,13 @@ const Layout = ({ path, children }: LayoutTypes) => {
       {!pagesWithoutFooter.includes(path) ? (
         <>
           <Header path={path} />
-          <main>{children}</main>
+          <main style={{ display: 'flex' }}>{children}</main>
           <Footer path={path} />
         </>
       ) : (
         <>
           <Header path={path} />
-          <main>{children}</main>
+          <main style={{ display: 'flex' }}>{children}</main>
         </>
       )}
     </>
