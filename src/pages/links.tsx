@@ -37,7 +37,15 @@ function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
       <SEO title="Links" />
 
       <Flex alignItems="center" background="black" flex="1" flexDir="column">
-        <Container flex="1" maxW="400px" pt="30px">
+        <Flex
+          flex="1"
+          flexDirection="column"
+          justifyContent="center"
+          maxW="400px"
+          p={['20px', '0']}
+          pt="30px"
+          w="full"
+        >
           {wpMenu.menuItems.nodes.map((item) => {
             return item.url.startsWith('/') ? (
               <Link key={item.id} style={{ display: 'block', marginBottom: '15px' }} to={item.url}>
@@ -153,8 +161,8 @@ function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
               }
             />
           </HStack>
-        </Container>
-        <Container maxW="400px">
+        </Flex>
+        <Container textAlign="center">
           <Text color="white" mb="50px">
             <Box as="span" fontFamily="helveticaBold">
               Cooperar.

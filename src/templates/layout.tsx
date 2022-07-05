@@ -10,7 +10,7 @@ type LayoutTypes = {
 };
 
 const Layout = ({ path, children, location }: LayoutTypes) => {
-  const pagesWithoutFooter = ['/', '/links/'];
+  const pagesWithoutFooter = ['/', '/links/', '/links'];
 
   return (
     <>
