@@ -1,9 +1,11 @@
 import { Checkbox, CheckboxProps } from '@chakra-ui/react';
-import React from 'react';
+import React, { LegacyRef } from 'react';
+import { Ref } from 'react-hook-form';
 
-function SubteCheckbox(props: CheckboxProps): JSX.Element {
+function SubteCheckbox(props: CheckboxProps, ref: LegacyRef<HTMLInputElement>): JSX.Element {
   return (
     <Checkbox
+      ref={ref}
       appearance="checkbox"
       sx={{
         span: { fontSize: 'sm' },
@@ -25,4 +27,4 @@ function SubteCheckbox(props: CheckboxProps): JSX.Element {
   );
 }
 
-export default SubteCheckbox;
+export default React.forwardRef(SubteCheckbox);

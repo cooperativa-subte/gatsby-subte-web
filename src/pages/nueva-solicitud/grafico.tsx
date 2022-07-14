@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   Flex,
   FormControl,
@@ -19,6 +18,7 @@ import { Link } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import { IoIosSend } from 'react-icons/io';
 import { BsChevronLeft } from 'react-icons/bs';
+import axios from 'axios';
 
 import SubteInput from '../../components/Forms/SubteInput';
 import SubteTextArea from '../../components/Forms/SubteTextArea';
@@ -46,9 +46,15 @@ function SolicitudGraficoPage({ location }: { location: any }): JSX.Element {
     formState: { errors, isSubmitting },
   } = useForm<Inputs>();
 
-  console.log(location);
-  function onSubmit(values: Inputs) {
+  async function onSubmit(values: Inputs) {
     console.log(values);
+    try {
+      const response = await axios.post('/api/new-request', values);
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -68,7 +74,9 @@ function SolicitudGraficoPage({ location }: { location: any }): JSX.Element {
           <HStack>
             <Tag
               background={
-                location.pathname === `/nueva-solicitud/audiovisual` ? '#E2E2E2' : 'transparent'
+                location.pathname.startsWith('/nueva-solicitud/audiovisual')
+                  ? '#E2E2E2'
+                  : 'transparent'
               }
               borderRadius="full"
               cursor="pointer"
@@ -77,7 +85,7 @@ function SolicitudGraficoPage({ location }: { location: any }): JSX.Element {
             </Tag>
             <Tag
               background={
-                location.pathname === `/nueva-solicitud/grafico` ? '#E2E2E2' : 'transparent'
+                location.pathname.startsWith('/nueva-solicitud/grafico') ? '#E2E2E2' : 'transparent'
               }
               borderRadius="full"
               cursor="pointer"

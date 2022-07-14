@@ -1,10 +1,11 @@
 import { Textarea, TextareaProps } from '@chakra-ui/react';
-import React from 'react';
+import React, { LegacyRef } from 'react';
 
-function SubteTextArea(props: TextareaProps): JSX.Element {
+function SubteTextArea(props: TextareaProps, ref: LegacyRef<HTMLTextAreaElement>): JSX.Element {
   return (
     <Textarea
       {...props}
+      ref={ref}
       _placeholder={{ color: '#BFBFBF', fontFamily: 'helveticaLight' }}
       borderColor="#707070"
       borderRadius="5px"
@@ -12,4 +13,4 @@ function SubteTextArea(props: TextareaProps): JSX.Element {
   );
 }
 
-export default SubteTextArea;
+export default React.forwardRef(SubteTextArea);
