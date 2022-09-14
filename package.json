@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^4.9.0",
     "gatsby-source-wordpress": "^6.9.0",
     "gatsby-transformer-sharp": "^4.9.0",
+    "googleapis": "^39.2.0",
     "html-react-parser": "^1.4.8",
     "postcss": "^8.4.8",
     "react": "^18.1.0",

@@ -98,7 +98,7 @@ const NuevaSolicitudPage = () => {
             }}
             to="sonido"
           >
-            Sondio
+            Sonido
           </Link>
         </Grid>
       </Container>
