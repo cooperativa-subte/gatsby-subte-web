@@ -185,13 +185,17 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
               <Text as="span" fontFamily="helveticaBold">
                 Tipo de Proyecto:{` `}
               </Text>
-              {project.datos_proyecto.cliente}
+              {project.tags.nodes.reduce((currentText, tag, i) => {
+                currentText += i === project.tags.nodes.length - 1 ? tag.name : `${tag.name}, `;
+
+                return currentText;
+              }, '')}
             </Text>
             <Text fontSize="lg">
               <Text as="span" fontFamily="helveticaBold">
                 Mes/Año:{` `}
               </Text>
-              {project.datos_proyecto.cliente}
+              {project.datos_proyecto.fecha}
             </Text>
           </Box>
           <Box gridArea="remainingPhotos">
