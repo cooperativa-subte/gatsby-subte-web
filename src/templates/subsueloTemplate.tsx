@@ -57,7 +57,10 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
           </Box>
           <Box
             dangerouslySetInnerHTML={{ __html: blogPost.content }}
-            sx={{ '> p': { marginBottom: '2rem', fontSize: '20px' } }}
+            sx={{
+              '> p': { marginBottom: '2rem', fontSize: '20px' },
+              a: { textDecoration: 'underline' },
+            }}
           />
           <Box mb={20}>
             <Share
