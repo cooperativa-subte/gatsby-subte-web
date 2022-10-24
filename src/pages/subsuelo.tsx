@@ -72,7 +72,7 @@ export const query = graphql`
   query SubsueloPostQuery {
     blogPosts: allWpPost(
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "blog" } } } } }
-      sort: { fields: date, order: ASC }
+      sort: { fields: date, order: DESC }
     ) {
       nodes {
         id
