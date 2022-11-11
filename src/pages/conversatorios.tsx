@@ -40,7 +40,7 @@ function ConversatoriosPage({
 }: ConversatoriosPageTypes): JSX.Element {
   return (
     <>
-      <SEO title="Conversatorios subterráneos #1" />
+      <SEO title="Conversatorios subterráneos" />
       <Center bg="black">
         <Grid
           gridColumnGap={52}
