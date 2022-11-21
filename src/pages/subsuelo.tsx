@@ -16,10 +16,6 @@ type SubsueloPageTypes = {
 const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
   return (
     <>
-      <SEO
-        description="En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa."
-        title="Subsuelo"
-      />
       <Center bg="black">
         <Container maxW="container.xl" my={14}>
           <Grid color="white" gridColumnGap={52} gridTemplateColumns={['1fr', '1fr 1fr']}>
@@ -68,11 +64,20 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
 
 export default Subsuelo;
 
+export function HEAD() {
+  return (
+    <SEO
+      description="En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa."
+      title="Subsuelo"
+    />
+  );
+}
+
 export const query = graphql`
   query SubsueloPostQuery {
     blogPosts: allWpPost(
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "blog" } } } } }
-      sort: { fields: date, order: DESC }
+      sort: { date: DESC }
     ) {
       nodes {
         id

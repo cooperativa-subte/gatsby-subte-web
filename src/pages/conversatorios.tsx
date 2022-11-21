@@ -40,7 +40,6 @@ function ConversatoriosPage({
 }: ConversatoriosPageTypes): JSX.Element {
   return (
     <>
-      <SEO title="Conversatorios subterráneos" />
       <Center bg="black">
         <Grid
           gridColumnGap={52}
@@ -186,11 +185,15 @@ function ConversatoriosPage({
 
 export default ConversatoriosPage;
 
+export function HEAD() {
+  return <SEO title="Conversatorios subterráneos" />;
+}
+
 export const query = graphql`
   query ConversatoriosPageQuery {
     conversatorioCeroPosts: allWpPost(
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "conversatorio-0" } } } } }
-      sort: { fields: date, order: ASC }
+      sort: { date: ASC }
     ) {
       nodes {
         id
@@ -205,7 +208,7 @@ export const query = graphql`
     }
     conversatorioUnoPosts: allWpPost(
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "conversatorio-1" } } } } }
-      sort: { fields: date, order: ASC }
+      sort: { date: ASC }
     ) {
       nodes {
         id

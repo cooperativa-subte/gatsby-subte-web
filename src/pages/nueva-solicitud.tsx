@@ -7,7 +7,6 @@ import SEO from '../components/seo';
 const NuevaSolicitudPage = () => {
   return (
     <>
-      <SEO />
       <Container maxW="container.xl">
         <Center flexDirection="column" mb="40px" mt="100px">
           <Heading>¡Creemos algo juntes!</Heading>
@@ -107,3 +106,7 @@ const NuevaSolicitudPage = () => {
 };
 
 export default NuevaSolicitudPage;
+
+export function HEAD() {
+  return <SEO />;
+}

@@ -59,8 +59,6 @@ module.exports = {
         icon: `src/images/favicon.ico`,
       },
     },
-
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `@chakra-ui/gatsby-plugin`,
       options: {

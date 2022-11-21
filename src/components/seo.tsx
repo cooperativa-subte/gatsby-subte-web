@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -19,7 +18,7 @@ const SEO = ({
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
 
-  const { defaultTitle, titleTemplate, defaultDescription, siteUrl } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
@@ -29,7 +28,7 @@ const SEO = ({
   };
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <>
       <meta content={seo.description} name="description" />
       <meta content={seo.image} name="image" />
 
@@ -54,7 +53,8 @@ const SEO = ({
       {seo.description && <meta content={seo.description} name="twitter:description" />}
 
       {seo.image && <meta content={seo.image} name="twitter:image" />}
-    </Helmet>
+      <title>{seo.title} | Cooperativa de trabajo SUBTE</title>
+    </>
   );
 };
 

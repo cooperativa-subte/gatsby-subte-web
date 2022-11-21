@@ -30,7 +30,6 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
 
   return (
     <>
-      <SEO title={`Proyecto ${project.datos_proyecto.nombre}`} />
       <Container maxW="container.xl">
         <Grid
           bg="white"
@@ -218,6 +217,12 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
 };
 
 export default ProjectPage;
+
+export function HEAD({ data: { project}}: ProjectPageType) {
+  return (
+    <SEO title={`Proyecto ${project.datos_proyecto.nombre}`} />
+  )
+}
 
 export const pageQuery = graphql`
   query ProjectPost($id: String!) {

@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const blogTemplate = path.resolve(`./src/templates/subsueloTemplate.tsx`);
   const conversatorioTemplate = path.resolve('./src/templates/conversatorioTemplate.tsx');
   const result = await graphql(`
-    query {
+    {
       proyectosPosts: allWpPost(
         filter: { categories: { nodes: { elemMatch: { slug: { eq: "proyectos" } } } } }
       ) {
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         }
       }
       conversatoriosPosts: allWpPost(
-        sort: { fields: date, order: DESC }
+        sort: { date: DESC }
         filter: {
           categories: {
             nodes: { elemMatch: { slug: { in: ["conversatorio-0", "conversatorio-1"] } } }

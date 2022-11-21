@@ -29,7 +29,6 @@ type BlogPostPageType = {
 const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
   return (
     <>
-      <SEO title={blogPost.title} />
       <Container maxW="container.xl" my={10}>
         <Container marginInlineStart={['inherit', '200px']} maxW="container.sm">
           <Box
@@ -76,6 +75,12 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
 };
 
 export default BlogTemplatePage;
+
+export function HEAD({data: {blogPost}}: BlogPostPageType) {
+  return (
+    <SEO title={blogPost.title} />
+  )
+}
 
 export const pageQuery = graphql`
   query BlogPost($id: String!) {

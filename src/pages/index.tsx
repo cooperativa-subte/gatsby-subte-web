@@ -41,7 +41,6 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
 
   return (
     <>
-      <SEO />
       <Stack
         height="calc(100vh - 72.5px)"
         mx="auto"
@@ -137,11 +136,15 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
 
 export default IndexPage;
 
+export function Head() {
+  return <SEO title="Inicio" />;
+}
+
 export const query = graphql`
   query MyIndexQuery {
     proyectosPortada: allWpPost(
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "proyectos-portada" } } } } }
-      sort: { fields: date, order: DESC }
+      sort: { date: DESC }
     ) {
       nodes {
         id

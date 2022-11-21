@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Center, Container, Heading } from '@chakra-ui/react';
 
-import Seo from '../components/seo';
+import SEO from '../components/seo';
 
 const NotFoundPage = () => {
   return (
     <>
-      <Seo title="404: Página no encontrada" />
       <Container maxW="container.xl">
         <Center minH="80vh">
           <Heading textAlign="center">
@@ -24,3 +23,7 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
+
+export function HEAD() {
+  return <SEO title="404: Página no encontrada" />;
+}

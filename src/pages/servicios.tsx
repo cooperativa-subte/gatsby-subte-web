@@ -32,10 +32,6 @@ type ServicioPageProps = PageProps<ServicioPropTypes>;
 function ServiciosPage({ data: { allWpServicio } }: ServicioPageProps): JSX.Element {
   return (
     <>
-      <SEO
-        description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."
-        title="Servicios"
-      />
       <Center background="black" h={['350px', '550px']}>
         <Container color="white" maxW="container.xl" p={['10', '0']}>
           <Heading as="h1" fontFamily="HelveticaLight" fontSize="2xl">
@@ -102,9 +98,18 @@ function ServiciosPage({ data: { allWpServicio } }: ServicioPageProps): JSX.Elem
 
 export default ServiciosPage;
 
+export function HEAD() {
+  return (
+    <SEO
+      description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."
+      title="Servicios"
+    />
+  );
+}
+
 export const query = graphql`
   query ServiciosPage {
-    allWpServicio(sort: { fields: date, order: ASC }) {
+    allWpServicio(sort: { date: ASC }) {
       nodes {
         id
         title

@@ -34,8 +34,6 @@ const whiteLinks = ['/', '/servicios'];
 function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
   return (
     <>
-      <SEO title="Links" />
-
       <Flex alignItems="center" background="black" flex="1" flexDir="column">
         <Flex
           flex="1"
@@ -176,6 +174,10 @@ function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
 }
 
 export default LinksPage;
+
+export function HEAD() {
+  return <SEO title="Links" />;
+}
 
 export const query = graphql`
   query Menu {

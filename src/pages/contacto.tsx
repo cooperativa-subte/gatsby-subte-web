@@ -86,10 +86,6 @@ const Contacto = () => {
 
   return (
     <>
-      <SEO
-        description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"
-        title="Contacto"
-      />
       <Container maxW="container.xl" my={10}>
         <Heading as="h1" size="xl">
           Contacto
@@ -253,3 +249,12 @@ const Contacto = () => {
 };
 
 export default Contacto;
+
+export function HEAD() {
+  return (
+    <SEO
+      description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"
+      title="Contacto"
+    />
+  );
+}

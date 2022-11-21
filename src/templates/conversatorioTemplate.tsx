@@ -35,7 +35,6 @@ interface Props {
 function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element {
   return (
     <>
-      <SEO title={conversatorioPost.title} />
       <Container maxW="container.xl" my={10}>
         <Container maxW="container.lg">
           <Grid gridTemplateColumns={['75px 300px', '75px 650px']} mb={4}>
@@ -134,6 +133,10 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
 }
 
 export default ConversatorioPage;
+
+export function HEAD({ data: { conversatorioPost } }: Props) {
+  return <SEO title={conversatorioPost.title} />;
+}
 
 export const pageQuery = graphql`
   query ConversatorioPost($id: String!) {

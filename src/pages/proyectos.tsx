@@ -68,11 +68,6 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
 
   return (
     <>
-      <SEO
-        article={false}
-        description="Navegá por los proyectos creados por la cooperativa y enterate de todos los servicios que ofrecemos"
-        title="Proyectos"
-      />
       <Container maxW="container.xl">
         <Flex
           alignItems="center"
@@ -192,6 +187,16 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
 
 export default Proyectos;
 
+export function HEAD() {
+  return (
+    <SEO
+      article={false}
+      description="Navegá por los proyectos creados por la cooperativa y enterate de todos los servicios que ofrecemos"
+      title="Proyectos"
+    />
+  );
+}
+
 export const query = graphql`
   query ProyectosPage {
     allWpTag {
@@ -201,7 +206,7 @@ export const query = graphql`
       }
     }
     allWpPost(
-      sort: { fields: date, order: DESC }
+      sort: { date: DESC }
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "proyectos" } } } } }
     ) {
       nodes {
