@@ -16,6 +16,7 @@ import { graphql, Link } from 'gatsby';
 import SEO from '../components/seo';
 import ConversatoriosSubterraneosIcon from '../icons/ConversatoriosSubterraneos';
 import { PostType } from '../types';
+import RegistroConversatoriosForm from '../components/RegistroConversatoriosForm';
 
 type PodcastPostType = PostType & {
   podcasts_fields: {
@@ -62,12 +63,93 @@ function ConversatoriosPage({
         </Grid>
       </Center>
       <Container maxW="container.xl">
+        <Grid gridColumnGap={52} mt={10} templateColumns={['1fr', '1fr 1fr']}>
+          <GridItem>
+            <AspectRatio ratio={1}>
+              <Box autoPlay controls loop muted as="video">
+                <source
+                  src="https://res.cloudinary.com/subteuy/video/upload/v1669402344/subte.uy/Conversatorios/VideoWeb-Baja_gphdqs.mp4"
+                  type="video/mp4"
+                />
+              </Box>
+            </AspectRatio>
+          </GridItem>
+          <GridItem mt={[4, 0]}>
+            <Flex alignItems="center" mb={4}>
+              <Center
+                as="span"
+                bg="black"
+                boxSize={8}
+                color="white"
+                fontFamily="HelveticaExtraBold"
+                fontSize="5xl"
+                p={12}
+              >
+                #2
+              </Center>
+              <Heading fontSize="2xl" ml="4">
+                Inscripción al Conversatorio <br /> Comunicación <br /> Sindical
+              </Heading>
+            </Flex>
+            <RegistroConversatoriosForm />
+          </GridItem>
+        </Grid>
         <Grid
           alignItems="flex-start"
           gridColumnGap={52}
           gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
           my={10}
         >
+          <GridItem>
+            <AspectRatio ratio={1}>
+              <video autoPlay controls loop muted>
+                <source
+                  src="https://res.cloudinary.com/subteuy/video/upload/v1635955826/subte.uy/Conversatorios/Conversatorios_SPOTcuadrado_2021_brjgwl.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </AspectRatio>
+            <Flex alignItems="center" my={10}>
+              <Center
+                as="span"
+                bg="black"
+                boxSize={8}
+                color="white"
+                fontFamily="HelveticaExtraBold"
+                fontSize="5xl"
+                p={12}
+              >
+                #1
+              </Center>
+              <Heading fontSize="2xl" ml="4">
+                Comunicación y <br /> Cooperativas
+              </Heading>
+            </Flex>
+            {conversatorioUnoPosts.nodes.length > 0 &&
+              conversatorioUnoPosts.nodes.map((post: PodcastPostType) => (
+                <Box key={post.id} mb="12">
+                  <Link to={`/conversatorios/${post.slug}`}>
+                    <Heading as="h3" fontSize="26px">
+                      {post.title}
+                    </Heading>
+                  </Link>
+                  <Text fontFamily="helveticaBold" my={3}>
+                    {post.podcasts_fields.autoraPodcast}
+                  </Text>
+                  <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
+                  <Text>
+                    <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
+                    <ChakraLink
+                      href={post.podcasts_fields.urlDePodcast}
+                      rel="nonoopener noreferrer"
+                      target="_blank"
+                    >
+                      Escuchar en Spotify
+                    </ChakraLink>
+                  </Text>
+                </Box>
+              ))}
+          </GridItem>
           <GridItem>
             <AspectRatio ratio={1}>
               <Box autoPlay controls loop muted as="video">
@@ -115,56 +197,6 @@ function ConversatoriosPage({
                       },
                     }}
                   >
-                    <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
-                    <ChakraLink
-                      href={post.podcasts_fields.urlDePodcast}
-                      rel="nonoopener noreferrer"
-                      target="_blank"
-                    >
-                      Escuchar en Spotify
-                    </ChakraLink>
-                  </Text>
-                </Box>
-              ))}
-          </GridItem>
-          <GridItem>
-            <AspectRatio ratio={1}>
-              <video autoPlay controls loop muted>
-                <source
-                  src="https://res.cloudinary.com/subteuy/video/upload/v1635955826/subte.uy/Conversatorios/Conversatorios_SPOTcuadrado_2021_brjgwl.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </AspectRatio>
-            <Flex alignItems="center" my={10}>
-              <Center
-                as="span"
-                bg="black"
-                boxSize={8}
-                color="white"
-                fontFamily="HelveticaExtraBold"
-                fontSize="5xl"
-                p={12}
-              >
-                #1
-              </Center>
-              <Heading fontSize="2xl" ml="4">
-                Comunicación y <br /> Cooperativas
-              </Heading>
-            </Flex>
-            {conversatorioUnoPosts.nodes.length > 0 &&
-              conversatorioUnoPosts.nodes.map((post: PodcastPostType) => (
-                <Box key={post.id} mb="12">
-                  <Link to={`/conversatorios/${post.slug}`}>
-                    <Heading as="h3" fontSize="26px">
-                      {post.title}
-                    </Heading>
-                  </Link>
-                  <Text fontFamily="helveticaBold" my={3}>
-                    {post.podcasts_fields.autoraPodcast}
-                  </Text>
-                  <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
-                  <Text>
                     <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
                       href={post.podcasts_fields.urlDePodcast}

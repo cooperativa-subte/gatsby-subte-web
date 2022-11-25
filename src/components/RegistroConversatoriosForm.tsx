@@ -1,10 +1,11 @@
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
-  Textarea,
+  Text,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -61,17 +62,56 @@ function RegistroConversatoriosForm(): JSX.Element {
     register,
     setError,
     formState: { errors },
+    reset,
   } = useForm<FormData>();
   const [operation] = useState<{ label: string; value: string }>(shuffle(VERIFICACIONES)[0]);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(values: FormData) {
-    if (values.question !== operation.value) {
+  async function onSubmit({ fullName, subject, email, question }: FormData) {
+    if (question !== operation.value) {
       setError('question', { type: 'message', message: 'Respuesta inválida' });
+
+      return;
+    }
+    const data = {
+      name: fullName,
+      organizacion: subject,
+      email,
+      requestType: 'registroConversatorio',
+    };
+
+    try {
+      setLoading(true);
+      const response = await fetch(process.env.GATSBY_AWS_LAMBDA_URL || '', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+
+      setLoading(false);
+
+      if (response.status >= 200 && response.status < 300) {
+        setSuccessMessage('Recibmos tu inscripción. Muchas gracias.');
+        reset();
+      } else {
+        setErrorMessage(
+          'Hubo un error al inscribirse, pruebe de nuevo o bien mande un mail a <a style="text-decoration: underline;" href="mailto:hola@subte.uy" target="_blank">hola@subte.uy</a>',
+        );
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+      setErrorMessage(
+        'Hubo un error al inscribirse, pruebe de nuevo o bien mande un mail a <a style="text-decoration: underline;" href="mailto:hola@subte.uy" target="_blank">hola@subte.uy</a>',
+      );
+
+      return null;
     }
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Box as="form" w="full" onSubmit={handleSubmit(onSubmit)}>
       <FormControl isInvalid={errors.fullName !== undefined}>
         <FormLabel color="primary" htmlFor="fullName">
           Nombre completo: *
@@ -125,16 +165,6 @@ function RegistroConversatoriosForm(): JSX.Element {
         />
         <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
       </FormControl>
-      <FormControl mt={2}>
-        <FormLabel>Pregunta o problema que quieras plantear:</FormLabel>
-        <Textarea
-          _focus={{ borderColor: 'primary', boxShadow: 'none' }}
-          _hover={{ borderColor: '#99a9bb' }}
-          borderColor="#99a9bb"
-          borderRadius={0}
-          {...register('message')}
-        />
-      </FormControl>
       <FormControl isInvalid={errors.question !== undefined} mt={2}>
         <FormLabel color="primary" htmlFor="question">
           Completa para enviar: ¿Cuanto es {operation.label}?
@@ -161,12 +191,19 @@ function RegistroConversatoriosForm(): JSX.Element {
         bgColor="primary"
         borderRadius={0}
         color="secondary"
+        disabled={loading}
         mt={5}
         type="submit"
       >
         Inscribirse
       </Button>
-    </form>
+      {errorMessage ? (
+        <Text color="#e53e3e" dangerouslySetInnerHTML={{ __html: errorMessage }} mt={4} />
+      ) : null}
+      {successMessage ? (
+        <Text color="#1f7c1f" dangerouslySetInnerHTML={{ __html: successMessage }} mt={4} />
+      ) : null}
+    </Box>
   );
 }
 
