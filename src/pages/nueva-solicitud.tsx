@@ -107,6 +107,6 @@ const NuevaSolicitudPage = () => {
 
 export default NuevaSolicitudPage;
 
-export function HEAD() {
+export function Head() {
   return <SEO />;
 }

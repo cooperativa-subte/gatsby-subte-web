@@ -187,7 +187,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
 
 export default Proyectos;
 
-export function HEAD() {
+export function Head() {
   return (
     <SEO
       article={false}

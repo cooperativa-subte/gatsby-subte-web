@@ -175,7 +175,7 @@ function LinksPage({ data: { wpMenu } }: LinkPageProps): JSX.Element {
 
 export default LinksPage;
 
-export function HEAD() {
+export function Head() {
   return <SEO title="Links" />;
 }
 

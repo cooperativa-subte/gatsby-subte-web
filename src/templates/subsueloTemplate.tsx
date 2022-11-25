@@ -76,7 +76,7 @@ const BlogTemplatePage = ({ data: { blogPost } }: BlogPostPageType) => {
 
 export default BlogTemplatePage;
 
-export function HEAD({data: {blogPost}}: BlogPostPageType) {
+export function Head({data: {blogPost}}: BlogPostPageType) {
   return (
     <SEO title={blogPost.title} />
   )

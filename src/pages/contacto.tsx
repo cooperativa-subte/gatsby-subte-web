@@ -250,7 +250,7 @@ const Contacto = () => {
 
 export default Contacto;
 
-export function HEAD() {
+export function Head() {
   return (
     <SEO
       description="Contactanos por los siguientes servicios: Diseño Gráfico, Programación, Ilustración, Marketing Digital, Producción audiovisual y formación"

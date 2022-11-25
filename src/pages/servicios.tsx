@@ -98,7 +98,7 @@ function ServiciosPage({ data: { allWpServicio } }: ServicioPageProps): JSX.Elem
 
 export default ServiciosPage;
 
-export function HEAD() {
+export function Head() {
   return (
     <SEO
       description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."

@@ -64,7 +64,7 @@ const Subsuelo = ({ data: { blogPosts } }: SubsueloPageTypes) => {
 
 export default Subsuelo;
 
-export function HEAD() {
+export function Head() {
   return (
     <SEO
       description="En este espacio presentamos reflexiones, podcasts, artículos y más contentido que hemos estado generando con la cooperativa."

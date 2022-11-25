@@ -185,7 +185,7 @@ function ConversatoriosPage({
 
 export default ConversatoriosPage;
 
-export function HEAD() {
+export function Head() {
   return <SEO title="Conversatorios subterráneos" />;
 }
 

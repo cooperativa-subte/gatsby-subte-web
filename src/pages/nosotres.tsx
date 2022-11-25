@@ -170,7 +170,8 @@ const Nosotres = () => {
 
 export default Nosotres;
 
-export function HEAD() {
+export function Head() {
+  console.log('hola')
   return (
     <SEO
       description="Somos una cooperativa de trabajo enfocada en la comunicación, con una perspectiva popular y colaborativa. Trabajamos con organizaciones sociales, culturales, sindicatos, cooperativas y emprendimientos."

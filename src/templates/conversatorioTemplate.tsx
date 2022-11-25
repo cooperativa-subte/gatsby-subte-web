@@ -134,7 +134,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
 
 export default ConversatorioPage;
 
-export function HEAD({ data: { conversatorioPost } }: Props) {
+export function Head({ data: { conversatorioPost } }: Props) {
   return <SEO title={conversatorioPost.title} />;
 }
 
