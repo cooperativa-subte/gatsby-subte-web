@@ -63,37 +63,6 @@ function ConversatoriosPage({
         </Grid>
       </Center>
       <Container maxW="container.xl">
-        <Grid gridColumnGap={52} mt={10} templateColumns={['1fr', '1fr 1fr']}>
-          <GridItem>
-            <AspectRatio ratio={1}>
-              <Box autoPlay controls loop muted as="video">
-                <source
-                  src="https://res.cloudinary.com/subteuy/video/upload/v1669402344/subte.uy/Conversatorios/VideoWeb-Baja_gphdqs.mp4"
-                  type="video/mp4"
-                />
-              </Box>
-            </AspectRatio>
-          </GridItem>
-          <GridItem mt={[4, 0]}>
-            <Flex alignItems="center" mb={4}>
-              <Center
-                as="span"
-                bg="black"
-                boxSize={8}
-                color="white"
-                fontFamily="HelveticaExtraBold"
-                fontSize="5xl"
-                p={12}
-              >
-                #2
-              </Center>
-              <Heading fontSize="2xl" ml="4">
-                Inscripción al Conversatorio <br /> Comunicación <br /> Sindical
-              </Heading>
-            </Flex>
-            <RegistroConversatoriosForm />
-          </GridItem>
-        </Grid>
         <Grid
           alignItems="flex-start"
           gridColumnGap={52}
