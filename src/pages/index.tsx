@@ -10,7 +10,7 @@ type ProyectoType = {
   id: string;
   slug: string;
   title: string;
-  datos_proyecto_portada: {
+  datosProyectoPortada: {
     imagenPortadaDesktop: {
       altText: string;
       sourceUrl: string;
@@ -65,7 +65,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                 }}
                 to={`/proyectos/${project.slug}`}
               >
-                {project.datos_proyecto_portada.imagenPortadaDesktop && (
+                {project.datosProyectoPortada.imagenPortadaDesktop && (
                   <Box
                     display={['none', 'block']}
                     height="calc(100vh - 72.5px)"
@@ -77,20 +77,18 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
                     }}
                   >
                     <GatsbyImage
-                      alt={project.datos_proyecto_portada.imagenPortadaDesktop.altText}
+                      alt={project.datosProyectoPortada.imagenPortadaDesktop.altText}
                       //@ts-ignore
-                      image={getImage(
-                        project.datos_proyecto_portada.imagenPortadaDesktop.localFile,
-                      )}
+                      image={getImage(project.datosProyectoPortada.imagenPortadaDesktop.localFile)}
                     />
                   </Box>
                 )}
-                {project.datos_proyecto_portada.imagenPortadaMobile && (
+                {project.datosProyectoPortada.imagenPortadaMobile && (
                   <Box display={['block', 'none']}>
                     <GatsbyImage
-                      alt={project.datos_proyecto_portada.imagenPortadaMobile.altText}
+                      alt={project.datosProyectoPortada.imagenPortadaMobile.altText}
                       // @ts-ignore
-                      image={getImage(project.datos_proyecto_portada.imagenPortadaMobile.localFile)}
+                      image={getImage(project.datosProyectoPortada.imagenPortadaMobile.localFile)}
                       style={{ height: 'calc(100vh - 72px)' }}
                     />
                   </Box>
@@ -150,7 +148,7 @@ export const query = graphql`
         id
         slug
         title
-        datos_proyecto_portada {
+        datosProyectoPortada {
           imagenPortadaDesktop {
             sourceUrl
             altText

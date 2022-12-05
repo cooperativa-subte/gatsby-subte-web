@@ -19,7 +19,7 @@ import { PostType } from '../types';
 import RegistroConversatoriosForm from '../components/RegistroConversatoriosForm';
 
 type PodcastPostType = PostType & {
-  podcasts_fields: {
+  podcastsFields: {
     autoraPodcast: string;
     urlDePodcast: string;
   };
@@ -63,37 +63,6 @@ function ConversatoriosPage({
         </Grid>
       </Center>
       <Container maxW="container.xl">
-        <Grid gridColumnGap={52} mt={10} templateColumns={['1fr', '1fr 1fr']}>
-          <GridItem>
-            <AspectRatio ratio={1}>
-              <Box autoPlay controls loop muted as="video">
-                <source
-                  src="https://res.cloudinary.com/subteuy/video/upload/v1669402344/subte.uy/Conversatorios/VideoWeb-Baja_gphdqs.mp4"
-                  type="video/mp4"
-                />
-              </Box>
-            </AspectRatio>
-          </GridItem>
-          <GridItem mt={[4, 0]}>
-            <Flex alignItems="center" mb={4}>
-              <Center
-                as="span"
-                bg="black"
-                boxSize={8}
-                color="white"
-                fontFamily="HelveticaExtraBold"
-                fontSize="5xl"
-                p={12}
-              >
-                #2
-              </Center>
-              <Heading fontSize="2xl" ml="4">
-                Inscripción al Conversatorio <br /> Comunicación <br /> Sindical
-              </Heading>
-            </Flex>
-            <RegistroConversatoriosForm />
-          </GridItem>
-        </Grid>
         <Grid
           alignItems="flex-start"
           gridColumnGap={52}
@@ -134,13 +103,13 @@ function ConversatoriosPage({
                     </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
-                    {post.podcasts_fields.autoraPodcast}
+                    {post.podcastsFields.autoraPodcast}
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text>
                     <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
-                      href={post.podcasts_fields.urlDePodcast}
+                      href={post.podcastsFields.urlDePodcast}
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
@@ -187,7 +156,7 @@ function ConversatoriosPage({
                     </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
-                    {post.podcasts_fields.autoraPodcast}
+                    {post.podcastsFields.autoraPodcast}
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text
@@ -199,7 +168,7 @@ function ConversatoriosPage({
                   >
                     <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
-                      href={post.podcasts_fields.urlDePodcast}
+                      href={post.podcastsFields.urlDePodcast}
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
@@ -232,7 +201,7 @@ export const query = graphql`
         slug
         title
         excerpt
-        podcasts_fields {
+        podcastsFields {
           autoraPodcast
           urlDePodcast
         }
@@ -247,7 +216,7 @@ export const query = graphql`
         slug
         title
         excerpt
-        podcasts_fields {
+        podcastsFields {
           autoraPodcast
           urlDePodcast
         }
