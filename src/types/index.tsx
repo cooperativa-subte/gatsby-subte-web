@@ -17,7 +17,7 @@ export type ProjectType = {
   id: string;
   slug: string;
   content: string;
-  datos_proyecto: {
+  datosProyecto: {
     cliente: string;
     descripcionCorta: string;
     fecha: string;

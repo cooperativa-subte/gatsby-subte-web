@@ -23,10 +23,10 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
   const [complementaryImages, setComplementaryImages] = useState<string[]>([]);
 
   useEffect(() => {
-    if (project.datos_proyecto.imagenesComplementarias) {
-      setComplementaryImages(JSON.parse(project.datos_proyecto.imagenesComplementarias));
+    if (project.datosProyecto.imagenesComplementarias) {
+      setComplementaryImages(JSON.parse(project.datosProyecto.imagenesComplementarias));
     }
-  }, [project.datos_proyecto]);
+  }, [project.datosProyecto]);
 
   return (
     <>
@@ -40,13 +40,13 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           zIndex={1}
         >
           <GridItem as="h1" colSpan={2} fontFamily="helveticaBold" fontSize="5xl" lineHeight="1">
-            {project.datos_proyecto.nombre}
+            {project.datosProyecto.nombre}
           </GridItem>
           <GridItem as="h2" fontFamily="helveticaMedium" fontSize="xl" maxW={96}>
-            {project.datos_proyecto.descripcionCorta}
+            {project.datosProyecto.descripcionCorta}
           </GridItem>
         </Grid>
-        {project.datos_proyecto.featuredVideo ? (
+        {project.datosProyecto.featuredVideo ? (
           <>
             <AspectRatio ratio={16 / 9} zIndex="1">
               <iframe
@@ -54,7 +54,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 frameBorder="0"
                 id="cover-video"
-                src={project.datos_proyecto.featuredVideo}
+                src={project.datosProyecto.featuredVideo}
                 title="cover-video"
                 width="100%"
               />
@@ -137,9 +137,9 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
           pt={8}
           zIndex="1"
         >
-          {project.datos_proyecto.fraseDestacada ? (
+          {project.datosProyecto.fraseDestacada ? (
             <Text
-              dangerouslySetInnerHTML={{ __html: project.datos_proyecto.fraseDestacada }}
+              dangerouslySetInnerHTML={{ __html: project.datosProyecto.fraseDestacada }}
               fontFamily="helveticaBold"
               fontSize="x-large"
               mb={[8, 0]}
@@ -172,13 +172,13 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
               <Text as="span" fontFamily="helveticaBold">
                 Cliente:{` `}
               </Text>
-              {project.datos_proyecto.cliente}
+              {project.datosProyecto.cliente}
             </Text>
             <Text fontSize="lg">
               <Text as="span" fontFamily="helveticaBold">
                 Sector:{` `}
               </Text>
-              {project.datos_proyecto.sector}
+              {project.datosProyecto.sector}
             </Text>
             <Text fontSize="lg">
               <Text as="span" fontFamily="helveticaBold">
@@ -194,7 +194,7 @@ const ProjectPage = ({ data: { project } }: ProjectPageType) => {
               <Text as="span" fontFamily="helveticaBold">
                 Mes/Año:{` `}
               </Text>
-              {project.datos_proyecto.fecha}
+              {project.datosProyecto.fecha}
             </Text>
           </Box>
           <Box gridArea="remainingPhotos">
@@ -220,7 +220,7 @@ export default ProjectPage;
 
 export function Head({ data: { project}}: ProjectPageType) {
   return (
-    <SEO title={`Proyecto ${project.datos_proyecto.nombre}`} />
+    <SEO title={`Proyecto ${project.datosProyecto.nombre}`} />
   )
 }
 
@@ -228,7 +228,7 @@ export const pageQuery = graphql`
   query ProjectPost($id: String!) {
     project: wpPost(id: { eq: $id }) {
       id
-      datos_proyecto {
+      datosProyecto {
         cliente
         descripcionCorta
         fecha

@@ -19,7 +19,7 @@ import { PostType } from '../types';
 import RegistroConversatoriosForm from '../components/RegistroConversatoriosForm';
 
 type PodcastPostType = PostType & {
-  podcasts_fields: {
+  podcastsFields: {
     autoraPodcast: string;
     urlDePodcast: string;
   };
@@ -103,13 +103,13 @@ function ConversatoriosPage({
                     </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
-                    {post.podcasts_fields.autoraPodcast}
+                    {post.podcastsFields.autoraPodcast}
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text>
                     <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
-                      href={post.podcasts_fields.urlDePodcast}
+                      href={post.podcastsFields.urlDePodcast}
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
@@ -156,7 +156,7 @@ function ConversatoriosPage({
                     </Heading>
                   </Link>
                   <Text fontFamily="helveticaBold" my={3}>
-                    {post.podcasts_fields.autoraPodcast}
+                    {post.podcastsFields.autoraPodcast}
                   </Text>
                   <Box dangerouslySetInnerHTML={{ __html: post.excerpt }} mb={3} />
                   <Text
@@ -168,7 +168,7 @@ function ConversatoriosPage({
                   >
                     <Link to={`/conversatorios/${post.slug}`}>Leer</Link> |{' '}
                     <ChakraLink
-                      href={post.podcasts_fields.urlDePodcast}
+                      href={post.podcastsFields.urlDePodcast}
                       rel="nonoopener noreferrer"
                       target="_blank"
                     >
@@ -201,7 +201,7 @@ export const query = graphql`
         slug
         title
         excerpt
-        podcasts_fields {
+        podcastsFields {
           autoraPodcast
           urlDePodcast
         }
@@ -216,7 +216,7 @@ export const query = graphql`
         slug
         title
         excerpt
-        podcasts_fields {
+        podcastsFields {
           autoraPodcast
           urlDePodcast
         }

@@ -12,7 +12,7 @@ interface Props {
       content: string;
       title: string;
       slug: string;
-      podcasts_fields: {
+      podcastsFields: {
         autoraPodcast: string;
         urlDePodcast: string;
       };
@@ -81,7 +81,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
                 {conversatorioPost.title}
               </Heading>
               <Text color="alternative" fontFamily="helveticaBold" fontSize="20px">
-                {conversatorioPost.podcasts_fields.autoraPodcast}
+                {conversatorioPost.podcastsFields.autoraPodcast}
               </Text>
               <Flex alignItems="center" mb="8" mt={3}>
                 <Link
@@ -91,7 +91,7 @@ function ConversatorioPage({ data: { conversatorioPost } }: Props): JSX.Element 
                   borderRadius="15px"
                   display="inline-flex"
                   h={6}
-                  href={conversatorioPost.podcasts_fields.urlDePodcast}
+                  href={conversatorioPost.podcastsFields.urlDePodcast}
                   mr={2}
                   pl="4"
                   pr="3"
@@ -145,7 +145,7 @@ export const pageQuery = graphql`
       content
       title
       slug
-      podcasts_fields {
+      podcastsFields {
         autoraPodcast
         urlDePodcast
       }

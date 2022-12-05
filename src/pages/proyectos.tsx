@@ -138,7 +138,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
                   </AspectRatio>
                 )}
                 <Heading as="h3" fontFamily="HelveticaMedium" fontSize="2xl" mt={3}>
-                  {project.datos_proyecto.nombre}
+                  {project.datosProyecto.nombre}
                 </Heading>
                 <Stack
                   direction="row"
@@ -151,7 +151,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
                       Cliente:
                     </Text>
                     <Text color="blackAlpha.500" fontSize="sm">
-                      {project.datos_proyecto.cliente}
+                      {project.datosProyecto.cliente}
                     </Text>
                   </Box>
                   <Box>
@@ -159,7 +159,7 @@ const Proyectos = ({ data: { allWpPost, allWpTag }, location }: ProyectosPagePro
                       Sector:
                     </Text>
                     <Text color="blackAlpha.500" fontSize="sm">
-                      {project.datos_proyecto.sector}
+                      {project.datosProyecto.sector}
                     </Text>
                   </Box>
                   <Box>
@@ -213,7 +213,7 @@ export const query = graphql`
         id
         slug
         title
-        datos_proyecto {
+        datosProyecto {
           cliente
           sector
           nombre
