@@ -35,7 +35,7 @@ const Header = ({ path }: Props) => {
           gridTemplateColumns={['repeat(12, 1fr)', 'repeat(12, 1fr)', 'repeat(3, 1fr)']}
           py={4}
         >
-          <GridItem colSpan={[6, 1]}>
+          <GridItem colSpan={[6, 6, 1]}>
             <Link to="/">
               <Image
                 alt="Logo de la cooperativa de trabajo SUBTE"
@@ -65,7 +65,7 @@ const Header = ({ path }: Props) => {
             </Button>
           </GridItem>
           {/* Botón de buscar  */}
-          <GridItem colEnd={[12, 'auto']} colStart={[11, 'auto']} order={[1, 2]}>
+          <GridItem colEnd={[12, 12, 'auto']} colStart={[11, 11, 'auto']} order={[1, 1, 2]}>
             <SearchModal isOpen={isSearchDialogOpen} onClose={onClose} />
             <Box display="flex" justifyContent={['center', 'flex-end']} ml="auto">
               <Image
@@ -77,7 +77,7 @@ const Header = ({ path }: Props) => {
               />
             </Box>
           </GridItem>
-          <GridItem colSpan={[12, 1]} order={[2, 1]}>
+          <GridItem colSpan={[12, 12, 1]} order={[2, 2, 1]}>
             <Menu isMenuOpen={isMenuOpen} path={path} onToggleMenuOpen={onToggleMenuOpen} />
           </GridItem>
         </Grid>

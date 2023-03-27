@@ -43,9 +43,9 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
     <List
       as="nav"
       display={{ base: isMenuOpen ? 'flex' : 'none', md: 'flex' }}
-      flexDirection={['column', 'row']}
+      flexDirection={['column', 'column', 'row']}
       gridArea="menu"
-      mt={{ base: isMenuOpen ? '3' : '0', sm: '0' }}
+      mt={{ base: isMenuOpen ? '3' : '0', md: '0' }}
     >
       {wpMenu.menuItems.nodes.map((menuItem: MenuItem) => (
         <ListItem
@@ -53,8 +53,8 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
           _first={{ marginLeft: 0 }}
           fontFamily="menuItem"
           fontSize={['lg', 'lg']}
-          marginLeft={[0, 5]}
-          mb={[1, 0]}
+          marginLeft={[0, 0, 5]}
+          mb={[1, 1, 0]}
         >
           <Link
             style={{
