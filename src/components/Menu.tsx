@@ -42,7 +42,7 @@ const Menu = ({ isMenuOpen, path, onToggleMenuOpen }: Props) => {
   return (
     <List
       as="nav"
-      display={{ base: isMenuOpen ? 'flex' : 'none', sm: 'flex' }}
+      display={{ base: isMenuOpen ? 'flex' : 'none', md: 'flex' }}
       flexDirection={['column', 'row']}
       gridArea="menu"
       mt={{ base: isMenuOpen ? '3' : '0', sm: '0' }}

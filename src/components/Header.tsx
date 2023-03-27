@@ -32,7 +32,7 @@ const Header = ({ path }: Props) => {
         <Grid
           alignItems="center"
           bg="white"
-          gridTemplateColumns={['repeat(12, 1fr)', 'repeat(3, 1fr)']}
+          gridTemplateColumns={['repeat(12, 1fr)', 'repeat(12, 1fr)', 'repeat(3, 1fr)']}
           py={4}
         >
           <GridItem colSpan={[6, 1]}>
@@ -46,7 +46,12 @@ const Header = ({ path }: Props) => {
             </Link>
           </GridItem>
           {/* Botón de menú para Mobile */}
-          <GridItem colEnd={11} colStart={10} display={['flex', 'none']} justifyContent="flex-end">
+          <GridItem
+            colEnd={11}
+            colStart={10}
+            display={['flex', 'flex', 'none']}
+            justifyContent="flex-end"
+          >
             <Button
               _active={{ backgroundColor: 'transparent', boxShadow: 'none' }}
               _focus={{ boxShadow: 'none' }}
