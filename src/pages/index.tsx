@@ -5,6 +5,7 @@ import { Box, Stack, Text } from '@chakra-ui/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/seo';
+import ReelTipograficoVideo from '../videos/reel_tipografico_subte.mp4';
 
 type ProyectoType = {
   id: string;
@@ -47,6 +48,11 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
         overflowY="scroll"
         style={{ scrollSnapType: 'y mandatory' }}
       >
+        <Box position="relative" style={{ scrollSnapAlign: 'start' }}>
+          <video autoPlay controls muted>
+            <source src={ReelTipograficoVideo} type="video/mp4" />
+          </video>
+        </Box>
         {randomProjects.length > 0 &&
           randomProjects.map((project: ProyectoType) => (
             <Box
