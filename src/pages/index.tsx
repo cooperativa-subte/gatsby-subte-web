@@ -6,6 +6,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/seo';
 import ReelTipograficoVideo from '../videos/reel_tipografico_subte.mp4';
+import ReelTipograficoMobileVideo from '../videos/reel_tipografico_subte_mobile.mp4';
 
 type ProyectoType = {
   id: string;
@@ -48,9 +49,22 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
         overflowY="scroll"
         style={{ scrollSnapType: 'y mandatory' }}
       >
-        <Box position="relative" style={{ scrollSnapAlign: 'start' }}>
+        <Box
+          display={['none', 'none', 'block']}
+          position="relative"
+          style={{ scrollSnapAlign: 'start' }}
+        >
           <video autoPlay controls loop muted>
             <source src={ReelTipograficoVideo} type="video/mp4" />
+          </video>
+        </Box>
+        <Box
+          display={['block', 'block', 'none']}
+          position="relative"
+          style={{ scrollSnapAlign: 'start' }}
+        >
+          <video autoPlay controls loop muted>
+            <source src={ReelTipograficoMobileVideo} type="video/mp4" />
           </video>
         </Box>
         {randomProjects.length > 0 &&
@@ -143,7 +157,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
 export default IndexPage;
 
 export function Head() {
-  return <SEO title="Inicio" />;
+  return <SEO title="" />;
 }
 
 export const query = graphql`

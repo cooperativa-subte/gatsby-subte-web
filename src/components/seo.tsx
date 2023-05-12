@@ -19,14 +19,14 @@ const SEO = ({
   const { site } = useStaticQuery(query);
 
   const { defaultTitle, defaultDescription, siteUrl } = site.siteMetadata;
-  console.log(title)
+
   const seo = {
-    title: title || defaultTitle,
+    title,
     description: description || defaultDescription,
     image: `${siteUrl}${image || logo}`,
     url: `${siteUrl}${pathname}`,
   };
-  console.log(seo.title)
+
   return (
     <>
       <meta content={seo.description} name="description" />
@@ -53,7 +53,7 @@ const SEO = ({
       {seo.description && <meta content={seo.description} name="twitter:description" />}
 
       {seo.image && <meta content={seo.image} name="twitter:image" />}
-      <title>{seo.title} | Cooperativa de trabajo SUBTE</title>
+      <title>{seo.title ? `${seo.title} | ` : ''}Cooperativa de trabajo SUBTE</title>
     </>
   );
 };
@@ -65,7 +65,6 @@ const query = graphql`
     site {
       siteMetadata {
         defaultTitle: title
-        titleTemplate
         defaultDescription: description
         siteUrl: url
       }

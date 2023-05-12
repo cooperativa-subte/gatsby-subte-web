@@ -12,7 +12,6 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'Cooperativa de trabajo SUBTE',
-    titleTemplate: '%s | Cooperativa de trabajo SUBTE',
     description: 'Cooperativa de comunicación visual, programación y formación',
     url: process.env.SITE_URL,
   },
