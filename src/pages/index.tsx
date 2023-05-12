@@ -54,7 +54,7 @@ const IndexPage = ({ data: { proyectosPortada } }: IndexPageProps) => {
           position="relative"
           style={{ scrollSnapAlign: 'start' }}
         >
-          <video autoPlay controls loop muted playsInline>
+          <video autoPlay controls loop muted playsInline width="100%">
             <source src={ReelTipograficoVideo} type="video/mp4" />
           </video>
         </Box>
