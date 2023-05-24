@@ -52,8 +52,6 @@ const Contacto = () => {
         requestType: 'contact',
       });
 
-      console.log(response);
-
       if (response && response.data.statusCode >= 200 && response.data.statusCode < 300) {
         toast({
           title: '¡Gracias!',
