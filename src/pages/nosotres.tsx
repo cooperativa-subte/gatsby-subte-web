@@ -11,10 +11,10 @@ const fotosNosotres = [
   <Box key="mariana">
     <StaticImage
       alt="Foto de Mari en blanco y negro"
-      src="../images/Nosotres-Mari-Web-700x700.webp"
+      src="../images/Nosotres-Sanfer-700x700.webp"
     />
     <Text fontFamily="helveticaBold" mt={3}>
-      Mariana Escobar
+      Santiago Fernández
     </Text>
   </Box>,
   <Box key="cata">
